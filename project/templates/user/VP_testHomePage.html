@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title>CSC 648-848 FALL 2021 Team 04</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="import" href="header.html">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+      <style>
+
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body{
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+            }
+
+            #header{
+                height: 25%;
+            }
+
+            .navbar{
+                height: 5%;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .container-fluid{
+                display: flex;
+                width: 100%;
+                align-items: center;
+            }
+
+            .container-fluid > *{
+                margin: 0 10px;
+            }
+
+            .navbar-brand{
+                padding-right: 40px;
+            }
+
+            .input-group{
+                display: flex;
+                margin-left: 0;
+            }
+
+            .dropdown{
+                margin-right: 0;
+            }
+
+            .dropdown > button{
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                width: 100px;
+            }
+
+            #courseName{
+                width: 400px;
+            }
+
+            #searchButton{
+                border-radius: 0;
+                width: 50px;
+                color: #ffffff;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+            }
+
+            .navbar-right{
+                margin-left: 37%;
+            }
+
+            #auto_complete{
+                display: flex;
+            }
+
+            #bg{
+                display: flex;
+                justify-content: center;
+                height: 70%;
+                width: 100vw;
+                margin: 0;
+            }
+
+            #bg-img{
+                height: 99%;
+                width: 100%;
+            }
+      </style>
+
+</head>
+
+<body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+         <div class="navbar-header">
+          <a class="navbar-brand" href="#">GATOR LEARN</a>
+         </div>
+
+        <form action="/search" method="post" id="auto_complete">
+             <div class="dropdown">
+                <button id="dropdown-btn" class="btn btn-default dropdown-toggle" type="button" name="majorBtn" value="All Majors"  data-toggle="dropdown">All Majors
+                <span class="caret"></span></button>
+
+                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
+                  <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
+                  {% for i in majorDict %}
+                  <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
+                  {% endfor %}
+                </ul>
+
+<!--               <select id="dropdown-list" class="dropdown-menu dropdown-menu-right">-->
+<!--                  {% for i in majorDict %}-->
+<!--                  <option class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></option>-->
+<!--                  {% endfor %}-->
+<!--               </select>-->
+             </div>
+
+
+             <div class="input-group">
+                 <div class="form-outline">
+                   <input name="courseName" type="text" id="courseName" class="form-control" value="{{request.form.search}}" placeholder="Course Name" />
+                 </div>
+
+                 <div class="search">
+                    <div class="actions">
+                        <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
+                        <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                 </div>
+             </div>
+        </form>
+
+
+        <form class="navbar-form navbar-right" action="/login">
+          <button type="submit" class="btn btn-default">Login</button>
+          <button type="submit" class="btn btn-default">Register</button>
+        </form>
+
+  </div>
+</nav>
+
+<div id="bg">
+    <img src="../../static/images/tutoring_HomePage.jpg" alt="HomePage" id="bg-img">
+</div>
+
+      <script>
+
+          <!--  Search-->
+          // const searchButton = document.getElementById('search-button');
+          // const searchInput = document.getElementById('search-input');
+          // searchButton.addEventListener('click', () => {
+          // const inputValue = searchInput.value;
+          // alert(inputValue);
+          // });
+          <!--  Search end-->
+
+          const dropdownBtn = document.getElementById('dropdown-btn');
+          const dropdownList = document.getElementById('dropdown-list');
+          const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));
+          dropdownListItems.forEach((item) => {
+              item.addEventListener('click',() => {
+                 dropdownBtn.innerHTML = `${item.innerText} <span class="caret"></span>`;
+                 dropdownBtn.setAttribute("value",`${item.innerText}`);
+              });
+          });
+
+      </script>
+
+</body>
+</html>
