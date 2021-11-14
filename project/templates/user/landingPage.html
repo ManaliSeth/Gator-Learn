@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
+
+    <title>CSC 648-848 FALL 2021 Team 04</title>
+
+    <style>
+
+    </style>
+
+</head>
+
+<!--
+  TODO
+  A bg color that's pleasing on the eyes, or a wider/stretched image overlay
+  Add generic logo
+  Overlay isn't getting text centered?
+  Cards or grids below image to display tutors/student info
+    3-column grid to display that general info maybe?
+-->
+
+<body>
+
+<header>
+    <!--MAIN NAV BAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!--CONTAINER WRAPPER-->
+        <div class="container">
+
+            <!--NAV BAR BRAND-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    GATOR LEARN
+                    <img src="" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                </a>
+            </div>
+
+            <div class="dropdown">
+                <button
+                        id="dropdown-btn"
+                        class="btn btn-dark dropdown-toggle"
+                        type="button"
+                        name="majorBtn"
+                        value="All Majors"
+                        data-toggle="dropdown">
+                    All Majors
+                    <span class="caret"></span>
+                </button>
+
+                <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
+                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
+                    <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
+                    {% for i in majorDict %}
+                    <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="input-group">
+
+                <form class="d-flex form-outline">
+                    <input
+                            name="courseName"
+                            id="courseName"
+                            class="form-control me-2"
+                            type="search"
+                            placeholder="Type in a course name or major"
+                            aria-label="Search"
+                    />
+
+                    <button id="searchButton" class="btn btn-primary" type="submit">
+                        Search
+                    </button>
+
+                </form>
+
+            </div>
+
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">TUTOR</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">ABOUT</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a
+                                class="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdown"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                        >
+                            F.A.Q's
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">For students</a></li>
+                            <li><a class="dropdown-item" href="#">For tutors</a></li>
+                            <li>
+                                <hr class="dropdown-divider"/>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Testimonies</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Login</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Register</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Background image -->
+    <div class=p-5 text-center bg-image id="intro">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="text-white text-center">
+                    <h1 class="mb-3">Tutors for SFSU students</h1>
+                    <h4 class="mb-3">Tailored 1-on-1's designed for SFSU subjects</h4>
+                    <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
+                    >Book an appointment</a
+                    >
+                    <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
+                    >Find a tutor</a
+                    >
+                    <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
+                    >Search for your major</a
+                    >
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Background image -->
+</header>
+
+
+<main>
+
+    <div class="container-fluid">
+
+        <section class="divider mt-4">
+            <div class="row justify-content-center align-items-center">
+                <h2>Online Tutors for your class</h2>
+            </div>
+
+            <div class="row justify-content-center align-items-center">
+
+                <div class="col-md-4 text-right">
+                    Science
+                </div>
+
+                <div class="col-md-4 ">
+                    Math
+                </div>
+
+                <div class="col-md-4">
+                    English
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<footer>
+
+</footer>
+
+<script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+</body>
+
+</html>
