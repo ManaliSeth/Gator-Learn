@@ -10,47 +10,57 @@
 
 <style>
     body{
-  width: 100%;
-  height: auto;
-  font-family: "Robato",sans-serif;
-  font-size: 17px;
+      width: 100vw;
+      height: 100vh;
+      font-family: "Robato",sans-serif;
+      font-size: 17px;
+      background: url("../../static/images/tutoring_HomePage3.jpg") no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 }
 
 #login-form {
-    width: 412px;
-    margin: 10vh auto;
-    background-color: cornflowerblue;
+    width: 512px;
+    background-color: #000000;
+    color: #ffffff;
     box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12), 0 12px 40px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -25%;
-    margin-top: -25%;
-}
-#bg {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
-#bg img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  min-width: 50%;
-  min-height: 50%;
+    border-radius: 8px;
 }
 
+/*#bg {*/
+/*  position: fixed;*/
+/*  top: -50%;*/
+/*  left: -50%;*/
+/*  width: 200%;*/
+/*  height: 200%;*/
+/*}*/
+
+/*#bg img {*/
+/*  position: absolute;*/
+/*  top: 0;*/
+/*  left: 0;*/
+/*  right: 0;*/
+/*  bottom: 0;*/
+/*  margin: auto;*/
+/*  min-width: 50%;*/
+/*  min-height: 50%;*/
+/*}*/
+/* */
 #login-form form {
     width: 100%;
-    max-width: 410px;
     padding: 15px;
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#login-form .input-group {
+    width: 80%;
+    margin-bottom: 4px;
 }
 #login-form .form-control {
     position: relative;
@@ -59,23 +69,18 @@
     padding: 10px;
     font-size: 16px;
 }
-#login-form .form-signin input[type="password"] {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-}
 
 
 #login-form a{
     display: block;
     padding-top:10px;
-    color:darkblue;
+    color:#ffffff;
 }
 
 
     #login-form button[type="submit"]{ margin-top:10px; }
 
     #login-form .form-reset, #login-form .form-signup{ display: none; }
-    #login-form .form-signup input { margin-bottom: 2px;}
 
 
 .submit{
@@ -98,17 +103,16 @@
 
 </script>
 
-<div id="bg">
-    <img src="../../static/images/tutoring_HomePage3.jpg" alt="HomePage" id="bg-img">
-
-</div>
+<!--<div id="bg">-->
+<!--    <img src="../../static/images/tutoring_HomePage3.jpg" alt="HomePage" id="bg-img">-->
+<!--</div>-->
 
 <body>
     <div id="login-form">
-        <form class="form-signin">
+        <form class="form-signin" action="/userDashboard">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login Page </h1>
             <div class="input-group">
-              <input type="email" id="inputEmail" class="form-control" placeholder="email address" required="" autofocus="">
+              <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             </div>
             <div class="input-group">
               <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
@@ -117,7 +121,7 @@
              <a href="#" id="forgot_pswd">Forgot password?</a>
 
             <div class="input-group">
-              <button class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+              <button id="loginFormSubmit" class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
             </div>
             <hr>
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Not Registered? Register Now </button>
@@ -125,12 +129,36 @@
 
         <form action="#" class="form-reset">
                 <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <button id="formResetSubmit" class="btn btn-primary btn-block" type="submit">Reset Password</button>
                 <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
     </div>
 <form id="contactForm" action="#" onSubmit="return validateLogin()" method="post">
 </form>
+
+<script>
+    const email = document.getElementById("inputEmail");
+    const submitButton = document.getElementById("loginFormSubmit");
+
+    const resetEmail = document.getElementById("resetEmail");
+    const resetPassButton = document.getElementById("formResetSubmit");
+
+    submitButton.addEventListener('click', () => {
+        validateEmail(email);
+    });
+    resetPassButton.addEventListener('click', () => {
+        validateEmail(resetEmail);
+    });
+
+    function validateEmail(email){
+        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){
+            return;
+        }
+        else{
+            alert("Invalid Email.")
+        }
+    }
+</script>
 </body>
 </html>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>SFSU Tutoring Services</title>
+<title>About Us</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -29,9 +29,9 @@ body {
 .main {
   -ms-flex: 70%; /* IE10 */
   flex: 70%;
-  /*background-color: white;*/
+  background-color: white;
   padding: 20px;
-  background: linear-gradient(to top, #a7cfdf 0%, #23538a 100%)
+  /*background: linear-gradient(to top, #a7cfdf 0%, #23538a 100%)*/
 
 }
 
@@ -41,20 +41,23 @@ body {
     margin-right: auto;
  }
 
+#header{
+              height: 25%;
+          }
+
 </style>
 </head>
 <body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
 
 <div class="row">
 
   <div class="main">
 
-    <center><h1>SOFTWARE ENGINEERING CLASS SFSU</h1>
-    <b><p>CSC 648-848, Fall 2021</p>
-    <p>Section 03</p>
-    <p>Team 4</p> </b>
-    <br>
-    <h2>ABOUT US</h2>
+    <center><h2>ABOUT US</h2>
     <h3>The Creators</h3></center>
     <br><br>
 

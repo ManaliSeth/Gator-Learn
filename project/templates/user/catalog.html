@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>Course Catalog</title>
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+
+        *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+        }
+
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header{
+            height: 25%;
+        }
+
+        .navbar{
+            height: 8%;
+            border-radius: 0;
+            margin: 0;
+        }
+
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin: 0;
+        }
+
+        .container > form{
+            display: flex;
+        }
+
+        .container > *{
+            margin: 0 10px;
+        }
+
+        .navbar-brand{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+        }
+
+        .navbar-brand *{
+            margin: 0;
+        }
+
+        #sfsuLogo{
+            width: 45px;
+            height: 45px;
+            margin-right: 5px;
+        }
+
+        .input-group{
+          display: flex;
+          margin-left: 0;
+        }
+
+        .dropdown{
+          margin-right: 0;
+          margin-left: 15px;
+        }
+
+        .dropdown > button{
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            width: 100px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        #courseName{
+                width: 400px;
+        }
+
+        #searchButton{
+                border-radius: 0;
+                width: 70px;
+                color: #ffffff;
+                border-top-right-radius: 4px;
+                border-bottom-right-radius: 4px;
+        }
+
+        .navbar-middle{
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-middle ul{
+            display: flex;
+        }
+
+        /*.navbar-form button{*/
+        /*    margin-right: 5px;*/
+        /*}*/
+
+        #example_length.dataTables_length label{
+            display: flex;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        #example_length.dataTables_length label select{
+            width: fit-content;
+            margin: 0 5px;
+        }
+
+        #example_filter.dataTables_filter label{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 10px;
+            margin-right: 30px;
+        }
+
+        #example_filter.dataTables_filter label input{
+            width: 250px;
+        }
+
+    </style>
+
+
+    <!--Data Table-->
+      <script>
+          $(document).ready(function() {
+            $('#example').DataTable();
+          } );
+      </script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"></script>
+      <script src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"></script>
+      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+      <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+      <!-- Data Table end   -->
+
+</head>
+
+
+<body>
+
+    <div id="header">
+        {% include 'user/header.html' %}
+    </div>
+
+    <!--MAIN NAV BAR-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+        <!--CONTAINER WRAPPER-->
+        <div class="container">
+
+            <!--NAV BAR BRAND-->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">
+                    <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="" width="120" height="30" class="d-inline-block align-text-top">
+                    <p>GATOR LEARN</p>
+                </a>
+            </div>
+
+            <form action="/search" method="post" id="auto_complete">
+                <div class="dropdown">
+                    <button
+                            id="dropdown-btn"
+                            class="btn dropdown-toggle"
+                            type="button"
+                            name="majorBtn"
+                            value="All Majors"
+                            data-toggle="dropdown">
+                        All Majors
+    <!--                    <span class="caret"></span>-->
+                    </button>
+
+                    <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
+                    <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
+                        {% for i in majorDict %}
+                        <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="input-group">
+                        <div class="form-outline">
+<!--                    <form class="d-flex form-outline">-->
+                        <input
+                                name="courseName"
+                                id="courseName"
+                                class="form-control"
+                                type="text"
+                                placeholder="Course Name"
+                                aria-label="Search"
+                                value="{{request.form.search}}"
+                        />
+                        </div>
+                </div>
+
+                <div class="search">
+                  <div class="actions">
+                    <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </div>
+                </div>
+            </form>
+
+
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-middle" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">TUTOR</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/aboutUs">ABOUT US</a>
+                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a-->
+<!--                                class="nav-link dropdown-toggle"-->
+<!--                                href="#"-->
+<!--                                id="navbarDropdown"-->
+<!--                                role="button"-->
+<!--                                data-bs-toggle="dropdown"-->
+<!--                                aria-expanded="false"-->
+<!--                        >-->
+<!--                            F.A.Q's-->
+<!--                        </a>-->
+<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
+<!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
+<!--                            <li>-->
+<!--                                <hr class="dropdown-divider"/>-->
+<!--                            </li>-->
+<!--                            <li>-->
+<!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
+<!--                            </li>-->
+<!--                        </ul>-->
+<!--                    </li>-->
+                </ul>
+                <form class="navbar-form" action="/login">
+                        <button type="submit" class="btn btn-default">Login</button>
+                </form>
+
+                <form class="navbar-form" action="/register">
+                        <button type="submit" class="btn btn-default">Register</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!--    Nav Bar ends-->
+
+    <div class="container-fluid">
+
+         <table id="example" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Major Name</th>
+                        <th>Course Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for i in catalogDict %}
+                        <tr>
+                            <td>{{i}}</td>
+                            <td>
+                                <table>
+                                    {% for j in catalogDict[i] %}
+                                        <tr><td>{{j}}</td></tr>
+                                    {% endfor %}
+                                </table>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+<!--                <tfoot>-->
+<!--                    <tr>-->
+<!--                        <th>First Name</th>-->
+<!--                        <th>Last Name</th>-->
+<!--                        <th>Gender</th>-->
+<!--                        <th>Email</th>-->
+<!--                        <th>Description</th>-->
+<!--                        <th>Role</th>-->
+<!--                        <th>Course Taught</th>-->
+<!--                    </tr>-->
+<!--                </tfoot>-->
+         </table>
+
+    </div>
+
+        <script>
+
+              const dropdownBtn = document.getElementById('dropdown-btn');
+              const dropdownList = document.getElementById('dropdown-list');
+              const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));
+              dropdownListItems.forEach((item) => {
+                  item.addEventListener('click',() => {
+                     dropdownBtn.innerHTML = `${item.innerText}`;
+                     dropdownBtn.setAttribute("value",`${item.innerText}`);
+                  });
+              });
+
+        </script>
+
+        <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+        <script src="../../static/js/bootstrap.js"></script>
+
+</body>
+</html>

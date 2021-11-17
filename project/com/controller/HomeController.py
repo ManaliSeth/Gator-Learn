@@ -12,23 +12,35 @@ mysql.init_app(flask_app)
 conn = mysql.connect()
 cursor = conn.cursor()
 
-# @flask_app.route('/')
-# def loadIndex():
-#     return render_template('user/index.html')
-
 @flask_app.route('/')
-def HomePage():
+def landingPage():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
     courseDAO = CourseDAO()
     courseDict = courseDAO.viewCourseName()
     print("MajorDict=",majorDict)
     print("CourseDict=",courseDict)
-    return render_template('user/VP_testHomePage.html',majorDict=majorDict,courseDict=courseDict)
+    return render_template('user/landingPage.html',majorDict=majorDict,courseDict=courseDict)
+
+@flask_app.route('/aboutUs')
+def loadAboutUs():
+    return render_template('user/index.html')
+
+# @flask_app.route('/')
+# def HomePage():
+#     majorDAO = MajorDAO()
+#     majorDict = majorDAO.viewMajorName()
+#     courseDAO = CourseDAO()
+#     courseDict = courseDAO.viewCourseName()
+#     print("MajorDict=",majorDict)
+#     print("CourseDict=",courseDict)
+#     return render_template('user/VP_testHomePage.html',majorDict=majorDict,courseDict=courseDict)
 
 
 @flask_app.route('/search',methods=['POST'])
 def search():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
     courseDAO = CourseDAO()
     registeredUserVO = RegisteredUserVO()
     registeredUserDAO = RegisteredUserDAO()
@@ -50,14 +62,20 @@ def search():
     if search_input=='':
         tutorDict = registeredUserDAO.viewTutors()
         print(tutorDict)
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict)
 
     else:
         tutorDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict)
 
-
+@flask_app.route('/viewTutors', methods=['GET'])
+def viewTutors():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    registeredUserDAO = RegisteredUserDAO()
+    tutorDict = registeredUserDAO.viewTutors()
+    return render_template('user/VP_resultPage.html',tutorDict=tutorDict, majorDict=majorDict)
 
 @flask_app.route('/_autocomplete', methods=['GET'])
 def autocomplete():
@@ -70,6 +88,14 @@ def autocomplete():
 @flask_app.route('/login',methods=['GET','POST'])
 def login():
     return render_template('user/login.html')
+
+@flask_app.route('/register',methods=['GET','POST'])
+def register():
+    return render_template('user/registration.html')
+
+@flask_app.route('/userDashboard',methods=['GET','POST'])
+def userDashboard():
+    return render_template('user/tutorDashboard2.html')
 
 @flask_app.route('/loadProfile_AP')
 def loadProfile_AP():
