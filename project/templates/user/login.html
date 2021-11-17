@@ -1,11 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
+	<title>Login Page</title>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </head>
+
+<style>
+    body{
+  width: 100%;
+  height: auto;
+  font-family: "Robato",sans-serif;
+  font-size: 17px;
+}
+
+#login-form {
+    width: 412px;
+    margin: 10vh auto;
+    background-color: cornflowerblue;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12), 0 12px 40px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -25%;
+    margin-top: -25%;
+}
+#bg {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+#bg img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  min-width: 50%;
+  min-height: 50%;
+}
+
+#login-form form {
+    width: 100%;
+    max-width: 410px;
+    padding: 15px;
+    margin: auto;
+}
+#login-form .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+#login-form .form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+
+#login-form a{
+    display: block;
+    padding-top:10px;
+    color:darkblue;
+}
+
+
+    #login-form button[type="submit"]{ margin-top:10px; }
+
+    #login-form .form-reset, #login-form .form-signup{ display: none; }
+    #login-form .form-signup input { margin-bottom: 2px;}
+
+
+.submit{
+  background: green;
+  border-radius: 25px;
+  color: #fff;
+}
+</style>
+
+<script>
+    function toggleResetPswd(e) {
+        e.preventDefault();
+        $('#login-form .form-signin').toggle()
+        $('#login-form .form-reset').toggle()
+    }
+    $(()=>{
+    $('#login-form #forgot_pswd').click(toggleResetPswd);
+    $('#login-form #cancel_reset').click(toggleResetPswd);
+    })
+
+</script>
+
+<div id="bg">
+    <img src="../../static/images/tutoring_HomePage3.jpg" alt="HomePage" id="bg-img">
+
+</div>
+
 <body>
-        <p>Hello!! <br>
-           This page is yet to be accomplished!! </p>
+    <div id="login-form">
+        <form class="form-signin">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login Page </h1>
+            <div class="input-group">
+              <input type="email" id="inputEmail" class="form-control" placeholder="email address" required="" autofocus="">
+            </div>
+            <div class="input-group">
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+            </div>
+            </br>
+             <a href="#" id="forgot_pswd">Forgot password?</a>
+
+            <div class="input-group">
+              <button class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+            </div>
+            <hr>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Not Registered? Register Now </button>
+            </form>
+
+        <form action="#" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
+        </form>
+    </div>
+<form id="contactForm" action="#" onSubmit="return validateLogin()" method="post">
+</form>
 </body>
 </html>
+
+
+
