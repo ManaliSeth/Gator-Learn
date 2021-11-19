@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
 
-  <title>Tutors</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="import" href="header.html">
-    <link rel="stylesheet" href="../../static/css/bootstrap.css" />
+    <title>Tutors</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../static/css/styles.css"/>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-      <style>
+    <style>
 
             *{
                 margin: 0;
@@ -143,22 +143,24 @@
             .container-fluid > *{
                 margin-top: 15px;
             }
-      </style>
 
-       <!--Data Table-->
-      <script>
+    </style>
+
+    <!--Data Table-->
+    <script>
           $(document).ready(function() {
             $('#example').DataTable();
           } );
-      </script>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"></script>
-      <script src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"></script>
-      <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-      <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-      <!-- Data Table end   -->
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"></script>
+    <script src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <!-- Data Table end   -->
 </head>
 
 <script>
@@ -172,179 +174,183 @@
                 });
             });
         });
+
 </script>
 
 <body>
 
-    <div id="header">
+<div id="header">
     {% include 'user/header.html' %}
-    </div>
+</div>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <!--CONTAINER WRAPPER-->
-        <div class="container">
+    <!--CONTAINER WRAPPER-->
+    <div class="container">
 
-            <!--NAV BAR BRAND-->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/">
-                    <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="" width="120" height="30" class="d-inline-block align-text-top">
-                    <p>GATOR LEARN</p>
-                </a>
+        <!--NAV BAR BRAND-->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"
+                     alt="" width="120" height="30" class="d-inline-block align-text-top">
+                <p>GATOR LEARN</p>
+            </a>
+        </div>
+
+        <form action="/search" method="post" id="auto_complete">
+            <div class="dropdown">
+                <button
+                        id="dropdown-btn"
+                        class="btn dropdown-toggle"
+                        type="button"
+                        name="majorBtn"
+                        value="All Majors"
+                        data-toggle="dropdown">
+                    All Majors
+                    <!--                    <span class="caret"></span>-->
+                </button>
+
+                <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
+                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
+                    <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
+                    {% for i in majorDict %}
+                    <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
 
-            <form action="/search" method="post" id="auto_complete">
-                <div class="dropdown">
-                    <button
-                            id="dropdown-btn"
-                            class="btn dropdown-toggle"
-                            type="button"
-                            name="majorBtn"
-                            value="All Majors"
-                            data-toggle="dropdown">
-                        All Majors
-    <!--                    <span class="caret"></span>-->
-                    </button>
-
-                    <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
-                    <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
-                        <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
-                        {% for i in majorDict %}
-                        <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
-                        {% endfor %}
-                    </ul>
+            <div class="input-group">
+                <div class="form-outline">
+                    <!--                    <form class="d-flex form-outline">-->
+                    <input
+                            name="courseName"
+                            id="courseName"
+                            class="form-control"
+                            type="text"
+                            placeholder="Course Name"
+                            aria-label="Search"
+                            value="{{request.form.search}}"
+                    />
                 </div>
+            </div>
 
-                <div class="input-group">
-                        <div class="form-outline">
-<!--                    <form class="d-flex form-outline">-->
-                        <input
-                                name="courseName"
-                                id="courseName"
-                                class="form-control"
-                                type="text"
-                                placeholder="Course Name"
-                                aria-label="Search"
-                                value="{{request.form.search}}"
-                        />
-                        </div>
-                </div>
-
-                <div class="search">
-                  <div class="actions">
+            <div class="search">
+                <div class="actions">
                     <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
-                      <i class="fa fa-search"></i>
+                        <i class="fa fa-search"></i>
                     </button>
-                  </div>
                 </div>
+            </div>
+        </form>
+
+
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-middle" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">TUTOR</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutUs">ABOUT US</a>
+                </li>
+
+                <!--                    <li class="nav-item dropdown">-->
+                <!--                        <a-->
+                <!--                                class="nav-link dropdown-toggle"-->
+                <!--                                href="#"-->
+                <!--                                id="navbarDropdown"-->
+                <!--                                role="button"-->
+                <!--                                data-bs-toggle="dropdown"-->
+                <!--                                aria-expanded="false"-->
+                <!--                        >-->
+                <!--                            F.A.Q's-->
+                <!--                        </a>-->
+                <!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
+                <!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
+                <!--                            <li>-->
+                <!--                                <hr class="dropdown-divider"/>-->
+                <!--                            </li>-->
+                <!--                            <li>-->
+                <!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                    </li>-->
+            </ul>
+            <form class="navbar-form" action="/login">
+                <button type="submit" class="btn btn-default">Login</button>
             </form>
 
-
-            <button
-                    class="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-middle" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">TUTOR</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="/aboutUs">ABOUT US</a>
-                    </li>
-
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a-->
-<!--                                class="nav-link dropdown-toggle"-->
-<!--                                href="#"-->
-<!--                                id="navbarDropdown"-->
-<!--                                role="button"-->
-<!--                                data-bs-toggle="dropdown"-->
-<!--                                aria-expanded="false"-->
-<!--                        >-->
-<!--                            F.A.Q's-->
-<!--                        </a>-->
-<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
-<!--                            <li>-->
-<!--                                <hr class="dropdown-divider"/>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-                </ul>
-                <form class="navbar-form" action="/login">
-                        <button type="submit" class="btn btn-default">Login</button>
-                </form>
-
-                <form class="navbar-form" action="/register">
-                        <button type="submit" class="btn btn-default">Register</button>
-                </form>
-            </div>
+            <form class="navbar-form" action="/register">
+                <button type="submit" class="btn btn-default">Register</button>
+            </form>
         </div>
-    </nav>
+    </div>
+</nav>
 
-     <div class="container-fluid">
+<div class="container-fluid">
 
-         <table id="example" class="table table-striped" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Gender</th>
-                        <th>Email</th>
-                        <th>Description</th>
-                        <th>Course Taught</th>
-                        <th>Avatar</th>
-<!--                        <th>Action</th>-->
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for i in tutorDict %}
-                        <tr>
-<!--                            <td>{{i[0]}}</td>-->
-                            <td>{{i[3]}}</td>
-                            <td>{{i[4]}}</td>
-                            <td>{{i[6]}}</td>
-                            <td>{{i[7]}}</td>
-                            <td>{{i[10]}}</td>
-                            <td>{{i[13]}}</td>
-                            <td><img src="static/dataset/{{ i[9]}}"></td>
-<!--                            <td><button>Book Appointment</button></td>-->
-                        </tr>
-                    {% endfor %}
-                </tbody>
-<!--                <tfoot>-->
-<!--                    <tr>-->
-<!--                        <th>First Name</th>-->
-<!--                        <th>Last Name</th>-->
-<!--                        <th>Gender</th>-->
-<!--                        <th>Email</th>-->
-<!--                        <th>Description</th>-->
-<!--                        <th>Role</th>-->
-<!--                        <th>Course Taught</th>-->
-<!--                    </tr>-->
-<!--                </tfoot>-->
-         </table>
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>Avatar</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Gender</th>
+            <th>Email</th>
+            <th>Description</th>
+            <th>Course Tutored</th>
 
-     </div>
+            <!--                        <th>Action</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in tutorDict %}
+        <tr>
+            <!--                            <td>{{i[0]}}</td>-->
+            <td><img src="static/dataset/{{ i[9]}}"></td>
+            <td>{{i[3]}}</td>
+            <td>{{i[4]}}</td>
+            <td>{{i[6]}}</td>
+            <td>{{i[7]}}</td>
+            <td>{{i[10]}}</td>
+            <td>{{i[13]}}</td>
+
+            <!--                            <td><button>Book Appointment</button></td>-->
+        </tr>
+        {% endfor %}
+        </tbody>
+        <!--                <tfoot>-->
+        <!--                    <tr>-->
+        <!--                        <th>First Name</th>-->
+        <!--                        <th>Last Name</th>-->
+        <!--                        <th>Gender</th>-->
+        <!--                        <th>Email</th>-->
+        <!--                        <th>Description</th>-->
+        <!--                        <th>Role</th>-->
+        <!--                        <th>Course Taught</th>-->
+        <!--                    </tr>-->
+        <!--                </tfoot>-->
+    </table>
+
+</div>
 <script>
 
               const dropdownBtn = document.getElementById('dropdown-btn');
@@ -357,6 +363,7 @@
                   });
               });
 
-        </script>
+
+</script>
 </body>
 </html>
