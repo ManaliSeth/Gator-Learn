@@ -1,3 +1,8 @@
+<!--
+* Class: CSC-648 Fall 2021
+* Author: Htet, Manali
+* Description: Home page when first visiting site; contains logic for search
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -133,20 +138,22 @@
 </div>
 
 <!--<header>-->
-    <!--MAIN NAV BAR-->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!--MAIN NAV BAR-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <!--CONTAINER WRAPPER-->
-        <div class="container">
+    <!--CONTAINER WRAPPER-->
+    <div class="container">
 
-            <!--NAV BAR BRAND-->
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">
-                    <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="" width="120" height="30" class="d-inline-block align-text-top">
-                    <p>GATOR LEARN</p>
-                </a>
-            </div>
+        <!--NAV BAR BRAND-->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"
+                     alt="" width="120" height="30" class="d-inline-block align-text-top">
+                <p>GATOR LEARN</p>
+            </a>
+        </div>
 
+        <!--Search functions-->
         <form action="/search" method="post" id="auto_complete">
             <div class="dropdown">
                 <button
@@ -157,7 +164,7 @@
                         value="All Majors"
                         data-toggle="dropdown">
                     All Majors
-<!--                    <span class="caret"></span>-->
+                    <!--                    <span class="caret"></span>-->
                 </button>
 
                 <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
@@ -171,7 +178,7 @@
 
             <div class="input-group">
                 <div class="form-outline">
-<!--                <form class="d-flex form-outline">-->
+                    <!--                <form class="d-flex form-outline">-->
                     <input
                             name="courseName"
                             id="courseName"
@@ -181,67 +188,68 @@
                             aria-label="Search"
                             value="{{request.form.search}}"
                     />
-                    </div>
                 </div>
+            </div>
 
-                <div class="search">
-                  <div class="actions">
+            <div class="search">
+                <div class="actions">
                     <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
-                      <i class="fa fa-search"></i>
+                        <i class="fa fa-search"></i>
                     </button>
-                  </div>
                 </div>
-            </form>
+            </div>
+        </form>
 
-            <div class="navbar-middle" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="navbar-middle text-wrap" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">TUTOR</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
-                    </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutUs">ABOUT US</a>
+                </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="/aboutUs">ABOUT US</a>
-                    </li>
+                <!--                    <li class="nav-item dropdown">-->
+                <!--                        <a-->
+                <!--                                class="nav-link dropdown-toggle"-->
+                <!--                                href="#"-->
+                <!--                                id="navbarDropdown"-->
+                <!--                                role="button"-->
+                <!--                                data-bs-toggle="dropdown"-->
+                <!--                                aria-expanded="false"-->
+                <!--                        >-->
+                <!--                            F.A.Q's-->
+                <!--                        </a>-->
+                <!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+                <!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
+                <!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
+                <!--                            <li>-->
+                <!--                                <hr class="dropdown-divider"/>-->
+                <!--                            </li>-->
+                <!--                            <li>-->
+                <!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
+                <!--                            </li>-->
+                <!--                        </ul>-->
+                <!--                    </li>-->
+            </ul>
 
-<!--                    <li class="nav-item dropdown">-->
-<!--                        <a-->
-<!--                                class="nav-link dropdown-toggle"-->
-<!--                                href="#"-->
-<!--                                id="navbarDropdown"-->
-<!--                                role="button"-->
-<!--                                data-bs-toggle="dropdown"-->
-<!--                                aria-expanded="false"-->
-<!--                        >-->
-<!--                            F.A.Q's-->
-<!--                        </a>-->
-<!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
-<!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
-<!--                            <li>-->
-<!--                                <hr class="dropdown-divider"/>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
-<!--                    </li>-->
-                </ul>
+            <div class="text-end">
+
                 <form class="navbar-form" action="/login">
-                        <button type="submit" class="btn btn-default">Login</button>
+                    <button type="submit" class="btn btn-default">Login</button>
                 </form>
 
                 <form class="navbar-form" action="/register">
-                        <button type="submit" class="btn btn-default">Register</button>
+                    <button type="submit" class="btn btn-default">Register</button>
                 </form>
 
             </div>
+
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Background image (src in styles.css)-->
     <div class=p-5 text-center bg-image id="intro">
