@@ -1,16 +1,4 @@
 from project import *
-import pymysql
-#
-# def conn_db():
-#     return pymysql.connect(
-#         host='localhost',
-#         user='root',
-#         password='Team4@2021',
-#         db='se_tutoringservices',
-#         cursorclass=pymysql.cursors.DictCursor,
-#         use_unicode = True,
-#         charset = "utf8"
-#     )
 
 # Database connection info. Note that this is not a secure connection.
 flask_app.config['MYSQL_DATABASE_USER'] = 'admin'

@@ -15,10 +15,10 @@
 
     <style>
 
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body{
@@ -134,15 +134,25 @@
         #example_filter.dataTables_filter label input{
             width: 250px;
         }
-            .container-fluid{
-                display: flex;
-                justify-content: center;
-                width: 100%;
-            }
 
-            .container-fluid > *{
-                margin-top: 15px;
-            }
+        #example_wrapper.dataTables_wrapper label{
+            display: none;
+        }
+
+        #example_info.dataTables_info label{
+            background-color: #0c4128;
+
+        }
+
+        .container-fluid{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .container-fluid > *{
+            margin-top: 15px;
+        }
 
     </style>
 
@@ -307,7 +317,7 @@
 
 <div class="container-fluid">
 
-    <table id="example" class="table table-striped" style="width:100%">
+    <table id="example" class="table table-hover" style="width:100%">
         <thead>
         <tr>
             <th>Avatar</th>
@@ -317,6 +327,7 @@
             <th>Email</th>
             <th>Description</th>
             <th>Course Tutored</th>
+            <th>Message</th>
 
             <!--                        <th>Action</th>-->
         </tr>
@@ -332,8 +343,21 @@
             <td>{{i[7]}}</td>
             <td>{{i[10]}}</td>
             <td>{{i[13]}}</td>
+            <td>
+<!--                <form class="row gy-2 gx-3 align-items-center">-->
 
-            <!--                            <td><button>Book Appointment</button></td>-->
+<!--                    <div class="row mb-3">-->
+<!--                        <label for="colFormLabel" class="col-sm-2 col-form-label">Message</label>-->
+<!--                        <div class="col-sm-9">-->
+                            <input type="text" class="form-control" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services...let's schedule through e-mail!">
+<!--                        </div>-->
+<!--                    </div>-->
+                            <br>
+<!--                    <div class="col-auto">-->
+                            <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
+<!--                    </div>-->
+<!--                </form>-->
+            </td>
         </tr>
         {% endfor %}
         </tbody>
