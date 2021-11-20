@@ -37,7 +37,7 @@ def loadAboutUs():
 #     return render_template('user/VP_testHomePage.html',majorDict=majorDict,courseDict=courseDict)
 
 
-@flask_app.route('/search',methods=['POST'])
+@flask_app.route('/search',methods=['GET','POST'])
 def search():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
@@ -54,7 +54,7 @@ def search():
     search_input = request.form['courseName']
     print("Search input=",search_input)
 
-    selectedMajor = request.form.get('majorBtn')
+    selectedMajor = request.form.get('majorSelected')
     print("selectedMajor=",selectedMajor)
 
     registeredUserVO.search_input = search_input
@@ -67,7 +67,7 @@ def search():
     else:
         tutorDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict, search_input=registeredUserVO.search_input)
 
 @flask_app.route('/viewTutors', methods=['GET'])
 def viewTutors():

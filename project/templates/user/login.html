@@ -18,7 +18,7 @@
 <style>
     body{
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       font-family: "Robato",sans-serif;
       font-size: 17px;
       background: url("../../static/images/tutoring_HomePage3.jpg") no-repeat;
@@ -26,6 +26,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
+      padding-top: 115px;
 }
 
 #login-form {
@@ -131,7 +133,7 @@
               <button id="loginFormSubmit" class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
             </div>
             <hr>
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Not Registered? Register Now </button>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i><a href="/register">Not Registered? Register Now</a>  </button>
             </form>
 
         <form action="#" class="form-reset">
@@ -166,6 +168,7 @@
         }
     }
 </script>
+{% include 'user/footer.html' %}
 </body>
 </html>
 

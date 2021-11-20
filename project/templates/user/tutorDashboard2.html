@@ -35,19 +35,23 @@
             height: 25%;
         }
 
-        .navbar{
-            height: 8%;
-            border-radius: 0;
-            margin: 0;
+        .offcanvas{
+            overflow: scroll;
         }
 
-        .container{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 0;
-        }
+        /*.navbar{*/
+        /*    height: 8%;*/
+        /*    border-radius: 0;*/
+        /*    margin: 0;*/
+        /*}*/
+
+        /*.container{*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    justify-content: center;*/
+        /*    width: 100%;*/
+        /*    margin: 0;*/
+        /*}*/
 
         .container > form{
             display: flex;
@@ -57,63 +61,61 @@
             margin: 0 10px;
         }
 
-        .navbar-brand{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0;
-        }
+        /*.navbar-brand{*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    padding: 0;*/
+        /*}*/
 
-        .navbar-brand *{
-            margin: 0;
-        }
+        /*.navbar-brand *{*/
+        /*    margin: 0;*/
+        /*}*/
 
-        #sfsuLogo{
-            width: 45px;
-            height: 45px;
-            margin-right: 5px;
-        }
+        /*#sfsuLogo{*/
+        /*    width: 45px;*/
+        /*    height: 45px;*/
+        /*    margin-right: 5px;*/
+        /*}*/
 
-        .input-group{
-          display: flex;
-          margin-left: 0;
-        }
+        /*.input-group{*/
+        /*  display: flex;*/
+        /*  margin-left: 0;*/
+        /*}*/
 
-        .dropdown{
-          margin-right: 0;
-          margin-left: 15px;
-        }
+        /*.dropdown{*/
+        /*  margin-right: 0;*/
+        /*  margin-left: 15px;*/
+        /*}*/
 
-        .dropdown > button{
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            width: 100px;
-            background-color: #ffffff;
-            color: #000000;
-        }
+        /*.dropdown > button{*/
+        /*    border-top-right-radius: 0;*/
+        /*    border-bottom-right-radius: 0;*/
+        /*    width: 100px;*/
+        /*    background-color: #ffffff;*/
+        /*    color: #000000;*/
+        /*}*/
 
-        #courseName{
-                width: 400px;
-        }
+        /*#courseName{*/
+        /*        width: 400px;*/
+        /*}*/
 
-        #searchButton{
-                border-radius: 0;
-                width: 70px;
-                color: #ffffff;
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-        }
+        /*#searchButton{*/
+        /*        border-radius: 0;*/
+        /*        width: 70px;*/
+        /*        color: #ffffff;*/
+        /*        border-top-right-radius: 4px;*/
+        /*        border-bottom-right-radius: 4px;*/
+        /*}*/
 
-        .navbar-middle{
-            display: flex;
-            align-items: center;
-        }
+        /*.navbar-middle{*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*}*/
 
-        .navbar-middle ul{
-            display: flex;
-        }
-
-
+        /*.navbar-middle ul{*/
+        /*    display: flex;*/
+        /*}*/
 
     </style>
 
@@ -132,128 +134,131 @@
 <div id="header">
     {% include 'user/header.html' %}
 </div>
+
+{% include 'user/navbar.html' %}
+
 <!--<header>-->
 <!--MAIN NAV BAR-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
 
-    <!--CONTAINER WRAPPER-->
-    <div class="container">
+<!--    &lt;!&ndash;CONTAINER WRAPPER&ndash;&gt;-->
+<!--    <div class="container">-->
 
-        <!--NAV BAR BRAND-->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"
-                     alt="" width="120" height="30" class="d-inline-block align-text-top">
-                <p>GATOR LEARN</p>
-            </a>
-        </div>
+<!--        &lt;!&ndash;NAV BAR BRAND&ndash;&gt;-->
+<!--        <div class="navbar-header">-->
+<!--            <a class="navbar-brand" href="#">-->
+<!--                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"-->
+<!--                     alt="" width="120" height="30" class="d-inline-block align-text-top">-->
+<!--                <p>GATOR LEARN</p>-->
+<!--            </a>-->
+<!--        </div>-->
 
-        <!--Search functions-->
-        <form action="/search" method="post" id="auto_complete">
-            <div class="dropdown">
-                <button
-                        id="dropdown-btn"
-                        class="btn dropdown-toggle"
-                        type="button"
-                        name="majorBtn"
-                        value="All Majors"
-                        data-toggle="dropdown">
-                    All Majors
-                    <!--                    <span class="caret"></span>-->
-                </button>
+<!--        &lt;!&ndash;Search functions&ndash;&gt;-->
+<!--        <form action="/search" method="post" id="auto_complete">-->
+<!--            <div class="dropdown">-->
+<!--                <button-->
+<!--                        id="dropdown-btn"-->
+<!--                        class="btn dropdown-toggle"-->
+<!--                        type="button"-->
+<!--                        name="majorBtn"-->
+<!--                        value="All Majors"-->
+<!--                        data-toggle="dropdown">-->
+<!--                    All Majors-->
+<!--                    &lt;!&ndash;                    <span class="caret"></span>&ndash;&gt;-->
+<!--                </button>-->
 
-                <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
-                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
-                    <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
-                    {% for i in majorDict %}
-                    <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+<!--                &lt;!&ndash;BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE&ndash;&gt;-->
+<!--                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">-->
+<!--                    <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>-->
+<!--                    {% for i in majorDict %}-->
+<!--                    <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>-->
+<!--                    {% endfor %}-->
+<!--                </ul>-->
+<!--            </div>-->
 
-            <div class="input-group">
-                <div class="form-outline">
-                    <input
-                            name="courseName"
-                            id="courseName"
-                            class="form-control"
-                            type="text"
-                            placeholder="Course Name"
-                            aria-label="Search"
-                            value="{{request.form.search}}"
-                    />
-                </div>
-            </div>
+<!--            <div class="input-group">-->
+<!--                <div class="form-outline">-->
+<!--                    <input-->
+<!--                            name="courseName"-->
+<!--                            id="courseName"-->
+<!--                            class="form-control"-->
+<!--                            type="text"-->
+<!--                            placeholder="Course Name"-->
+<!--                            aria-label="Search"-->
+<!--                            value="{{request.form.search}}"-->
+<!--                    />-->
+<!--                </div>-->
+<!--            </div>-->
 
-            <div class="search">
-                <div class="actions">
-                    <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+<!--            <div class="search">-->
+<!--                <div class="actions">-->
+<!--                    <button id="searchButton" type="submit" value="Search" class="btn btn-primary">-->
+<!--                        <i class="fa fa-search"></i>-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </form>-->
 
-    <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-    >
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!--    <button-->
+<!--            class="navbar-toggler"-->
+<!--            type="button"-->
+<!--            data-bs-toggle="collapse"-->
+<!--            data-bs-target="#navbarSupportedContent"-->
+<!--            aria-controls="navbarSupportedContent"-->
+<!--            aria-expanded="false"-->
+<!--            aria-label="Toggle navigation"-->
+<!--    >-->
+<!--        <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
 
-    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--    <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">-->
+<!--        <ul class="navbar-nav me-auto mb-2 mb-lg-0">-->
 
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
-            </li>
+<!--&lt;!&ndash;            <li class="nav-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <a class="nav-link" aria-current="page" href="#">CONTACT US</a>&ndash;&gt;-->
+<!--&lt;!&ndash;            </li>&ndash;&gt;-->
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">ABOUT US</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/aboutUs">ABOUT US</a>-->
+<!--            </li>-->
 
-            <li class="nav-item">
-                <a class="nav-link" href="/SFSUCourseCatalog">SFSU COURSE CATALOG</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" href="/catalog">SFSU COURSE CATALOG</a>-->
+<!--            </li>-->
 
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Login</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" aria-current="page" href="/login">Login</a>-->
+<!--            </li>-->
 
-            <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Register</a>
-            </li>
+<!--            <li class="nav-item">-->
+<!--                <a class="nav-link" aria-current="page" href="/register">Register</a>-->
+<!--            </li>-->
 
-        </ul>
+<!--        </ul>-->
 
-    </div>
-    </div>
-</nav>
+<!--    </div>-->
+<!--    </div>-->
+<!--</nav>-->
 
 <!-- Background image (src in styles.css)-->
 <div class=p-5 text-center bg-image id="intro">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white text-center">
-                <h1 class="mb-3">Tutors for SFSU students</h1>
-                <h4 class="mb-3">Tailored 1-on-1's designed for SFSU subjects</h4>
-                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
-                >Book an appointment</a
-                >
-                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
-                >Find a tutor</a
-                >
-                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"
-                >Search for your major</a
-                >
-            </div>
-        </div>
-    </div>
+<!--    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">-->
+<!--        <div class="d-flex justify-content-center align-items-center h-100">-->
+<!--            <div class="text-white text-center">-->
+<!--                <h1 class="mb-3">Tutors for SFSU students</h1>-->
+<!--                <h4 class="mb-3">Tailored 1-on-1's designed for SFSU subjects</h4>-->
+<!--                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"-->
+<!--                >Book an appointment</a-->
+<!--                >-->
+<!--                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"-->
+<!--                >Find a tutor</a-->
+<!--                >-->
+<!--                <a class="btn btn-outline-light btn-lg m-2" href="#!" role="button"-->
+<!--                >Search for your major</a-->
+<!--                >-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 
 <!--Offcanvas to toggle dashboard-->
@@ -261,12 +266,12 @@
 
     <!--Offcanvas bottom button-->
     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-            aria-controls="offcanvasBottom">Open tutor inbox
+            aria-controls="offcanvasBottom">Inbox
     </button>
 
     <!--Offcanvas rightside button-->
     <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-            aria-controls="offcanvasRight">Display user profile
+            aria-controls="offcanvasRight">Display User Profile
     </button>
 </div>
 
@@ -278,14 +283,14 @@
     </div>
     <div class="offcanvas-body small">
 
-        Inbox messages shown here below
+<!--        Inbox messages shown here below-->
 
         <h2>You have 10 new messages!</h2>
         <div class="table-responsive">
             <table class="table table-striped table-sm">
                 <thead>
                 <tr>
-                    <th scope="col">Date and time sent</th>
+                    <th scope="col">Date and Time sent</th>
                     <th scope="col">Sender name</th>
                     <th scope="col">Course</th>
                     <th scope="col">Message</th>
@@ -365,7 +370,7 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
-        User/profile information to be put here.
+        User profile information displayed here.
         Should be able to edit and upload info as needed here.
     </div>
 </div>
@@ -461,18 +466,13 @@
 
 
 <br>
-<footer>
-    <footer id="footer">
-        <center>
-            <span id="footer-name">GATOR LEARN © 2021  </span> <a id="email-link"
-                                                                  href="mailto:gatorlearn@mail.sfsu.edu"> Contact
-            Us</a>
-        </center>
-    </footer>
-</footer>
+
 </br>
 <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
 <script src="../../static/js/bootstrap.js"></script>
+
+
+{% include 'user/footer.html' %}
 
 </body>
 

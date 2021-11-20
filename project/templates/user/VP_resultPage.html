@@ -22,7 +22,7 @@
         }
 
         body{
-            height: 100vh;
+            min-height: 100vh;
             width: 100vw;
             display: flex;
             flex-direction: column;
@@ -32,17 +32,17 @@
             height: 25%;
         }
 
-        .navbar{
-            height: 8%;
-            border-radius: 0;
-            margin: 0;
-        }
+        /*.navbar{*/
+        /*    height: 8%;*/
+        /*    border-radius: 0;*/
+        /*    margin: 0;*/
+        /*}*/
 
-        .container{
-            display: flex;
-            width: 100%;
-            margin: 0;
-        }
+        /*.container{*/
+        /*    display: flex;*/
+        /*    width: 100%;*/
+        /*    margin: 0;*/
+        /*}*/
 
         .container form{
             display: flex;
@@ -52,65 +52,75 @@
             margin: 0 10px;
         }
 
-        .navbar-brand{
+        .container-fluid{
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 0;
+            width: 100%;
         }
 
-        .navbar-brand *{
-            margin: 0;
+        .container-fluid > *{
+            margin-top: 15px;
         }
 
-        #sfsuLogo{
-            width: 45px;
-            height: 45px;
-            margin-right: 5px;
-        }
+        /*.navbar-brand{*/
+        /*    display: flex;*/
+        /*    justify-content: center;*/
+        /*    align-items: center;*/
+        /*    padding: 0;*/
+        /*}*/
 
-        .input-group{
-          display: flex;
-          margin-left: 0;
-        }
+        /*.navbar-brand *{*/
+        /*    margin: 0;*/
+        /*}*/
 
-        .dropdown{
-          margin-right: 0;
-          margin-left: 15px;
-        }
+        /*#sfsuLogo{*/
+        /*    width: 45px;*/
+        /*    height: 45px;*/
+        /*    margin-right: 5px;*/
+        /*}*/
 
-        .dropdown > button{
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            width: 100px;
-            background-color: #ffffff;
-            color: #000000;
-        }
+        /*.input-group{*/
+        /*  display: flex;*/
+        /*  margin-left: 0;*/
+        /*}*/
 
-        #courseName{
-                width: 400px;
-        }
+        /*.dropdown{*/
+        /*  margin-right: 0;*/
+        /*  margin-left: 15px;*/
+        /*}*/
 
-        #searchButton{
-                border-radius: 0;
-                width: 70px;
-                color: #ffffff;
-                border-top-right-radius: 4px;
-                border-bottom-right-radius: 4px;
-        }
+        /*.dropdown > button{*/
+        /*    border-top-right-radius: 0;*/
+        /*    border-bottom-right-radius: 0;*/
+        /*    width: 100px;*/
+        /*    background-color: #ffffff;*/
+        /*    color: #000000;*/
+        /*}*/
 
-        .navbar-form button{
-            margin-right: 5px;
-        }
+        /*#courseName{*/
+        /*        width: 400px;*/
+        /*}*/
 
-        .navbar-middle{
-            display: flex;
-            align-items: center;
-        }
+        /*#searchButton{*/
+        /*        border-radius: 0;*/
+        /*        width: 70px;*/
+        /*        color: #ffffff;*/
+        /*        border-top-right-radius: 4px;*/
+        /*        border-bottom-right-radius: 4px;*/
+        /*}*/
 
-        .navbar-middle ul{
-            display: flex;
-        }
+        /*.navbar-form button{*/
+        /*    margin-right: 5px;*/
+        /*}*/
+
+        /*.navbar-middle{*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*}*/
+
+        /*.navbar-middle ul{*/
+        /*    display: flex;*/
+        /*}*/
 
         #example_length.dataTables_length label{
             display: flex;
@@ -139,19 +149,20 @@
             display: none;
         }
 
-        #example_info.dataTables_info label{
-            background-color: #0c4128;
+        /*#example_info.dataTables_info{*/
+        /*    position: absolute;*/
+        /*    left: 0;*/
+        /*    top: 50px;*/
+        /*    color: #0a53be;*/
+        /*}*/
 
+
+        input[type="text"]{
+            width: 290px;
         }
 
-        .container-fluid{
-            display: flex;
-            justify-content: center;
-            width: 100%;
-        }
-
-        .container-fluid > *{
-            margin-top: 15px;
+        .avatar-img{
+            border-radius: 50%;
         }
 
     </style>
@@ -173,19 +184,19 @@
     <!-- Data Table end   -->
 </head>
 
-<script>
-    $(function() {
-        $.ajax({
-            url: '{{ url_for("search") }}'
-            }).done(function (data){
-                $('#courseName').autocomplete({
-                    source: data,
-                    minLength: 2
-                });
-            });
-        });
+<!--<script>-->
+<!--    $(function() {-->
+<!--        $.ajax({-->
+<!--            url: '{{ url_for("search") }}'-->
+<!--            }).done(function (data){-->
+<!--                $('#courseName').autocomplete({-->
+<!--                    source: data,-->
+<!--                    minLength: 2-->
+<!--                });-->
+<!--            });-->
+<!--        });-->
 
-</script>
+<!--</script>-->
 
 <body>
 
@@ -193,141 +204,151 @@
     {% include 'user/header.html' %}
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+{% include 'user/navbar.html' %}
 
-    <!--CONTAINER WRAPPER-->
-    <div class="container">
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
 
-        <!--NAV BAR BRAND-->
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">
-                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"
-                     alt="" width="120" height="30" class="d-inline-block align-text-top">
-                <p>GATOR LEARN</p>
-            </a>
-        </div>
+<!--    &lt;!&ndash;CONTAINER WRAPPER&ndash;&gt;-->
+<!--    <div class="container">-->
 
-        <form action="/search" method="post" id="auto_complete">
-            <div class="dropdown">
-                <button
-                        id="dropdown-btn"
-                        class="btn dropdown-toggle"
-                        type="button"
-                        name="majorBtn"
-                        value="All Majors"
-                        data-toggle="dropdown">
-                    All Majors
-                    <!--                    <span class="caret"></span>-->
-                </button>
+<!--        &lt;!&ndash;NAV BAR BRAND&ndash;&gt;-->
+<!--        <div class="navbar-header">-->
+<!--            <a class="navbar-brand" href="/">-->
+<!--                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"-->
+<!--                     alt="" width="120" height="30" class="d-inline-block align-text-top">-->
+<!--                <p>GATOR LEARN</p>-->
+<!--            </a>-->
+<!--        </div>-->
 
-                <!--BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE-->
-                <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">
-                    <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>
-                    {% for i in majorDict %}
-                    <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
+<!--&lt;!&ndash;         <div class="navbar-middle" id="navbarSupportedContent">&ndash;&gt;-->
+<!--            <ul class="nav navbar-nav">-->
+<!--                <li>-->
+<!--                    <a class="nav-link" href="/aboutUs">ABOUT US</a>-->
+<!--                </li>-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;         </div>&ndash;&gt;-->
 
-            <div class="input-group">
-                <div class="form-outline">
-                    <!--                    <form class="d-flex form-outline">-->
-                    <input
-                            name="courseName"
-                            id="courseName"
-                            class="form-control"
-                            type="text"
-                            placeholder="Course Name"
-                            aria-label="Search"
-                            value="{{request.form.search}}"
-                    />
-                </div>
-            </div>
+<!--&lt;!&ndash;            <ul class="nav navbar-nav">&ndash;&gt;-->
+<!--                <li>-->
+<!--                <form action="/search" method="post" id="auto_complete">-->
+<!--                    <div class="dropdown">-->
+<!--                        <button-->
+<!--                                id="dropdown-btn"-->
+<!--                                class="btn dropdown-toggle"-->
+<!--                                type="button"-->
+<!--                                name="majorBtn"-->
+<!--                                value="All Majors"-->
+<!--                                data-toggle="dropdown">-->
+<!--                            All Majors-->
+<!--                            &lt;!&ndash;                    <span class="caret"></span>&ndash;&gt;-->
+<!--                        </button>-->
 
-            <div class="search">
-                <div class="actions">
-                    <button id="searchButton" type="submit" value="Search" class="btn btn-primary">
-                        <i class="fa fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
+<!--                        &lt;!&ndash;BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE&ndash;&gt;-->
+<!--                        <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">-->
+<!--                            <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>-->
+<!--                            {% for i in majorDict %}-->
+<!--                            <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>-->
+<!--                            {% endfor %}-->
+<!--                        </ul>-->
+<!--                    </div>-->
+
+<!--                    <div class="input-group">-->
+<!--                        <div class="form-outline">-->
+<!--                            &lt;!&ndash;                    <form class="d-flex form-outline">&ndash;&gt;-->
+<!--                            <input-->
+<!--                                    name="courseName"-->
+<!--                                    id="courseName"-->
+<!--                                    class="form-control"-->
+<!--                                    type="text"-->
+<!--                                    value="{{search_input}}"-->
+<!--                                    aria-label="Search"-->
+<!--                                    placeholder="Course Name"-->
+<!--                            />-->
+<!--                        </div>-->
+<!--                    </div>-->
+
+<!--                    <div class="search">-->
+<!--                        <div class="actions">-->
+<!--                            <button id="searchButton" type="submit" value="Search" class="btn btn-primary">-->
+<!--                                <i class="fa fa-search"></i>-->
+<!--                            </button>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </form>-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
+<!--                </li>-->
+<!--            </ul>-->
+
+<!--&lt;!&ndash;        <button&ndash;&gt;-->
+<!--&lt;!&ndash;                class="navbar-toggler"&ndash;&gt;-->
+<!--&lt;!&ndash;                type="button"&ndash;&gt;-->
+<!--&lt;!&ndash;                data-bs-toggle="collapse"&ndash;&gt;-->
+<!--&lt;!&ndash;                data-bs-target="#navbarSupportedContent"&ndash;&gt;-->
+<!--&lt;!&ndash;                aria-controls="navbarSupportedContent"&ndash;&gt;-->
+<!--&lt;!&ndash;                aria-expanded="false"&ndash;&gt;-->
+<!--&lt;!&ndash;                aria-label="Toggle navigation"&ndash;&gt;-->
+<!--&lt;!&ndash;        >&ndash;&gt;-->
+<!--&lt;!&ndash;            <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
+<!--&lt;!&ndash;        </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="navbar-middle" id="navbarSupportedContent">&ndash;&gt;-->
+<!--&lt;!&ndash;            <ul class="navbar-nav me-auto mb-2 mb-lg-0">&ndash;&gt;-->
 
 
-        <button
-                class="navbar-toggler"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-        >
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<!--                &lt;!&ndash;                    <li class="nav-item dropdown">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <a&ndash;&gt;-->
+<!--                &lt;!&ndash;                                class="nav-link dropdown-toggle"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                href="#"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                id="navbarDropdown"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                role="button"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                data-bs-toggle="dropdown"&ndash;&gt;-->
+<!--                &lt;!&ndash;                                aria-expanded="false"&ndash;&gt;-->
+<!--                &lt;!&ndash;                        >&ndash;&gt;-->
+<!--                &lt;!&ndash;                            F.A.Q's&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <li><a class="dropdown-item" href="#">For students</a></li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <li><a class="dropdown-item" href="#">For tutors</a></li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                                <hr class="dropdown-divider"/>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            <li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                                <a class="dropdown-item" href="#">Testimonies</a>&ndash;&gt;-->
+<!--                &lt;!&ndash;                            </li>&ndash;&gt;-->
+<!--                &lt;!&ndash;                        </ul>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
+<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
 
-        <div class="navbar-middle" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+<!--            <ul class="nav navbar-nav navbar-right">-->
+<!--&lt;!&ndash;                <form class="navbar-form" action="/login">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <li>  <button type="submit" class="btn btn-default navbar-btn">Login</button> </li>&ndash;&gt;-->
+<!--                <li> <a href="/login">Login</a></li>-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
 
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">TUTOR</a>
-                </li>
+<!--&lt;!&ndash;                <form class="navbar-form" action="/register">&ndash;&gt;-->
+<!--&lt;!&ndash;                  <li>  <button type="submit" class="btn btn-default navbar-btn">Register</button> </li>&ndash;&gt;-->
+<!--                <li> <a href="/register">Register</a></li>-->
+<!--&lt;!&ndash;                </form>&ndash;&gt;-->
+<!--            </ul>-->
 
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">CONTACT US</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="/aboutUs">ABOUT US</a>
-                </li>
-
-                <!--                    <li class="nav-item dropdown">-->
-                <!--                        <a-->
-                <!--                                class="nav-link dropdown-toggle"-->
-                <!--                                href="#"-->
-                <!--                                id="navbarDropdown"-->
-                <!--                                role="button"-->
-                <!--                                data-bs-toggle="dropdown"-->
-                <!--                                aria-expanded="false"-->
-                <!--                        >-->
-                <!--                            F.A.Q's-->
-                <!--                        </a>-->
-                <!--                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-                <!--                            <li><a class="dropdown-item" href="#">For students</a></li>-->
-                <!--                            <li><a class="dropdown-item" href="#">For tutors</a></li>-->
-                <!--                            <li>-->
-                <!--                                <hr class="dropdown-divider"/>-->
-                <!--                            </li>-->
-                <!--                            <li>-->
-                <!--                                <a class="dropdown-item" href="#">Testimonies</a>-->
-                <!--                            </li>-->
-                <!--                        </ul>-->
-                <!--                    </li>-->
-            </ul>
-            <form class="navbar-form" action="/login">
-                <button type="submit" class="btn btn-default">Login</button>
-            </form>
-
-            <form class="navbar-form" action="/register">
-                <button type="submit" class="btn btn-default">Register</button>
-            </form>
-        </div>
-    </div>
-</nav>
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--</nav>-->
 
 <div class="container-fluid">
 
     <table id="example" class="table table-hover" style="width:100%">
         <thead>
         <tr>
-            <th>Avatar</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Gender</th>
-            <th>Email</th>
-            <th>Description</th>
-            <th>Course Tutored</th>
-            <th>Message</th>
+            <th style="text-align: center">Avatar</th>
+            <th style="text-align: center; width: 120px">First Name</th>
+            <th style="text-align: center; width: 120px">Last Name</th>
+            <th style="text-align: center">Gender</th>
+            <th style="text-align: center">Email</th>
+            <th style="text-align: center">Description</th>
+            <th style="text-align: center">Course Tutored</th>
+            <th style="text-align: center">Message</th>
 
             <!--                        <th>Action</th>-->
         </tr>
@@ -336,20 +357,20 @@
         {% for i in tutorDict %}
         <tr>
             <!--                            <td>{{i[0]}}</td>-->
-            <td><img src="static/dataset/{{ i[9]}}"></td>
-            <td>{{i[3]}}</td>
-            <td>{{i[4]}}</td>
-            <td>{{i[6]}}</td>
-            <td>{{i[7]}}</td>
-            <td>{{i[10]}}</td>
-            <td>{{i[13]}}</td>
-            <td>
+            <td style="text-align: center"><img class="avatar-img" height="70px" width="70px" src="static/dataset/{{ i[9]}}"></td>
+            <td style="text-align: center">{{i[3]}}</td>
+            <td style="text-align: center">{{i[4]}}</td>
+            <td style="text-align: center">{{i[6]}}</td>
+            <td style="text-align: center">{{i[7]}}</td>
+            <td style="text-align: center">{{i[10]}}</td>
+            <td style="text-align: center">{{i[13]}}</td>
+            <td style="text-align: center">
 <!--                <form class="row gy-2 gx-3 align-items-center">-->
 
 <!--                    <div class="row mb-3">-->
 <!--                        <label for="colFormLabel" class="col-sm-2 col-form-label">Message</label>-->
 <!--                        <div class="col-sm-9">-->
-                            <input type="text" class="form-control" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services...let's schedule through e-mail!">
+                            <input type="text" class="form-control" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!    ">
 <!--                        </div>-->
 <!--                    </div>-->
                             <br>
@@ -375,19 +396,19 @@
     </table>
 
 </div>
-<script>
+<!--<script>-->
 
-              const dropdownBtn = document.getElementById('dropdown-btn');
-              const dropdownList = document.getElementById('dropdown-list');
-              const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));
-              dropdownListItems.forEach((item) => {
-                  item.addEventListener('click',() => {
-                     dropdownBtn.innerHTML = `${item.innerText}`;
-                     dropdownBtn.setAttribute("value",`${item.innerText}`);
-                  });
-              });
-
-
-</script>
+<!--              const dropdownBtn = document.getElementById('dropdown-btn');-->
+<!--              const dropdownList = document.getElementById('dropdown-list');-->
+<!--              const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));-->
+<!--              dropdownListItems.forEach((item) => {-->
+<!--                  item.addEventListener('click',() => {-->
+<!--                     dropdownBtn.innerHTML = `${item.innerText}`;-->
+<!--                     dropdownBtn.setAttribute("value",`${item.innerText}`);-->
+<!--                  });-->
+<!--              });-->
+<!--              -->
+<!--</script>-->
+{% include 'user/footer.html' %}
 </body>
 </html>
