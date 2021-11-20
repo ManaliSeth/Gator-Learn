@@ -23,7 +23,6 @@
     <title>CSC 648-848 FALL 2021 Team 04</title>
 
     <style>
-
         *{
                 margin: 0;
                 padding: 0;
@@ -118,7 +117,6 @@
         .navbar-middle ul{
             display: flex;
         }
-
     </style>
 
 </head>
@@ -141,12 +139,10 @@
 <!--MAIN NAV BAR-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-
     <!--CONTAINER WRAPPER-->
     <div class="container">
 
         <!--NAV BAR BRAND-->
-
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
                 <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"
@@ -180,13 +176,12 @@
 
             <div class="input-group">
                 <div class="form-outline">
-                    <!--                <form class="d-flex form-outline">-->
                     <input
                             name="courseName"
                             id="courseName"
                             class="form-control"
                             type="text"
-                            placeholder="Course Name"
+                            placeholder="Course name, e.g 'Calculus' or 'Algorithms'"
                             aria-label="Search"
                             value="{{request.form.search}}"
                     />
@@ -202,7 +197,7 @@
             </div>
         </form>
 
-        <div class="navbar-middle text-wrap" id="navbarSupportedContent">
+        <div class="navbar-middle text-center" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                 <li class="nav-item">
@@ -212,6 +207,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/aboutUs">ABOUT US</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/SFSUCourseCatalog">SFSU COURSE CATALOG</a>
                 </li>
@@ -243,7 +239,7 @@
 
             <div class="text-end">
 
-                <form class=" navbar-nav ml-auto" action="/login">
+                <form class="navbar-nav ml-auto" action="/login">
                     <button type="submit" class="btn btn-default">Login</button>
                 </form>
 
@@ -257,17 +253,17 @@
     </div>
 </nav>
 
-    <!-- Background image (src in styles.css)-->
-    <div class=p-5 text-center bg-image id="intro">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-            <div class="d-flex justify-content-center align-items-center h-100">
-                <div class="text-white text-center">
+<!-- Background image (src in styles.css)-->
+<div class=p-5 text-center bg-image id="intro">
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+        <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white text-center">
 
-                </div>
             </div>
         </div>
     </div>
-    <!-- Background image -->
+</div>
+<!-- Background image -->
 <!--</header>-->
 
 
@@ -362,9 +358,10 @@
 <br>
 
 <footer id="footer">
-<center>
-    <span id="footer-name">GATOR LEARN © 2021  </span> <a id="email-link" href="mailto:gatorlearn@mail.sfsu.edu" >    Contact
-    Us</a>
+    <center>
+        <span id="footer-name">GATOR LEARN © 2021  </span> <a id="email-link" href="mailto:gatorlearn@mail.sfsu.edu">
+        Contact
+        Us</a>
     </center>
 </footer>
 
@@ -384,7 +381,9 @@
           });
       });
 
-    </script>
+
+
+</script>
 
 <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
 <script src="../../static/js/bootstrap.js"></script>
