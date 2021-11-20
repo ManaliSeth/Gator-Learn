@@ -14,7 +14,7 @@ def catalog():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
     catalogDAO = CatalogDAO()
-    catalogTuple = catalogDAO.viewCatalog()
+    catalogTuple, catalogTotalCountTuple = catalogDAO.viewCatalog()
     print("Catalog Tuple = ",catalogTuple)
     catalogDict = {}
     for i in catalogTuple:
@@ -22,4 +22,10 @@ def catalog():
             catalogDict[i[0]].append(i[1])
         else:
             catalogDict[i[0]] = [i[1]]
-    return render_template('user/catalog.html',catalogDict=catalogDict,majorDict=majorDict)
+
+    list1 = []
+    for i in catalogTotalCountTuple:
+        list1.append(i[0])
+    print("list1=",list1)
+    catalogTotalCountTuple = list1
+    return render_template('user/catalog.html',catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)

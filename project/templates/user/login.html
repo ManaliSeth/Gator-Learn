@@ -9,6 +9,8 @@
 <html lang="en">
 <head>
 	<title>Login Page</title>
+<!--    <link rel="stylesheet" href="../../static/css/styles.css"/>-->
+<!--    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>-->
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -16,6 +18,11 @@
 </head>
 
 <style>
+
+    /*#header{*/
+    /*        height: 25%;*/
+    /*    }*/
+
     body{
       width: 100vw;
       min-height: 100vh;
@@ -29,6 +36,8 @@
       flex-direction: column;
       padding-top: 115px;
 }
+
+
 
 #login-form {
     width: 512px;
@@ -117,6 +126,13 @@
 <!--</div>-->
 
 <body>
+
+<!--<div id=header">-->
+<!--    {% include 'user/header.html' %}-->
+<!--</div>-->
+
+<!--<div class=p-5 text-center bg-image id="intro"></div>-->
+
     <div id="login-form">
         <form class="form-signin" action="/userDashboard">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login Page </h1>

@@ -32,18 +32,6 @@
             height: 25%;
         }
 
-        /*.navbar{*/
-        /*    height: 8%;*/
-        /*    border-radius: 0;*/
-        /*    margin: 0;*/
-        /*}*/
-
-        /*.container{*/
-        /*    display: flex;*/
-        /*    width: 100%;*/
-        /*    margin: 0;*/
-        /*}*/
-
         .container form{
             display: flex;
         }
@@ -61,66 +49,6 @@
         .container-fluid > *{
             margin-top: 15px;
         }
-
-        /*.navbar-brand{*/
-        /*    display: flex;*/
-        /*    justify-content: center;*/
-        /*    align-items: center;*/
-        /*    padding: 0;*/
-        /*}*/
-
-        /*.navbar-brand *{*/
-        /*    margin: 0;*/
-        /*}*/
-
-        /*#sfsuLogo{*/
-        /*    width: 45px;*/
-        /*    height: 45px;*/
-        /*    margin-right: 5px;*/
-        /*}*/
-
-        /*.input-group{*/
-        /*  display: flex;*/
-        /*  margin-left: 0;*/
-        /*}*/
-
-        /*.dropdown{*/
-        /*  margin-right: 0;*/
-        /*  margin-left: 15px;*/
-        /*}*/
-
-        /*.dropdown > button{*/
-        /*    border-top-right-radius: 0;*/
-        /*    border-bottom-right-radius: 0;*/
-        /*    width: 100px;*/
-        /*    background-color: #ffffff;*/
-        /*    color: #000000;*/
-        /*}*/
-
-        /*#courseName{*/
-        /*        width: 400px;*/
-        /*}*/
-
-        /*#searchButton{*/
-        /*        border-radius: 0;*/
-        /*        width: 70px;*/
-        /*        color: #ffffff;*/
-        /*        border-top-right-radius: 4px;*/
-        /*        border-bottom-right-radius: 4px;*/
-        /*}*/
-
-        /*.navbar-form button{*/
-        /*    margin-right: 5px;*/
-        /*}*/
-
-        /*.navbar-middle{*/
-        /*    display: flex;*/
-        /*    align-items: center;*/
-        /*}*/
-
-        /*.navbar-middle ul{*/
-        /*    display: flex;*/
-        /*}*/
 
         #example_length.dataTables_length label{
             display: flex;
@@ -149,12 +77,13 @@
             display: none;
         }
 
-        /*#example_info.dataTables_info{*/
-        /*    position: absolute;*/
-        /*    left: 0;*/
-        /*    top: 50px;*/
-        /*    color: #0a53be;*/
-        /*}*/
+        #example_info.dataTables_info{
+            /*position: absolute;*/
+            /*left: 0;*/
+            /*top: 50px;*/
+            color: #0a53be;
+            display: none;
+        }
 
 
         input[type="text"]{
@@ -206,135 +135,13 @@
 
 {% include 'user/navbar.html' %}
 
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-dark">-->
+<br>
 
-<!--    &lt;!&ndash;CONTAINER WRAPPER&ndash;&gt;-->
-<!--    <div class="container">-->
-
-<!--        &lt;!&ndash;NAV BAR BRAND&ndash;&gt;-->
-<!--        <div class="navbar-header">-->
-<!--            <a class="navbar-brand" href="/">-->
-<!--                <img id="sfsuLogo" src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png"-->
-<!--                     alt="" width="120" height="30" class="d-inline-block align-text-top">-->
-<!--                <p>GATOR LEARN</p>-->
-<!--            </a>-->
-<!--        </div>-->
-
-<!--&lt;!&ndash;         <div class="navbar-middle" id="navbarSupportedContent">&ndash;&gt;-->
-<!--            <ul class="nav navbar-nav">-->
-<!--                <li>-->
-<!--                    <a class="nav-link" href="/aboutUs">ABOUT US</a>-->
-<!--                </li>-->
-<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
-<!--&lt;!&ndash;         </div>&ndash;&gt;-->
-
-<!--&lt;!&ndash;            <ul class="nav navbar-nav">&ndash;&gt;-->
-<!--                <li>-->
-<!--                <form action="/search" method="post" id="auto_complete">-->
-<!--                    <div class="dropdown">-->
-<!--                        <button-->
-<!--                                id="dropdown-btn"-->
-<!--                                class="btn dropdown-toggle"-->
-<!--                                type="button"-->
-<!--                                name="majorBtn"-->
-<!--                                value="All Majors"-->
-<!--                                data-toggle="dropdown">-->
-<!--                            All Majors-->
-<!--                            &lt;!&ndash;                    <span class="caret"></span>&ndash;&gt;-->
-<!--                        </button>-->
-
-<!--                        &lt;!&ndash;BELOW IS COPIED FROM VERTICAL PROTOTYPE TEST HOME PAGE&ndash;&gt;-->
-<!--                        <ul id="dropdown-list" class="dropdown-menu dropdown-menu-right">-->
-<!--                            <li class="dropdown-list-item" values='0'><a href="#">All Majors</a></li>-->
-<!--                            {% for i in majorDict %}-->
-<!--                            <li class="dropdown-list-item" values="{{i[0]}}"><a href="#">{{i[1]}}</a></li>-->
-<!--                            {% endfor %}-->
-<!--                        </ul>-->
-<!--                    </div>-->
-
-<!--                    <div class="input-group">-->
-<!--                        <div class="form-outline">-->
-<!--                            &lt;!&ndash;                    <form class="d-flex form-outline">&ndash;&gt;-->
-<!--                            <input-->
-<!--                                    name="courseName"-->
-<!--                                    id="courseName"-->
-<!--                                    class="form-control"-->
-<!--                                    type="text"-->
-<!--                                    value="{{search_input}}"-->
-<!--                                    aria-label="Search"-->
-<!--                                    placeholder="Course Name"-->
-<!--                            />-->
-<!--                        </div>-->
-<!--                    </div>-->
-
-<!--                    <div class="search">-->
-<!--                        <div class="actions">-->
-<!--                            <button id="searchButton" type="submit" value="Search" class="btn btn-primary">-->
-<!--                                <i class="fa fa-search"></i>-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </form>-->
-<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
-<!--                </li>-->
-<!--            </ul>-->
-
-<!--&lt;!&ndash;        <button&ndash;&gt;-->
-<!--&lt;!&ndash;                class="navbar-toggler"&ndash;&gt;-->
-<!--&lt;!&ndash;                type="button"&ndash;&gt;-->
-<!--&lt;!&ndash;                data-bs-toggle="collapse"&ndash;&gt;-->
-<!--&lt;!&ndash;                data-bs-target="#navbarSupportedContent"&ndash;&gt;-->
-<!--&lt;!&ndash;                aria-controls="navbarSupportedContent"&ndash;&gt;-->
-<!--&lt;!&ndash;                aria-expanded="false"&ndash;&gt;-->
-<!--&lt;!&ndash;                aria-label="Toggle navigation"&ndash;&gt;-->
-<!--&lt;!&ndash;        >&ndash;&gt;-->
-<!--&lt;!&ndash;            <span class="navbar-toggler-icon"></span>&ndash;&gt;-->
-<!--&lt;!&ndash;        </button>&ndash;&gt;-->
-
-<!--&lt;!&ndash;        <div class="navbar-middle" id="navbarSupportedContent">&ndash;&gt;-->
-<!--&lt;!&ndash;            <ul class="navbar-nav me-auto mb-2 mb-lg-0">&ndash;&gt;-->
-
-
-<!--                &lt;!&ndash;                    <li class="nav-item dropdown">&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <a&ndash;&gt;-->
-<!--                &lt;!&ndash;                                class="nav-link dropdown-toggle"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                href="#"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                id="navbarDropdown"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                role="button"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                data-bs-toggle="dropdown"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                aria-expanded="false"&ndash;&gt;-->
-<!--                &lt;!&ndash;                        >&ndash;&gt;-->
-<!--                &lt;!&ndash;                            F.A.Q's&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <li><a class="dropdown-item" href="#">For students</a></li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <li><a class="dropdown-item" href="#">For tutors</a></li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <hr class="dropdown-divider"/>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <a class="dropdown-item" href="#">Testimonies</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </li>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </ul>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </li>&ndash;&gt;-->
-<!--&lt;!&ndash;            </ul>&ndash;&gt;-->
-
-<!--            <ul class="nav navbar-nav navbar-right">-->
-<!--&lt;!&ndash;                <form class="navbar-form" action="/login">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <li>  <button type="submit" class="btn btn-default navbar-btn">Login</button> </li>&ndash;&gt;-->
-<!--                <li> <a href="/login">Login</a></li>-->
-<!--&lt;!&ndash;                </form>&ndash;&gt;-->
-
-<!--&lt;!&ndash;                <form class="navbar-form" action="/register">&ndash;&gt;-->
-<!--&lt;!&ndash;                  <li>  <button type="submit" class="btn btn-default navbar-btn">Register</button> </li>&ndash;&gt;-->
-<!--                <li> <a href="/register">Register</a></li>-->
-<!--&lt;!&ndash;                </form>&ndash;&gt;-->
-<!--            </ul>-->
-
-
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-<!--    </div>-->
-<!--</nav>-->
+{% if tutorCountDict %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} of {{tutorTotalCountDict[0]}} entries for "{{search_input}}"</h5>
+{% else %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{tutorTotalCountDict[0]}} of {{tutorTotalCountDict[0]}} entries for "All Majors"</h5>
+{% endif %}
 
 <div class="container-fluid">
 
@@ -396,19 +203,7 @@
     </table>
 
 </div>
-<!--<script>-->
 
-<!--              const dropdownBtn = document.getElementById('dropdown-btn');-->
-<!--              const dropdownList = document.getElementById('dropdown-list');-->
-<!--              const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));-->
-<!--              dropdownListItems.forEach((item) => {-->
-<!--                  item.addEventListener('click',() => {-->
-<!--                     dropdownBtn.innerHTML = `${item.innerText}`;-->
-<!--                     dropdownBtn.setAttribute("value",`${item.innerText}`);-->
-<!--                  });-->
-<!--              });-->
-<!--              -->
-<!--</script>-->
 {% include 'user/footer.html' %}
 </body>
 </html>

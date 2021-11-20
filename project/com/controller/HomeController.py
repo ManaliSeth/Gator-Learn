@@ -60,14 +60,32 @@ def search():
     registeredUserVO.search_input = search_input
 
     if search_input=='':
-        tutorDict = registeredUserDAO.viewTutors()
+        tutorDict,tutorTotalCountDict = registeredUserDAO.viewTutors()
         print(tutorDict)
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict)
+        list2 = []
+        for i in tutorTotalCountDict:
+            list2.append(i[0])
+        print(list2)
+        tutorTotalCountDict=list2
+
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict)
 
     else:
-        tutorDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
+        tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, majorDict=majorDict, search_input=registeredUserVO.search_input)
+        print(tutorCountDict)
+        list3, list4 = [], []
+        for i in tutorCountDict:
+            list3.append(i[0])
+        print("list3",list3)
+        tutorCountDict = list3
+
+        for i in tutorTotalCountDict:
+            list4.append(i[0])
+        print("list4",list4)
+        tutorTotalCountDict = list4
+
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input)
 
 @flask_app.route('/viewTutors', methods=['GET'])
 def viewTutors():
