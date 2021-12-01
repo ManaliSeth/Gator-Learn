@@ -196,7 +196,7 @@ html, body {
                             </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail Address" required>
+                                <input class="form-control" type="email" name="email" id="inputEmail" placeholder="E-mail Address" required>
                                 <div class="valid-feedback">Email field is valid!</div>
                                 <div class="invalid-feedback">Email field cannot be blank!</div>
                             </div>
@@ -226,12 +226,12 @@ html, body {
 
 
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Register</button>
+                                <button id="regFormSubmit" type="submit" class="btn btn-primary">Register</button>
                             </div>
                             <br>
                             <p class="change_link">
 					Already a member ?
-					<a href="/login" class="to_register">login </a>
+					<a href="/login" class="to_register">Login </a>
 				</p>
                         </form>
                     </div>
@@ -260,6 +260,25 @@ html, body {
                 })
         })()
 
+    </script>
+
+    <script>
+    const email = document.getElementById("inputEmail");
+    const submitButton = document.getElementById("regFormSubmit");
+
+    submitButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        validateEmail(email);
+    });
+
+    function validateEmail(email){
+        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){
+            return;
+        }
+        else{
+            alert("Invalid Email.")
+        }
+    }
     </script>
 
 {% include 'user/footer.html' %}
