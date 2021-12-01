@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Manali Seth</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+  <head>
+    <title>Manali Seth</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-/* Styling the body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
-}
+      /* Styling the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
+      }
 
-/* Column container */
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  height: 800px;
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 800px;
+      }
 
-}
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
 
-/* Sidebar/left column */
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  padding: 20px;
-  background-color: white;
-}
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
 
-/* Main column */
-.main {
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  padding: 20px;
-  background-color: white;
-}
+    </style>
+  </head>
 
-</style>
-</head>
+  <body>
+    {% include 'user/header.html'%}
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">Manali Seth</h2>
+         <div class="card" style="width: 20rem;">
+          <img src="../../static/images/manali.PNG" class="card-img-top" alt="...">
+        </div>
 
-<body>
-{% include 'user/header.html'%}
-<div class="row">
-  <div class="side">
-    <h2 style="display: block; left: 0px;">Manali Seth</h2>
-     <div class="card" style="width: 20rem;">
-      <img src="../../static/images/manali.PNG" class="card-img-top" alt="...">
+      </div>
+      <div class="main">
+        <h2>About Me</h2>
+        <p>I am a first semester Grad student at SFSU pursuing Master's in Computer Science.
+           I have undergraduated from Charotar University of Science and Technology in India.
+           My hobbies include drawing and listening music.
+           I like to interact with people and know about different cultures. </p>
+        <br>
+        <p><b>Areas of Interest</b></p>
+        <ul>
+          <li>Data Analysis</li>
+          <li>Machine Learning</li>
+          <li>Computer Vision</li>
+        </ul>
+
+        <br>
+        <p><b>Contact info:</b></p>
+        <p><b>Email:</b> <a href="mailto:mseth@mail.sfsu.edu" class="mailto">mseth@mail.sfsu.edu</a></p>
+        <p><b>Github:</b> <a href="https://github.com/Manali-Seth" class="btn btn-primary">Manali Seth</a> </p>
+        <p><b>SFSU ID:</b> 567891234</p>
+        <p><b>Phone Number:</b> +1 (667) 890-1234</p>
+      </div>
     </div>
-
-  </div>
-  <div class="main">
-    <h2>About Me</h2>
-    <p>I am a first semester Grad student at SFSU pursuing Master's in Computer Science.
-       I have undergraduated from Charotar University of Science and Technology in India.
-       My hobbies include drawing and listening music.
-       I like to interact with people and know about different cultures. </p>
-    <br>
-    <p><b>Areas of Interest</b></p>
-    <ul>
-      <li>Data Analysis</li>
-      <li>Machine Learning</li>
-      <li>Computer Vision</li>
-    </ul>
-
-    <br>
-    <p><b>Contact info:</b></p>
-    <p><b>Email:</b> <a href="mailto:mseth@mail.sfsu.edu" class="mailto">mseth@mail.sfsu.edu</a></p>
-    <p><b>Github:</b> <a href="https://github.com/Manali-Seth" class="btn btn-primary">Manali Seth</a> </p>
-    <p><b>SFSU ID:</b> 567891234</p>
-    <p><b>Phone Number:</b> +1 (667) 890-1234</p>
-  </div>
-</div>
-{% include 'user/footer.html' %}
-</body>
+    {% include 'user/footer.html' %}
+  </body>
 </html>

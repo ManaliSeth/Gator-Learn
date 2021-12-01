@@ -5,236 +5,229 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<head>
+        <link rel="import" href="header.html">
+        <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+        <link rel="stylesheet" href="../../static/css/styles.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-    <meta charset="UTF-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Home Page</title>
 
-    <link rel="import" href="header.html">
-    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
-    <link rel="stylesheet" href="../../static/css/styles.css"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style>
 
-    <title>Home Page</title>
+            *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+            }
 
-    <style>
+            body{
+                height: 100vh;
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+            }
 
-        *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-        }
+            #header{
+                height: 15%;
+            }
 
-        body{
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-        }
+            .container > form{
+                display: flex;
+            }
 
-        #header{
-            height: 15%;
-        }
+            .container > *{
+                margin: 0 10px;
+            }
 
-        .container > form{
-            display: flex;
-        }
+        </style>
+    </head>
 
-        .container > *{
-            margin: 0 10px;
-        }
+    <!--
+      TODO
+      A bg color that's pleasing on the eyes, or a wider/stretched image overlay
+      Add generic logo
+      Cards or grids below image to display tutors/student info
+        3-column grid to display that general info maybe?
+    -->
 
+    <body>
 
-
-    </style>
-
-</head>
-
-<!--
-  TODO
-  A bg color that's pleasing on the eyes, or a wider/stretched image overlay
-  Add generic logo
-  Cards or grids below image to display tutors/student info
-    3-column grid to display that general info maybe?
--->
-
-<body>
-
-<div id="header">
-    {% include 'user/header.html' %}
-</div>
-
-
-{% include 'user/navbar.html' %}
-
-<!-- Background image (src in styles.css)-->
-<div class=p-5 text-center bg-image id="intro">
-    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-        <div class="d-flex justify-content-center align-items-center h-100">
-            <div class="text-white text-center">
-
-            </div>
+        <div id="header">
+            {% include 'user/header.html' %}
         </div>
-    </div>
-</div>
-<!-- Background image -->
-<!--</header>-->
+        {% include 'user/navbar.html' %}
 
-<main>
+        <!-- Background image (src in styles.css)-->
+        <div class=p-5 text-center bg-image id="intro">
+            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white text-center">
 
-    <!--Cards for recently added tutors-->
-
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Tutor name</h5>
-                        <p class="card-text">Short greeting, list courses tutored.</p>
-                        <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                            tutor's profile</a> <!-- (may remove if tutor profile page
-                unnecessary)--></small></p>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Background image -->
+        <!--</header>-->
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
+        <main>
+
+            <!--Cards for recently added tutors-->
+
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Tutor name</h5>
+                                <p class="card-text">Short greeting, list courses tutored.</p>
+                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
+                                    tutor's profile</a> <!-- (may remove if tutor profile page
+                        unnecessary)--></small></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Tutor name</h5>
-                        <p class="card-text">Short greeting, list courses tutored.</p>
-                        <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                            tutor's profile</a> <!-- (may remove if tutor profile page
-                unnecessary)--></small></p>
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Tutor name</h5>
+                                <p class="card-text">Short greeting, list courses tutored.</p>
+                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
+                                    tutor's profile</a> <!-- (may remove if tutor profile page
+                        unnecessary)--></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3" style="max-width: 540px;">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Tutor name</h5>
+                                <p class="card-text">Short greeting, list courses tutored.</p>
+                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
+                                    tutor's profile</a> <!-- (may remove if tutor profile page
+                        unnecessary)--></small></p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Tutor name</h5>
-                        <p class="card-text">Short greeting, list courses tutored.</p>
-                        <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                            tutor's profile</a> <!-- (may remove if tutor profile page
-                unnecessary)--></small></p>
+            <div class="container-fluid">
+
+                <section class="divider mt-4">
+                    <div class="row justify-content-center align-items-center text-center">
+                        <h2>Online Tutors for your class</h2>
                     </div>
-                </div>
+
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">Business courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">BUS 100 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">BUS 256 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">BUS 630 Tutors</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">All BUS tutors</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">Science courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">PHYS 100 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">BIO 100 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">CHEM 100 Tutors</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">All SCI tutors</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">Math courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">MATH 100 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">Calculus Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">Statistics Tutors</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">All MATH tutors</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">English courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">ENG 100 Tutors</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">All ENG tutors</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                               aria-expanded="false">Other courses</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Music tutors</a></li>
+                                <li><a class="dropdown-item" href="#">Accounting tutors</a></li>
+                                <li><a class="dropdown-item" href="#">Economics tutors</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">All OTHER tutors</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                </section>
+
             </div>
-        </div>
-    </div>
 
-    <div class="container-fluid">
+        </main>
 
-        <section class="divider mt-4">
-            <div class="row justify-content-center align-items-center text-center">
-                <h2>Online Tutors for your class</h2>
-            </div>
+        <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+        <script src="../../static/js/bootstrap.js"></script>
 
-            <ul class="nav justify-content-center">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-expanded="false">Business courses</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">BUS 100 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">BUS 256 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">BUS 630 Tutors</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">All BUS tutors</a></li>
-                    </ul>
-                </li>
+        <!--  Search end-->
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-expanded="false">Science courses</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">PHYS 100 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">BIO 100 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">CHEM 100 Tutors</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">All SCI tutors</a></li>
-                    </ul>
-                </li>
+        {% include 'user/footer.html' %}
 
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-expanded="false">Math courses</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">MATH 100 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">Calculus Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">Statistics Tutors</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">All MATH tutors</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-expanded="false">English courses</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">ENG 100 Tutors</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">All ENG tutors</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                       aria-expanded="false">Other courses</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Music tutors</a></li>
-                        <li><a class="dropdown-item" href="#">Accounting tutors</a></li>
-                        <li><a class="dropdown-item" href="#">Economics tutors</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">All OTHER tutors</a></li>
-                    </ul>
-                </li>
-            </ul>
-
-        </section>
-
-    </div>
-
-</main>
-
-<script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
-<script src="../../static/js/bootstrap.js"></script>
-
-<!--  Search end-->
-
-{% include 'user/footer.html' %}
-
-</body>
+    </body>
 
 </html>
