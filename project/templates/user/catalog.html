@@ -92,12 +92,9 @@
       <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
       <!-- Data Table end   -->
-
 </head>
 
-
 <body>
-
     <div id="header">
         {% include 'user/header.html' %}
     </div>
@@ -108,7 +105,6 @@
     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{catalogTotalCountTuple[0]}} of {{catalogTotalCountTuple[0]}} entries for "Available SFSU Majors"</h5>
 
     <div class="container-fluid">
-
          <table id="example" class="table table-hover" style="width:100%;">
                 <thead>
                     <tr>
@@ -131,20 +127,7 @@
                         </tr>
                     {% endfor %}
                 </tbody>
-
-<!--                <tfoot>-->
-<!--                    <tr>-->
-<!--                        <th>First Name</th>-->
-<!--                        <th>Last Name</th>-->
-<!--                        <th>Gender</th>-->
-<!--                        <th>Email</th>-->
-<!--                        <th>Description</th>-->
-<!--                        <th>Role</th>-->
-<!--                        <th>Course Taught</th>-->
-<!--                    </tr>-->
-<!--                </tfoot>-->
          </table>
-
     </div>
 
 

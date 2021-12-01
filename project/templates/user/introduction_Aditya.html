@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>Aditya Mohan</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+  <head>
+    <title>Aditya Mohan</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
 
-/* Styling the body */
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  margin: 0;
-  background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
-}
+      /* Styling the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
+      }
 
-/* Column container */
-.row {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  height: 800px;
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 800px;
+      }
 
-}
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
 
-/* Sidebar/left column */
-.side {
-  -ms-flex: 30%; /* IE10 */
-  flex: 30%;
-  padding: 20px;
-  background-color: white;
-}
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
 
-/* Main column */
-.main {
-  -ms-flex: 70%; /* IE10 */
-  flex: 70%;
-  padding: 20px;
-  background-color: white;
-}
+    </style>
+  </head>
 
-</style>
-</head>
-
-<body>
-{% include 'user/header.html'%}
-<div class="row">
-  <div class="side">
-    <h2 style="display: block; left: 0px;">Aditya Mohan</h2>
-    <div class="card" style="width: 20rem;">
-      <img src="../../static/images/aditya.PNG" class="card-img-top" alt="...">
+  <body>
+    {% include 'user/header.html'%}
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">Aditya Mohan</h2>
+        <div class="card" style="width: 20rem;">
+          <img src="../../static/images/aditya.PNG" class="card-img-top" alt="...">
+        </div>
+      </div>
+      <div class="main">
+        <h2>About Me</h2>
+        <p>I am a senior undergraduate student at SFSU CS department.
+          My interest lies in machine learning and data science.</p>
+        <br>
+        <p><b>Contact info:</b></p>
+        <p><b>Email:</b> <a href="mailto:amohan3@mail.sfsu.edu" class="mailto">amohan3@mail.sfsu.edu</a></p>
+    <!--    <p><b>Github:</b> <a href="https://github.com/" class="btn btn-primary">Aditya Mohan</a> </p>-->
+        <p><b>SFSU ID:</b> 234567891</p>
+        <p><b>Phone Number:</b> +1 (634) 567-8901</p>
+      </div>
     </div>
-
-  </div>
-  <div class="main">
-    <h2>About Me</h2>
-    <p>I am a senior undergraduate student at SFSU CS department.
-      My interest lies in machine learning and data science.</p>
-    <br>
-    <p><b>Contact info:</b></p>
-    <p><b>Email:</b> <a href="mailto:amohan3@mail.sfsu.edu" class="mailto">amohan3@mail.sfsu.edu</a></p>
-<!--    <p><b>Github:</b> <a href="https://github.com/" class="btn btn-primary">Aditya Mohan</a> </p>-->
-    <p><b>SFSU ID:</b> 234567891</p>
-    <p><b>Phone Number:</b> +1 (634) 567-8901</p>
-  </div>
-</div>
-{% include 'user/footer.html' %}
-</body>
+    {% include 'user/footer.html' %}
+  </body>
 </html>
