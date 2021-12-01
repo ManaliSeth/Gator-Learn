@@ -82,58 +82,30 @@
 
             <!--Cards for recently added tutors-->
 
+            <center><h4><b>RECENTLY ADDED TUTORS</b></h4></center>
+
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
+                {% for i in tutorDict %}
+
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
+                                <img class="avatar-img" height="100px" width="100px" src="static/dataset/{{ i[9]}}">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
-                                <h5 class="card-title">Tutor name</h5>
-                                <p class="card-text">Short greeting, list courses tutored.</p>
-                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                                    tutor's profile</a> <!-- (may remove if tutor profile page
+                                <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>
+                                <p class="card-text">{{i[10]}}</p>
+                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Profile</a> <!-- (may remove if tutor profile page
                         unnecessary)--></small></p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Tutor name</h5>
-                                <p class="card-text">Short greeting, list courses tutored.</p>
-                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                                    tutor's profile</a> <!-- (may remove if tutor profile page
-                        unnecessary)--></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
 
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img src="../../static/dataset/tutor.jpg" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Tutor name</h5>
-                                <p class="card-text">Short greeting, list courses tutored.</p>
-                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Card link to
-                                    tutor's profile</a> <!-- (may remove if tutor profile page
-                        unnecessary)--></small></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="container-fluid">

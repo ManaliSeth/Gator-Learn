@@ -30,3 +30,9 @@ class RegisteredUserDAO:
         dict2 = cursor2.fetchall()
         dict3 = cursor3.fetchall()
         return dict1, dict2, dict3
+
+    def viewRecentlyAddedTutors(self):
+
+        cursor.execute("SELECT * FROM RegisteredUser WHERE role='Tutor' ORDER BY userId DESC LIMIT 3;")
+        dict1 = cursor.fetchall()
+        return dict1

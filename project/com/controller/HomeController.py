@@ -20,7 +20,10 @@ def landingPage():
     courseDict = courseDAO.viewCourseName()
     print("MajorDict=",majorDict)
     print("CourseDict=",courseDict)
-    return render_template('user/landingPage.html',majorDict=majorDict,courseDict=courseDict)
+    registeredUserDAO = RegisteredUserDAO()
+    tutorDict = registeredUserDAO.viewRecentlyAddedTutors()
+    print("Tutor Dict=",tutorDict)
+    return render_template('user/landingPage.html', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict)
 
 @flask_app.route('/aboutUs')
 def loadAboutUs():
