@@ -77,6 +77,7 @@
             width: 400px;
             padding: 0 10px;
             outline: none;
+            color: #000000;
         }
 
         #navInput #inputContainer #searchButton{
@@ -121,13 +122,13 @@
         <div id="navInput">
             <div id="inputContainer">
                 <form action="/search" method="post" id="auto_complete">
-                    <select name="majorDropdown" id="majorDropdown">
-                        <option selected>All Majors</option>
+                    <select name="majorDropdown" id="majorDropdown" data-sel="{{majorSelected}}">
+                        <option>All Majors</option>
                         {% for i in majorDict %}
-                        <option value="majorSelected">{{i[1]}}</option>
+                        <option value="{{i[1]}}">{{i[1]}}</option>
                         {% endfor %}
                     </select>
-                    <input type="text" name="courseName" id="courseName" value="{{request.form.search}}" placeholder="Course Name">
+                    <input type="text" name="courseName" id="courseName" value="{{search_input}}" placeholder="Course Name">
                     <button id="searchButton" type="submit" value="Search"><i class="fa fa-search"></i></button>
                 </form>
             </div>
@@ -157,6 +158,14 @@
              dropdownBtn.innerHTML = `${item.innerText}`;
              dropdownBtn.setAttribute("value",`${item.innerText}`);
           });
+      });
+
+      const majorDropdown = document.getElementById('majorDropdown');
+      const majorOptions = Array.from(majorDropdown.children);
+      majorOptions.forEach((option) => {
+          if(option.innerHTML === majorDropdown.dataset.sel){
+              option.selected = true;
+          }
       });
 
 </script>

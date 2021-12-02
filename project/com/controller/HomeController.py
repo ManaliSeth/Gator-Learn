@@ -57,12 +57,13 @@ def search():
     search_input = request.form['courseName']
     print("Search input=",search_input)
 
-    selectedMajor = request.form.get('majorSelected')
+    selectedMajor = request.form['majorDropdown']
     print("selectedMajor=",selectedMajor)
 
     registeredUserVO.search_input = search_input
+    registeredUserVO.selectedMajor = selectedMajor
 
-    if search_input=='':
+    if search_input=='' and selectedMajor=="All Majors":
         tutorDict,tutorTotalCountDict = registeredUserDAO.viewTutors()
         print(tutorDict)
         list2 = []
@@ -73,7 +74,7 @@ def search():
 
         return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict)
 
-    else:
+    elif selectedMajor=='All Majors' and search_input != '':
         tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
         print(tutorCountDict)
@@ -88,7 +89,43 @@ def search():
         print("list4",list4)
         tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+
+    elif selectedMajor!='All Majors' and search_input == '':
+        tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorTutors(registeredUserVO)
+        print(tutorDict)
+        print(tutorCountDict)
+        list3, list4 = [], []
+        for i in tutorCountDict:
+            list3.append(i[0])
+        print("list3",list3)
+        tutorCountDict = list3
+
+        for i in tutorTotalCountDict:
+            list4.append(i[0])
+        print("list4",list4)
+        tutorTotalCountDict = list4
+
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+
+    else:
+        tutorDict, tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorCourseTutors(registeredUserVO)
+        print(tutorDict)
+        print(tutorCountDict)
+        list3, list4 = [], []
+        for i in tutorCountDict:
+            list3.append(i[0])
+        print("list3", list3)
+        tutorCountDict = list3
+
+        for i in tutorTotalCountDict:
+            list4.append(i[0])
+        print("list4", list4)
+        tutorTotalCountDict = list4
+
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict,
+                               tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict,
+                               search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
 @flask_app.route('/viewTutors', methods=['GET'])
 def viewTutors():
