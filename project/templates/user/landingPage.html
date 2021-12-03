@@ -29,14 +29,18 @@
             }
 
             body{
-                height: 100vh;
+                /*height: 100vh;*/
                 width: 100vw;
                 display: flex;
                 flex-direction: column;
+                background-color: #34383a;
+                background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
+                background-size: cover;
             }
 
             #header{
-                height: 15%;
+                height: 17%;
+                /*padding-bottom: 10px;*/
             }
 
             .container > form{
@@ -47,16 +51,12 @@
                 margin: 0 10px;
             }
 
+            #space{
+                height: 70px;
+            }
+
         </style>
     </head>
-
-    <!--
-      TODO
-      A bg color that's pleasing on the eyes, or a wider/stretched image overlay
-      Add generic logo
-      Cards or grids below image to display tutors/student info
-        3-column grid to display that general info maybe?
-    -->
 
     <body>
 
@@ -65,60 +65,76 @@
         </div>
         {% include 'user/navbar.html' %}
 
-        <!-- Background image (src in styles.css)-->
-        <div class=p-5 text-center bg-image id="intro">
-            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-                <div class="d-flex justify-content-center align-items-center h-100">
-                    <div class="text-white text-center">
+<!--        &lt;!&ndash; Background image (src in styles.css)&ndash;&gt;-->
+<!--        <div class=p-5 text-center bg-image id="intro">-->
+<!--            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">-->
+<!--                <div class="d-flex justify-content-center align-items-center h-100">-->
+<!--                    <div class="text-white text-center">-->
 
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Background image -->
-        <!--</header>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; Background image &ndash;&gt;-->
 
         <main>
 
             <!--Cards for recently added tutors-->
 
-            <center><h4><b>RECENTLY ADDED TUTORS</b></h4></center>
+            <h3 style="text-align: center"><b>RECENTLY ADDED TUTORS</b></h3>
 
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+<!--            <div class="row row-cols-1 row-cols-md-3 g-4">-->
 
+<!--                {% for i in tutorDict %}-->
+
+<!--                <div class="card mb-3" style="max-width: 540px;">-->
+<!--                    <div class="row g-0">-->
+<!--                        <div class="col-md-4">-->
+<!--                                <img class="avatar-img" height="100px" width="100px" src="static/dataset/{{ i[9]}}">-->
+<!--                        </div>-->
+<!--                        <div class="col-md-8">-->
+<!--                            <div class="card-body">-->
+<!--                                <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>-->
+<!--                                <p class="card-text">{{i[10]}}</p>-->
+<!--                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Profile</a> &lt;!&ndash; (may remove if tutor profile page-->
+<!--                        unnecessary)&ndash;&gt;</small></p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--                {% endfor %}-->
+
+<!--            </div>-->
+
+            <div class="row" style="text-align: center; justify-content: center" >
                 {% for i in tutorDict %}
-
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                                <img class="avatar-img" height="100px" width="100px" src="static/dataset/{{ i[9]}}">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>
-                                <p class="card-text">{{i[10]}}</p>
-                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Profile</a> <!-- (may remove if tutor profile page
-                        unnecessary)--></small></p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-3">
+                <div class="card" style="width: 250px;">
+                      <img class="card-img-top" src="static/dataset/{{ i[9]}}" alt="Tutor Image">
+                      <div class="card-body">
+                        <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>
+                        <p class="card-text">{{i[10]}}</p>
+                        <a href="#" class="btn btn-primary">Profile</a>
+                      </div>
                 </div>
-
+                </div>
                 {% endfor %}
-
             </div>
+
+            <div id="space"></div>
 
             <div class="container-fluid">
 
                 <section class="divider mt-4">
                     <div class="row justify-content-center align-items-center text-center">
-                        <h2>Online Tutors for your class</h2>
+                        <h2 style="color: black">Online Tutors for your class</h2>
                     </div>
 
                     <ul class="nav justify-content-center">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">Business courses</a>
+                               aria-expanded="false" style="color: black">Business courses</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">BUS 100 Tutors</a></li>
                                 <li><a class="dropdown-item" href="#">BUS 256 Tutors</a></li>
@@ -132,7 +148,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">Science courses</a>
+                               aria-expanded="false" style="color: black">Science courses</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">PHYS 100 Tutors</a></li>
                                 <li><a class="dropdown-item" href="#">BIO 100 Tutors</a></li>
@@ -146,7 +162,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">Math courses</a>
+                               aria-expanded="false" style="color: black">Math courses</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">MATH 100 Tutors</a></li>
                                 <li><a class="dropdown-item" href="#">Calculus Tutors</a></li>
@@ -160,7 +176,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">English courses</a>
+                               aria-expanded="false" style="color: black">English courses</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">ENG 100 Tutors</a></li>
                                 <li><a class="dropdown-item" href="#">Another action</a></li>
@@ -174,7 +190,7 @@
 
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
-                               aria-expanded="false">Other courses</a>
+                               aria-expanded="false" style="color: black">Other courses</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Music tutors</a></li>
                                 <li><a class="dropdown-item" href="#">Accounting tutors</a></li>

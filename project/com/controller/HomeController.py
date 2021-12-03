@@ -145,11 +145,23 @@ def autocomplete():
 
 @flask_app.route('/login',methods=['GET','POST'])
 def login():
-    return render_template('user/login.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    return render_template('user/login.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/register',methods=['GET','POST'])
 def register():
-    return render_template('user/registration.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    return render_template('user/registration.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/userDashboard',methods=['GET','POST'])
 def userDashboard():

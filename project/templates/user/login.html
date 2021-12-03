@@ -19,93 +19,100 @@
 
 <style>
 
-    /*#header{*/
-    /*        height: 25%;*/
-    /*    }*/
+    #header{
+        height: 15%;
+        width: 100vw;
+    }
+
+    #navbar{
+        padding-bottom: 20px;
+    }
 
     body{
-      width: 100vw;
-      min-height: 100vh;
-      font-family: "Robato",sans-serif;
-      font-size: 17px;
-      background: url("../../static/images/tutoring_HomePage3.jpg") no-repeat;
+      /*width: 100vw;*/
+      /*min-height: 100vh;*/
+      /*font-family: "Robato",sans-serif;*/
+      /*font-size: 17px;*/
+      background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
       background-size: cover;
       display: flex;
       align-items: center;
-      justify-content: center;
+      /*justify-content: center;*/
       flex-direction: column;
-      padding-top: 115px;
-}
+      /*padding-top: 115px;*/
+    }
 
+    #login-form {
+        width: 512px;
+        background-color: #000000;
+        color: #ffffff;
+        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12), 0 12px 40px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        border-radius: 8px;
+    }
 
+    /*#bg {*/
+    /*  position: fixed;*/
+    /*  top: -50%;*/
+    /*  left: -50%;*/
+    /*  width: 200%;*/
+    /*  height: 200%;*/
+    /*}*/
 
-#login-form {
-    width: 512px;
-    background-color: #000000;
-    color: #ffffff;
-    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12), 0 12px 40px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-    border-radius: 8px;
-}
+    /*#bg img {*/
+    /*  position: absolute;*/
+    /*  top: 0;*/
+    /*  left: 0;*/
+    /*  right: 0;*/
+    /*  bottom: 0;*/
+    /*  margin: auto;*/
+    /*  min-width: 50%;*/
+    /*  min-height: 50%;*/
+    /*}*/
+    /* */
 
-/*#bg {*/
-/*  position: fixed;*/
-/*  top: -50%;*/
-/*  left: -50%;*/
-/*  width: 200%;*/
-/*  height: 200%;*/
-/*}*/
+    #login-form form {
+        width: 100%;
+        padding: 15px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-/*#bg img {*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  bottom: 0;*/
-/*  margin: auto;*/
-/*  min-width: 50%;*/
-/*  min-height: 50%;*/
-/*}*/
-/* */
-#login-form form {
-    width: 100%;
-    padding: 15px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+    #login-form .input-group {
+        width: 80%;
+        margin-bottom: 4px;
+    }
 
-#login-form .input-group {
-    width: 80%;
-    margin-bottom: 4px;
-}
-#login-form .form-control {
-    position: relative;
-    box-sizing: border-box;
-    height: auto;
-    padding: 10px;
-    font-size: 16px;
-}
+    #login-form .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
 
-
-#login-form a{
-    display: block;
-    padding-top:10px;
-    color:#ffffff;
-}
-
+    #login-form a{
+        display: block;
+        padding-top:10px;
+        color:#ffffff;
+    }
 
     #login-form button[type="submit"]{ margin-top:10px; }
 
     #login-form .form-reset, #login-form .form-signup{ display: none; }
 
+    .submit{
+      background: green;
+      border-radius: 25px;
+      color: #fff;
+    }
 
-.submit{
-  background: green;
-  border-radius: 25px;
-  color: #fff;
-}
+    #footer{
+        padding-top: 30px;
+        width: 100vw;
+    }
 </style>
 
 <script>
@@ -126,18 +133,19 @@
 <!--</div>-->
 
 <body>
-
-<div id=header">
+<div id="header">
     {% include 'user/header.html' %}
 </div>
 
-{% include 'user/navbar.html' %}
+<div id="navbar">
+    {% include 'user/navbar.html' %}
+</div>
 
 <!--<div class=p-5 text-center bg-image id="intro"></div>-->
 
     <div id="login-form">
         <form class="form-signin" action="/userDashboard">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login Page </h1>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login</h1>
             <div class="input-group">
               <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             </div>
@@ -148,11 +156,11 @@
              <a href="#" id="forgot_pswd">Forgot password?</a>
 
             <div class="input-group">
-              <button id="loginFormSubmit" class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i> Login</button>
+              <button id="loginFormSubmit" class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i>Login</button>
             </div>
             <hr>
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i><a href="/register">Not Registered? Register Now</a>  </button>
-            </form>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><a href="/register">Not Registered? Register Now</a>  </button>
+        </form>
 
         <form action="#" class="form-reset">
                 <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
@@ -160,6 +168,7 @@
                 <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
         </form>
     </div>
+
 <form id="contactForm" action="#" onSubmit="return validateLogin()" method="post">
 </form>
 
@@ -186,7 +195,11 @@
         }
     }
 </script>
-{% include 'user/footer.html' %}
+
+<div id="footer">
+    {% include 'user/footer.html' %}
+</div>
+
 </body>
 </html>
 

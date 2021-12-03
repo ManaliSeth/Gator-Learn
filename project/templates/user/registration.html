@@ -17,27 +17,25 @@
 </head>
 
 <style>
-   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
+   /*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');*/
 
-*, body {
-    font-family: 'Poppins', sans-serif;
-    /*font-weight: 400;*/
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-    -moz-osx-font-smoothing: grayscale;
+#header{
+    height: 17%;
+    /*padding-bottom: 10px;*/
+        /*width: 100vw;*/
+    }
+
+#navbar{
+    /*height:10vh;*/
+    padding-bottom: 0px;
 }
 
-/*#header{*/
-/*            width: 100vw;*/
-/*        }*/
-
-html, body {
-    height: 100vh;
+body {
+    /*height: 100vh;*/
     background-color: #34383a;
-    background: url("../../static/images/tutoring_HomePage3.jpg") no-repeat;
+    background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
     background-size: cover;
-}
-
+    }
 
 .form-holder {
       display: flex;
@@ -76,6 +74,8 @@ html, body {
     text-align: left;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    padding-top: 15px;
+    padding-bottom: 5px;
 }
 
 .form-content h3 {
@@ -180,15 +180,18 @@ html, body {
     {% include 'user/header.html' %}
 </div>
 
-{% include 'user/navbar.html' %}
+<div id="navbar">
+    {% include 'user/navbar.html' %}
+</div>
 
     <div class="form-body">
         <div class="row">
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Register Today</h3>
-                        <p>Fill in the data below.</p>
+                        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: white"> Register</h1>
+<!--                        <h3>Register Today</h3>-->
+<!--                        <p>Fill in the data below.</p>-->
                         <form class="requires-validation" novalidate>
 
                             <div class="col-md-12">
@@ -233,7 +236,7 @@ html, body {
                             <br>
                             <p class="change_link">
 					Already a member ?
-					<a href="/login" class="to_register">Login </a>
+					<a href="/login" class="to_register" style="color: #0a53be">Login </a>
 				</p>
                         </form>
                     </div>
