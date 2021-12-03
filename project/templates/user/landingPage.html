@@ -5,22 +5,22 @@
 -->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-        <link rel="import" href="header.html">
-        <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
-        <link rel="stylesheet" href="../../static/css/styles.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-        <title>Home Page</title>
+    <title>Home Page</title>
 
-        <style>
+    <style>
 
             *{
                     margin: 0;
@@ -55,57 +55,22 @@
                 height: 70px;
             }
 
+
         </style>
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div id="header">
-            {% include 'user/header.html' %}
-        </div>
-        {% include 'user/navbar.html' %}
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+{% include 'user/navbar.html' %}
 
-<!--        &lt;!&ndash; Background image (src in styles.css)&ndash;&gt;-->
-<!--        <div class=p-5 text-center bg-image id="intro">-->
-<!--            <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">-->
-<!--                <div class="d-flex justify-content-center align-items-center h-100">-->
-<!--                    <div class="text-white text-center">-->
+<main>
 
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; Background image &ndash;&gt;-->
-
-        <main>
-
-            <!--Cards for recently added tutors-->
+    <!--Cards for recently added tutors-->
 
             <h3 style="text-align: center"><b>RECENTLY ADDED TUTORS</b></h3>
-
-<!--            <div class="row row-cols-1 row-cols-md-3 g-4">-->
-
-<!--                {% for i in tutorDict %}-->
-
-<!--                <div class="card mb-3" style="max-width: 540px;">-->
-<!--                    <div class="row g-0">-->
-<!--                        <div class="col-md-4">-->
-<!--                                <img class="avatar-img" height="100px" width="100px" src="static/dataset/{{ i[9]}}">-->
-<!--                        </div>-->
-<!--                        <div class="col-md-8">-->
-<!--                            <div class="card-body">-->
-<!--                                <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>-->
-<!--                                <p class="card-text">{{i[10]}}</p>-->
-<!--                                <p class="card-text"><small class="text-muted"> <a href="#" class="card-link">Profile</a> &lt;!&ndash; (may remove if tutor profile page-->
-<!--                        unnecessary)&ndash;&gt;</small></p>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
-
-<!--                {% endfor %}-->
-
-<!--            </div>-->
 
             <div class="row" style="text-align: center; justify-content: center" >
                 {% for i in tutorDict %}
@@ -202,20 +167,17 @@
                             </ul>
                         </li>
                     </ul>
-
                 </section>
-
             </div>
+</main>
 
-        </main>
+<script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
 
-        <script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
-        <script src="../../static/js/bootstrap.js"></script>
+<!--  Search end-->
 
-        <!--  Search end-->
+{% include 'user/footer.html' %}
 
-        {% include 'user/footer.html' %}
-
-    </body>
+</body>
 
 </html>
