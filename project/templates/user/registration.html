@@ -192,7 +192,7 @@ body {
                         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: white"> Register</h1>
 <!--                        <h3>Register Today</h3>-->
 <!--                        <p>Fill in the data below.</p>-->
-                        <form class="requires-validation" novalidate>
+                        <form role="form" action="/insertData" method="post" class="requires-validation">
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="name" placeholder="Full Name" required>
@@ -231,7 +231,7 @@ body {
 
 
                             <div class="form-button mt-3">
-                                <button id="regFormSubmit" type="submit" class="btn btn-primary">Register</button>
+                                <button id="regFormSubmit" class="btn btn-primary">Register</button>
                             </div>
                             <br>
                             <p class="change_link">
@@ -267,24 +267,24 @@ body {
 
     </script>
 
-    <script>
-    const email = document.getElementById("inputEmail");
-    const submitButton = document.getElementById("regFormSubmit");
+<!--    <script>-->
+<!--    const email = document.getElementById("inputEmail");-->
+<!--    const submitButton = document.getElementById("regFormSubmit");-->
 
-    submitButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        validateEmail(email);
-    });
+<!--    submitButton.addEventListener('click', (e) => {-->
+<!--        e.preventDefault();-->
+<!--        validateEmail(email);-->
+<!--    });-->
 
-    function validateEmail(email){
-        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){
-            return;
-        }
-        else{
-            alert("Invalid Email.")
-        }
-    }
-    </script>
+<!--    function validateEmail(email){-->
+<!--        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){-->
+<!--            return;-->
+<!--        }-->
+<!--        else{-->
+<!--            alert("Invalid Email.")-->
+<!--        }-->
+<!--    }-->
+<!--    </script>-->
 
 {% include 'user/footer.html' %}
 
