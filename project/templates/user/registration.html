@@ -208,13 +208,13 @@ body {
 
 
                             <div class="col-md-12">
-                                <input class="form-control" type="password" name="password" placeholder="Password" required>
+                                <input class="form-control" id="pw" type="password" name="password" placeholder="Password" required>
                                 <div class="valid-feedback">Password field is valid!</div>
                                 <div class="invalid-feedback">Password field cannot be blank!</div>
                             </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="password" name="cpassword"placeholder="Confirm Password" required>
+                                <input class="form-control" id="rpw" type="password" name="cpassword"placeholder="Confirm Password" required>
                                 <div class="valid-feedback">Password Matches!</div>
                                 <div class="invalid-feedback">Password Needs To Match!</div>
                             </div>
@@ -266,6 +266,34 @@ body {
         })()
 
     </script>
+    <script>  
+        function validateForm() {
+  const userNameValue = userName.value;
+  const pwValue = pw.value;
+  const rpwValue = rpw.value;
+
+  var nonAlphaNumeric = /[^a-zA-Z0-9]/g;
+  if (userNameValue.match(nonAlphaNumeric)) {
+    errorMessage.classList.add('error');
+    errorMessage.innerHTML = 'Please only enter alphanumeric characters';
+    return false;
+  }
+
+  if (pwValue !== rpwValue) {
+    errorMessage.classList.add('error');
+    errorMessage.innerHTML = 'Your password does not match the confirm password';
+    return false;
+
+  }
+
+  if (pwValue.length > 40) {
+    errorMessage.classList.add('error');
+    errorMessage.innerHTML = 'Your password must be less than 40 characters.';
+      return false;
+  }
+  return true;
+}
+        </script>  
 
 <!--    <script>-->
 <!--    const email = document.getElementById("inputEmail");-->
