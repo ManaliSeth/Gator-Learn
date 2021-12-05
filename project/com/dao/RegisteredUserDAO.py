@@ -56,3 +56,8 @@ class RegisteredUserDAO:
         cursor.execute("SELECT * FROM RegisteredUser WHERE role='Tutor' ORDER BY userId DESC LIMIT 3;")
         dict1 = cursor.fetchall()
         return dict1
+
+    def searchData(self, registeredUserVO):
+        cursor.execute("SELECT email,password FROM UnregisteredUser WHERE email = '"+str(registeredUserVO.email)+"' and password = '"+str(registeredUserVO.password)+"'")
+        dict1 = cursor.fetchall()
+        return dict1
