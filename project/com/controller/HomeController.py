@@ -14,6 +14,8 @@ cursor = conn.cursor()
 
 @flask_app.route('/')
 def landingPage():
+    if sessionId in session:
+        print(session)
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
     courseDAO = CourseDAO()

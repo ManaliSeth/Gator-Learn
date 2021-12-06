@@ -78,9 +78,6 @@
         }
 
         #example_info.dataTables_info{
-            /*position: absolute;*/
-            /*left: 0;*/
-            /*top: 50px;*/
             color: #0a53be;
             display: none;
         }
@@ -96,7 +93,6 @@
 
     </style>
 
-    <!--Data Table-->
     <script>
           $(document).ready(function() {
             $('#example').DataTable();
@@ -110,22 +106,8 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <!-- Data Table end   -->
 </head>
 
-<!--<script>-->
-<!--    $(function() {-->
-<!--        $.ajax({-->
-<!--            url: '{{ url_for("search") }}'-->
-<!--            }).done(function (data){-->
-<!--                $('#courseName').autocomplete({-->
-<!--                    source: data,-->
-<!--                    minLength: 2-->
-<!--                });-->
-<!--            });-->
-<!--        });-->
-
-<!--</script>-->
 
 <body>
 
@@ -157,13 +139,11 @@
             <th style="text-align: center">Course Tutored</th>
             <th style="text-align: center">Message</th>
 
-            <!--                        <th>Action</th>-->
         </tr>
         </thead>
         <tbody>
         {% for i in tutorDict %}
         <tr>
-            <!--                            <td>{{i[0]}}</td>-->
             <td style="text-align: center"><img class="avatar-img" height="70px" width="70px" src="static/dataset/{{ i[9]}}"></td>
             <td style="text-align: center">{{i[3]}}</td>
             <td style="text-align: center">{{i[4]}}</td>
@@ -172,34 +152,14 @@
             <td style="text-align: center">{{i[10]}}</td>
             <td style="text-align: center">{{i[13]}}</td>
             <td style="text-align: center">
-<!--                <form class="row gy-2 gx-3 align-items-center">-->
 
-<!--                    <div class="row mb-3">-->
-<!--                        <label for="colFormLabel" class="col-sm-2 col-form-label">Message</label>-->
-<!--                        <div class="col-sm-9">-->
                             <input type="text" class="form-control" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!    ">
-<!--                        </div>-->
-<!--                    </div>-->
                             <br>
-<!--                    <div class="col-auto">-->
                             <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
-<!--                    </div>-->
-<!--                </form>-->
             </td>
         </tr>
         {% endfor %}
         </tbody>
-        <!--                <tfoot>-->
-        <!--                    <tr>-->
-        <!--                        <th>First Name</th>-->
-        <!--                        <th>Last Name</th>-->
-        <!--                        <th>Gender</th>-->
-        <!--                        <th>Email</th>-->
-        <!--                        <th>Description</th>-->
-        <!--                        <th>Role</th>-->
-        <!--                        <th>Course Taught</th>-->
-        <!--                    </tr>-->
-        <!--                </tfoot>-->
     </table>
 
 </div>
