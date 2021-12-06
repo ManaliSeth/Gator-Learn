@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Navigation Bar</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        a{
+           text-decoration: none;
+            color: inherit;
+        }
+
+        #navLinks > a,
+        #navLogo > a{
+            text-decoration: none;
+            color: grey;
+        }
+
+        #navLinks > a:hover,
+        #navLogo > a:hover{
+            text-decoration: underline;
+        }
+
+        nav{
+            width: 100vw;
+            height: 12vh;
+            background-color: #191a19;
+            color: #ffffff;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding-left: 15px;
+        }
+
+        nav > div{
+            display: flex;
+            align-items: center;
+            height: 100%;
+            margin-right: 30px;
+        }
+
+        #navLogo #logo{
+            width: 60px;
+            height: 60px;
+            margin-right: 4px;
+        }
+
+        #navLogo > a{
+            margin-left: 20px;
+        }
+
+        #navInput #inputContainer{
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        #navInput #inputContainer form > *{
+            border-radius: 0;
+        }
+
+        #navInput #inputContainer form{
+            display: flex;
+            align-items: center;
+        }
+
+        #navInput #inputContainer #courseName{
+            border: none;
+            height: 40px;
+            width: 400px;
+            padding: 0 10px;
+            outline: none;
+            color: #000000;
+        }
+
+        #navInput #inputContainer #searchButton{
+            height: 40px;
+            width: 80px;
+            border: none;
+            background-color: #0275d8;
+            color: #ffffff;
+        }
+
+        #navInput #inputContainer #majorDropdown{
+            height: 40px;
+            width: 100px;
+            padding-right: 10px;
+            border: none;
+            background-color: rgb(209, 202, 202);
+            color: #000000;
+            outline: none;
+        }
+
+        #navButtons{
+            margin-left: 30px;
+        }
+
+        #navButtons form button{
+            border: none;
+            width: 90px;
+            height: 40px;
+            border-radius: 5px;
+            margin-right: 4px;
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body>
+<nav>
+    <div id="navLogo">
+        <img src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="logo" id="logo">
+        <h5><a href="/">GATOR LEARN</a></h5>
+        <a href="/aboutUs">ABOUT US</a>
+    </div>
+    <div id="navInput">
+        <div id="inputContainer">
+            <form action="/search" method="post" id="auto_complete">
+                <select name="majorDropdown" id="majorDropdown" data-sel="{{majorSelected}}">
+                    <option>All Majors</option>
+                    {% for i in majorDict %}
+                    <option value="{{i[1]}}">{{i[1]}}</option>
+                    {% endfor %}
+                </select>
+                <input type="text" name="courseName" id="courseName" value="{{search_input}}" placeholder="Course Name">
+                <button id="searchButton" type="submit" value="Search"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+    <div id="navLinks">
+        <a href="/catalog">SFSU COURSE CATALOG</a>
+    </div>
+    <div id="navButtons">
+        <form action="/logout">
+            <button type="submit">Logout</button>
+        </form>
+        <form action="">
+            <button type="submit">Profile</button>
+        </form>
+    </div>
+</nav>
+
+<script>
+
+      <!--  Search-->
+
+      const dropdownBtn = document.getElementById('dropdown-btn');
+      const dropdownList = document.getElementById('dropdown-list');
+      const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));
+      dropdownListItems.forEach((item) => {
+          item.addEventListener('click',() => {
+             dropdownBtn.innerHTML = `${item.innerText}`;
+             dropdownBtn.setAttribute("value",`${item.innerText}`);
+          });
+      });
+
+      const majorDropdown = document.getElementById('majorDropdown');
+      const majorOptions = Array.from(majorDropdown.children);
+      majorOptions.forEach((option) => {
+          if(option.innerHTML === majorDropdown.dataset.sel){
+              option.selected = true;
+          }
+      });
+
+
+</script>
+
+</body>
+</html>
