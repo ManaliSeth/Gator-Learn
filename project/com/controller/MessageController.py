@@ -10,3 +10,5 @@ from flaskext.mysql import MySQL
 import json
 
 @flask_app.route('/searchData',methods=['POST'])
+def searchData():
+    pass

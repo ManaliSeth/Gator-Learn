@@ -119,10 +119,21 @@
 
 <br>
 
-{% if tutorCountDict %}
-<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} out of {{tutorTotalCountDict[0]}} entries for "{{majorSelected}}" and "{{search_input}}" course</h5>
-{% else %}
+<!--Listing particular course tutors-->
+{% if majorSelected == "All Majors"  and search_input != "" %}
+<h5>&nbsp;&nbsp;  &nbsp;&nbsp;Showing {{tutorCountDict[0]}} result for "{{search_input}}" course</h5>
+
+<!--Listing particular Major tutors with no specific course selected-->
+{% elif majorSelected != 'All Majors' and search_input == '' %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} result for "{{majorSelected}}" major</h5>
+
+<!--Listing full catalog-->
+{% elif search_input == "" and majorSelected == "All Majors" %}
 <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{tutorTotalCountDict[0]}} of {{tutorTotalCountDict[0]}} entries for "All Majors"</h5>
+
+<!--Listing particular major and course tutors-->
+{% else %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} out of {{tutorTotalCountDict[0]}} entries for "{{majorSelected}}" major and "{{search_input}}" course</h5>
 {% endif %}
 
 <div class="container-fluid">

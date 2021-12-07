@@ -30,7 +30,7 @@ def login():
     loginVO.loginEmail = loginEmail
     loginVO.loginPassword = loginPassword
 
-    loginCredDict = LoginDAO.checkLoginCredentials(loginVO)
+    loginCredDict = loginDAO.checkLoginCredentials(loginVO)
     print(loginCredDict)
 
     if len(loginCredDict) == 0:

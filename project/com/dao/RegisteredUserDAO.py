@@ -25,12 +25,12 @@ class RegisteredUserDAO:
 
         search_input = "%" + str(registeredUserVO.search_input) + "%"
         cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '" + search_input + "'")
-        cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught='"+str(registeredUserVO.search_input)+"' ")
-        cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
+        cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '"+ search_input +"' ")
+        # cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
         dict1 = cursor.fetchall()
         dict2 = cursor2.fetchall()
-        dict3 = cursor3.fetchall()
-        return dict1, dict2, dict3
+        # dict3 = cursor3.fetchall()
+        return dict1, dict2
 
     def viewMajorTutors(self,registeredUserVO):
         
@@ -46,8 +46,7 @@ class RegisteredUserDAO:
 
         search_input = "%" + str(registeredUserVO.search_input) + "%"
         cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '" + search_input + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "')")
-        cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught='" + str(
-            registeredUserVO.search_input) + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "') ")
+        cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '" + search_input + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "') ")
         cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
         dict1 = cursor.fetchall()
         dict2 = cursor2.fetchall()

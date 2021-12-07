@@ -65,6 +65,7 @@ def search():
     registeredUserVO.search_input = search_input
     registeredUserVO.selectedMajor = selectedMajor
 
+    # Listing full catalog
     if search_input=='' and selectedMajor=="All Majors":
         tutorDict,tutorTotalCountDict = registeredUserDAO.viewTutors()
         print(tutorDict)
@@ -74,10 +75,11 @@ def search():
         print(list2)
         tutorTotalCountDict=list2
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
+    # Listing particular course tutors
     elif selectedMajor=='All Majors' and search_input != '':
-        tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
+        tutorDict,tutorCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
         print(tutorCountDict)
         list3, list4 = [], []
@@ -86,13 +88,14 @@ def search():
         print("list3",list3)
         tutorCountDict = list3
 
-        for i in tutorTotalCountDict:
-            list4.append(i[0])
-        print("list4",list4)
-        tutorTotalCountDict = list4
+        # for i in tutorTotalCountDict:
+        #     list4.append(i[0])
+        # print("list4",list4)
+        # tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
+    # Listing particular Major tutors with no specific course selected
     elif selectedMajor!='All Majors' and search_input == '':
         tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorTutors(registeredUserVO)
         print(tutorDict)
@@ -110,6 +113,7 @@ def search():
 
         return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
+    # Listing particular major and course tutors
     else:
         tutorDict, tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorCourseTutors(registeredUserVO)
         print(tutorDict)
