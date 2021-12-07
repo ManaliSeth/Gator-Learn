@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <title>Manali Seth</title>
     <meta charset="UTF-8">
@@ -46,6 +46,7 @@
 
   <body>
     {% include 'user/header.html'%}
+
     <div class="row">
       <div class="side">
         <h2 style="display: block; left: 0px;">Manali Seth</h2>
@@ -56,26 +57,29 @@
       </div>
       <div class="main">
         <h2>About Me</h2>
-        <p>I am a first semester Grad student at SFSU pursuing Master's in Computer Science.
+        <p style="font-size: 15px ">I am a first semester Grad student at SFSU pursuing Master's in Computer Science.
            I have undergraduated from Charotar University of Science and Technology in India.
            My hobbies include drawing and listening music.
            I like to interact with people and know about different cultures. </p>
+
         <br>
-        <p><b>Areas of Interest</b></p>
-        <ul>
+        <p style="font-size: 18px"><b>Areas of Interest</b></p>
+        <ul style="font-size: 14px">
           <li>Data Analysis</li>
           <li>Machine Learning</li>
           <li>Computer Vision</li>
         </ul>
 
         <br>
-        <p><b>Contact info:</b></p>
-        <p><b>Email:</b> <a href="mailto:mseth@mail.sfsu.edu" class="mailto">mseth@mail.sfsu.edu</a></p>
-        <p><b>Github:</b> <a href="https://github.com/Manali-Seth" class="btn btn-primary">Manali Seth</a> </p>
-        <p><b>SFSU ID:</b> 567891234</p>
-        <p><b>Phone Number:</b> +1 (667) 890-1234</p>
+        <p style="font-size: 18px"><b>Contact info:</b></p>
+        <p style="font-size: 14px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <a href="mailto:mseth@mail.sfsu.edu" class="mailto">mseth@mail.sfsu.edu</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Github: <a href="https://github.com/Manali-Seth" class="btn btn-primary">Manali Seth</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SFSU ID: 567891234<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number: +1 (667) 890-1234</p>
       </div>
     </div>
+
     {% include 'user/footer.html' %}
   </body>
 </html>
