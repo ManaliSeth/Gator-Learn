@@ -23,7 +23,8 @@ class RegisteredUserDAO:
 
     def viewCourseTutors(self,registeredUserVO):
 
-        cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught='"+str(registeredUserVO.search_input)+"'")
+        search_input = "%" + str(registeredUserVO.search_input) + "%"
+        cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '" + search_input + "'")
         cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught='"+str(registeredUserVO.search_input)+"' ")
         cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
         dict1 = cursor.fetchall()
@@ -32,6 +33,7 @@ class RegisteredUserDAO:
         return dict1, dict2, dict3
 
     def viewMajorTutors(self,registeredUserVO):
+        
         cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "')")
         cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "') ")
         cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
@@ -41,8 +43,9 @@ class RegisteredUserDAO:
         return dict1, dict2, dict3
 
     def viewMajorCourseTutors(self,registeredUserVO):
-        cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught='" + str(
-            registeredUserVO.search_input) + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "')")
+
+        search_input = "%" + str(registeredUserVO.search_input) + "%"
+        cursor.execute("Select * From RegisteredUser WHERE role='Tutor' and courseTaught LIKE '" + search_input + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "')")
         cursor2.execute("Select count(*) From RegisteredUser WHERE role='Tutor' and courseTaught='" + str(
             registeredUserVO.search_input) + "' and majorId in (Select majorId from Major where majorName ='" + registeredUserVO.selectedMajor + "') ")
         cursor3.execute("Select count(*) From RegisteredUser WHERE role='Tutor'")
