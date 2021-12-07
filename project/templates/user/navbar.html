@@ -148,20 +148,28 @@
 
 <script>
 
-    // Search
+    // Alphanumeric without regex
 
     const input = document.getElementById("courseName");
 
-    function validateSearchInput(input){
-        if(input.value.length < 40){
-            return true;
+    function validateSearchInput(input) {
+        const validInput = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
+
+        for (let char of input.value) {
+            if (!validInput.includes(char)) {
+                alert("Search input must be alphanumeric.");
+                return false;
+            }
         }
-        else{
+
+        if (input.value.length <= 40) {
+            return true;
+        } else {
             alert("Search input must be less than 40 characters.");
             return false;
         }
     }
-
+    
       const dropdownBtn = document.getElementById('dropdown-btn');
       const dropdownList = document.getElementById('dropdown-list');
       const dropdownListItems = Array.from(document.getElementsByClassName('dropdown-list-item'));
