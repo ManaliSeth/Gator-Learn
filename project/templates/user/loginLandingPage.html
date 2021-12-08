@@ -1,0 +1,197 @@
+<!--
+* Class: CSC-648 Fall 2021
+* Author: Htet, Manali
+* Description: Home page when first visiting site; contains logic for search
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Home Page</title>
+
+    <style>
+
+            *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+            }
+
+            body{
+                /*height: 100vh;*/
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                background-color: #34383a;
+                background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
+                background-size: cover;
+            }
+
+            #header{
+                height: 17%;
+                /*padding-bottom: 10px;*/
+            }
+
+            .container > form{
+                display: flex;
+            }
+
+            .container > *{
+                margin: 0 10px;
+            }
+
+            #space{
+                height: 70px;
+            }
+
+
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+{% include 'user/loginNavbar.html' %}
+
+<main>
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-10">
+            <div class="card">
+                <div class="card-header">
+                    TUTOR POSTING
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Please fill out the form to publish your availability to tutor courses.</h5>
+                    <form class="row g-3">
+                        <div class="col-md-6">
+                            <label for="inputText" class="form-label">Text</label>
+                            <input type="text" class="form-control" id="inputText">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="inputMajor" class="form-label">MAJOR</label>
+                            <select id="inputMajor" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="inputCourse" class="form-label">COURSE</label>
+                            <select id="inputCourse" class="form-select">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="inputUpload" class="form-label">Upload CV</label>
+                            <input type="file" class="form-control" id="inputUpload">
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckSu">
+                            <label class="form-check-label" for="flexCheckSu">
+                                Sunday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckMon">
+                            <label class="form-check-label" for="flexCheckMon">
+                                Monday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckTu">
+                            <label class="form-check-label" for="flexCheckTu">
+                                Tuesday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckWed">
+                            <label class="form-check-label" for="flexCheckWed">
+                                Wednesday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckTh">
+                            <label class="form-check-label" for="flexCheckTh">
+                                Thursday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckF">
+                            <label class="form-check-label" for="flexCheckF">
+                                Friday
+                            </label>
+                        </div>
+                        <div class="form-check col-md-1">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckSat">
+                            <label class="form-check-label" for="flexCheckSat">
+                                Saturday
+                            </label>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label" for="gridCheck">
+                                    Check if available for group tutoring
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Send post to admin for approval</button>
+                        </div>
+                    </form>
+                    <p class="card-text">May take up to 24-48 hours for post to be published and be live.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Cards for recently added tutors-->
+
+    <h3 style="text-align: center"><b>RECENTLY ADDED TUTORS</b></h3>
+
+    <div class="row" style="text-align: center; justify-content: center">
+        {% for i in tutorDict %}
+        <div class="col-md-3">
+            <div class="card" style="width: 250px;">
+                <img class="card-img-top" src="static/dataset/{{ i[9]}}" alt="Tutor Image">
+                <div class="card-body">
+                    <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>
+                    <p class="card-text">{{i[10]}}</p>
+                    <a href="#" class="btn btn-primary">Profile</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div id="space"></div>
+</main>
+
+<script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+
+<!--  Search end-->
+
+{% include 'user/footer.html' %}
+
+</body>
+
+</html>
