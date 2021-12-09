@@ -24,9 +24,10 @@ class LoginDAO:
     def checkLoginCredentials(self, loginVO):
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Login WHERE loginEmail = '"+str(loginVO.loginEmail)+"' and password = '"+str(loginVO.loginPassword)+"'")
+        cursor.execute("SELECT * FROM Login WHERE loginEmail = '"+str(loginVO.loginEmail)+"' and loginPassword = '"+str(loginVO.loginPassword)+"'")
         dict1 = cursor.fetchall()
         print(dict1)
         conn.commit()
         cursor.close()
         conn.close()
+        return dict1

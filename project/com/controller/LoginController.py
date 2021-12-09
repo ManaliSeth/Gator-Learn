@@ -21,7 +21,7 @@ def login():
     courseDAO = CourseDAO()
     courseDict = courseDAO.viewCourseName()
 
-    print("MajorDict=", majorDict)
+    print("loginMajorDict=", majorDict)
     print("CourseDict=", courseDict)
 
     loginEmail = request.form['loginEmail']
@@ -33,13 +33,20 @@ def login():
     loginCredDict = loginDAO.checkLoginCredentials(loginVO)
     print(loginCredDict)
 
-    if len(loginCredDict) == 0:
+    list1 =[]
+    for i in loginCredDict:
+        list1.append(i)
+    print("list1=", list1)
+    loginCredDict = list1
+    print(loginCredDict)
+
+    if len(loginCredDict[0]) == 0:
         return render_template("user/login.html", errorMsg="Username or password is incorrect")
 
 
-    elif loginVO.loginPassword != loginCredDict[0]['loginPassword']:
+    elif loginVO.loginPassword != loginCredDict[0][2]:
         return render_template('user/login.html', errorMsg2='Password is Incorrect !')
 
     else:
-        session['loginId'] = loginCredDict[0]['loginId']
-        return redirect((url_for('tutorDashboard')))
+        session['loginId'] = loginCredDict[0][0]
+        return redirect((url_for('loginLandingPage')))
