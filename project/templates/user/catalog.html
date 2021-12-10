@@ -27,13 +27,13 @@
 
         body{
             height: 100vh;
-            width: 100vw;
+            /*width: 100vw;*/
             display: flex;
             flex-direction: column;
         }
 
         #header{
-            height: 15%;
+            height: 17%;
         }
 
         .container > form{
@@ -75,6 +75,11 @@
             color: #0a53be;
             display: none;
         }
+
+        .table{
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 
 
@@ -99,13 +104,17 @@
         {% include 'user/header.html' %}
     </div>
 
-    {% include 'user/navbar.html' %}
+    <div id="navbar">
+        {% include 'user/navbar.html' %}
+    </div>
 
     <br>
+    <h3 style="text-align: center">  SFSU Course Catalog</h3>
+
     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{catalogTotalCountTuple[0]}} of {{catalogTotalCountTuple[0]}} entries for "Available SFSU Majors"</h5>
 
     <div class="container-fluid">
-         <table id="example" class="table table-hover" style="width:100%;">
+         <table id="example" class="table table-hover" >
                 <thead>
                     <tr>
                         <th>Major Name</th>
