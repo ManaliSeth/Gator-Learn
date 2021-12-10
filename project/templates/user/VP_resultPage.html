@@ -163,10 +163,11 @@
             <td style="text-align: center">{{i[10]}}</td>
             <td style="text-align: center">{{i[13]}}</td>
             <td style="text-align: center">
-
-                            <input type="text" class="form-control" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!    ">
-                            <br>
-                            <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
+                            <form action="/sendMessage" method="post">
+                                <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!    ">
+                                <br>
+                                <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
+                            </form>
             </td>
         </tr>
         {% endfor %}

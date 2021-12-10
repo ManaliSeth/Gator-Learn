@@ -6,3 +6,4 @@ from project.com.controller import RegisteredUserController
 from project.com.controller import UnregisteredUserController
 from project.com.controller import UserController
 from project.com.controller import LoginController
+from project.com.controller import MessageController
