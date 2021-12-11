@@ -26,4 +26,4 @@ def loginData():
         return render_template("user/login.html", errorMsg="Username or password is incorrect")
 
 
-    return render_template("user/tutorDashboard2.html")
+    return render_template("user/loginLandingPage.html")

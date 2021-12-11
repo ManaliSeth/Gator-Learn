@@ -34,7 +34,7 @@ def register():
 
     loginVO.loginEmail = loginEmail
     loginVO.loginPassword = loginPassword
-    loginVO.loginStatus = "active"
+    loginVO.loginStatus = "inactive"
 
     print(loginVO.loginEmail)
     print(loginVO.loginPassword)

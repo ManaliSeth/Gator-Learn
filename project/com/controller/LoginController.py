@@ -21,7 +21,7 @@ def login():
     courseDAO = CourseDAO()
     courseDict = courseDAO.viewCourseName()
 
-    print("loginMajorDict=", majorDict)
+    print("MajorDict=", majorDict)
     print("CourseDict=", courseDict)
 
     loginEmail = request.form['loginEmail']
@@ -48,5 +48,13 @@ def login():
         return render_template('user/login.html', errorMsg2='Password is Incorrect !')
 
     else:
+        loginVO.loginStatus = "active"
+        loginDAO.updateLoginStatus(loginVO)
         session['loginId'] = loginCredDict[0][0]
-        return redirect((url_for('loginLandingPage')))
+        return redirect(url_for('loginLandingPage'))
+
+
+@flask_app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('landingPage'))

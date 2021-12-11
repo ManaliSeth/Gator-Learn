@@ -41,6 +41,25 @@ def loadAboutUs():
 #     print("CourseDict=",courseDict)
 #     return render_template('user/VP_testHomePage.html',majorDict=majorDict,courseDict=courseDict)
 
+@flask_app.route('/userLoadLogin',methods=['GET'])
+def userLoadlogin():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    return render_template('user/login.html', majorDict=majorDict, courseDict=courseDict)
+
+@flask_app.route('/userLoadRegister',methods=['GET'])
+def userLoadRegister():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    return render_template('user/registration.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/search',methods=['GET','POST'])
 def search():
@@ -149,37 +168,8 @@ def autocomplete():
     print(courseName)
     return Response(json.dumps(courseName), mimetype='application/json')
 
-@flask_app.route('/userLoadLogin',methods=['GET'])
-def userLoadlogin():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    return render_template('user/login.html', majorDict=majorDict, courseDict=courseDict)
 
-@flask_app.route('/userLoadRegister',methods=['GET'])
-def userLoadRegister():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    return render_template('user/registration.html', majorDict=majorDict, courseDict=courseDict)
-
-@flask_app.route('/tutorDashboard',methods=['GET','POST'])
-def tutorDashboard():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    return render_template('user/tutorDashboard2.html', majorDict=majorDict, courseDict=courseDict)
-
-@flask_app.route('/loginLandingPage')
+@flask_app.route('/loginLandingPage',methods=['GET','POST'])
 def loginLandingPage():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
@@ -188,6 +178,16 @@ def loginLandingPage():
     print("MajorDict=", majorDict)
     print("CourseDict=", courseDict)
     return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict)
+
+@flask_app.route('/tutorPosting')
+def tutorPosting():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    return render_template('user/tutorPosting.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_AP')
 def loadProfile_AP():

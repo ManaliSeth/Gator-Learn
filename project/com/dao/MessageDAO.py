@@ -6,12 +6,12 @@ from flaskext.mysql import MySQL
 
 mysql = MySQL()
 mysql.init_app(flask_app)
-conn = mysql.connect()
-cursor = conn.cursor()
 
 class MessageDAO():
 
     def insertMessage(self,messageVO):
+        conn = mysql.connect()
+        cursor = conn.cursor()
         cursor.execute("Insert into Messaging (msgDate, msgTime, msgDesc) values('"+ str(messageVO.msgDate) +"', '"+ str(messageVO.msgTime) +"', '"+ messageVO.msgDesc +"')")
         dict1 = cursor.fetchall()
         conn.commit()

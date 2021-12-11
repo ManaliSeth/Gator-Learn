@@ -14,19 +14,25 @@ import datetime
 
 @flask_app.route('/sendMessage',methods=['POST'])
 def sendMessage():
-    messageVO = MessageVO()
-    messageDAO = MessageDAO()
 
-    currentDT = datetime.datetime.now()
+    if 'loginId' in session:
+        print("Session loginId = ",session['loginId'])
+        messageVO = MessageVO()
+        messageDAO = MessageDAO()
 
-    msgDesc = request.form['msgDesc']
-    msgDate = currentDT.strftime("%Y/%m/%d")
-    msgTime = currentDT.strftime("%H:%M:%S")
+        currentDT = datetime.datetime.now()
 
-    messageVO.msgDesc = msgDesc
-    messageVO.msgDate = msgDate
-    messageVO.msgTime = msgTime
+        msgDesc = request.form['msgDesc']
+        msgDate = currentDT.strftime("%Y/%m/%d")
+        msgTime = currentDT.strftime("%H:%M:%S")
 
-    messageDAO.insertMessage(messageVO)
+        messageVO.msgDesc = msgDesc
+        messageVO.msgDate = msgDate
+        messageVO.msgTime = msgTime
 
-    return redirect(url_for('loginLandingPage'))
+        messageDAO.insertMessage(messageVO)
+
+        return redirect(url_for('loginLandingPage'))
+
+    else:
+        return redirect(url_for('userLoadRegister'))

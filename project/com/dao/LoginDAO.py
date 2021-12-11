@@ -31,3 +31,15 @@ class LoginDAO:
         cursor.close()
         conn.close()
         return dict1
+
+    def updateLoginStatus(self,loginVO):
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        cursor.execute(
+            "UPDATE Login SET loginStatus = '"+ loginVO.loginStatus +"'  ")
+        dict1 = cursor.fetchall()
+        print(dict1)
+        conn.commit()
+        cursor.close()
+        conn.close()
+        return dict1
