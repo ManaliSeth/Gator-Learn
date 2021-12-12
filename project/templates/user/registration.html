@@ -222,9 +222,9 @@ body {
                             </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="email" name="loginEmail" id="inputEmail" placeholder="E-mail Address" pattern=".+@sfsu\.edu" required>
-                                <div class="valid-feedback">Email field is valid!</div>
-                                <div class="invalid-feedback">Email field cannot be blank and Can only be @sfsu.edu!</div>
+                                <input class="form-control" type="email" name="loginEmail" id="inputEmail" placeholder="E-mail Address" pattern=".+@mail\.sfsu\.edu" required>
+                                <div class="valid-feedback">Email is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank and can only be @mail.sfsu.edu!</div>
                             </div>
 
 
@@ -234,8 +234,8 @@ body {
                                 required
                             
                                 onchange="form.loginConfirmPassword.pattern = RegExp.escape(this.value);">
-                                <div class="valid-feedback">Password Matches!</div>
-                                <div class="invalid-feedback">Password Needs To Match!</div>
+                                <div class="valid-feedback">Password is valid!</div>
+                                <div class="invalid-feedback">Password cannot be blank!</div>
                                 
                                 <div id="pw-alert"></div>
                             </div>
