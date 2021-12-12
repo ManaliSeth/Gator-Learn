@@ -22,47 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script defer>
-
-  function checkInputs() {
-	// trim to remove the whitespaces
-	const usernameValue = username.value.trim();
-	const emailValue = email.value.trim();
-	const passwordValue = pw.value.trim();
-	const password2Value = rpw.value.trim();
-    //creates tag for the div
-	
-	if(usernameValue === '') {
-        var node = document.getElementById('username-message');
-        node.innerHTML('<div class="invalid-feedback">Username field cannot be blank!</div>')
-	} else {
-		node.innerHTML(' <div class="valid-feedback">Username field is valid!</div>')
-	}
-	
-	// if(emailValue === '') {
-	// 	setErrorFor(email, 'Email cannot be blank');
-	// } else if (!isEmail(emailValue)) {
-	// 	setErrorFor(email, 'Not a valid email');
-	// } else {
-	// 	setSuccessFor(email);
-	// }
-	
-	if(passwordValue === '') {
-		var pwAlert = document.getElementById('pw-alert');
-        pwAlert.innerHTML(<div class="invalid-feedback">Password field cannot be blank!</div>);
-	} else {
-		pwAlert.innerHTML( <div class="valid-feedback">Password field is valid!</div>;)
-	}
-	
-	if(password2Value === '') {
-		setErrorFor(password2, 'Password2 cannot be blank');
-	} else if(passwordValue !== password2Value) {
-		setErrorFor(password2, 'Passwords does not match');
-	} else{
-		setSuccessFor(password2);
-	}
-}
-        </script>  
+     
 </head>
 
 <style>
@@ -245,25 +205,30 @@ body {
                         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: white"> Register</h1>
 <!--                        <h3>Register Today</h3>-->
 <!--                        <p>Fill in the data below.</p>-->
-                        <form id="form" role="form" action="/register" method="POST" class="requires-validation">
+                        <form id="form" role="form" action="/register" method="POST" class="requires-validation" novalidate>
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="userName" placeholder="Full Name" required>
-                                <div id="username-message"></div>
+                                <div class="valid-feedback">Username is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be empty!</div>
                                
-                                
                             </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="email" name="loginEmail" id="inputEmail" placeholder="E-mail Address" required>
+                                <input class="form-control" type="email" name="loginEmail" id="inputEmail" placeholder="E-mail Address" pattern=".+@sfsu\.edu" required>
                                 <div class="valid-feedback">Email field is valid!</div>
-                                <div class="invalid-feedback">Email field cannot be blank!</div>
+                                <div class="invalid-feedback">Email field cannot be blank and Can only be @sfsu.edu!</div>
                             </div>
 
 
                             <div class="col-md-12">
-                                <input class="form-control" id="pw" type="password" name="loginPassword" placeholder="Password" required>
-                               
+                                <input class="form-control" id="pw" type="password" name="loginPassword" 
+                                placeholder="Password" 
+                                required
+                            
+                                onchange="form.loginConfirmPassword.pattern = RegExp.escape(this.value);">
+                                <div class="valid-feedback">Password Matches!</div>
+                                <div class="invalid-feedback">Password Needs To Match!</div>
                                 
                                 <div id="pw-alert"></div>
                             </div>
@@ -303,40 +268,35 @@ body {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+            // polyfill for RegExp.escape
+            if(!RegExp.escape) {
+              RegExp.escape = function(s) {
+                return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+              };
+            }
+          
+          </script>
         
-<!--    <script>-->
-<!--        (function () {-->
-<!--            'use strict'-->
-<!--            const form = document.getElementById('form')-->
-<!--            form.addEventListener('submit', e => {-->
-<!--	        e.preventDefault();-->
-<!--	-->
-<!--	        checkInputs();-->
-<!--    });-->
-<!--        -->
-<!--        })()-->
+<script>
+    (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.requires-validation')
+        Array.from(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
 
-<!--    </script>-->
-    
-
-<!--    <script>-->
-<!--    const email = document.getElementById("inputEmail");-->
-<!--    const submitButton = document.getElementById("regFormSubmit");-->
-
-<!--    submitButton.addEventListener('click', (e) => {-->
-<!--        e.preventDefault();-->
-<!--        validateEmail(email);-->
-<!--    });-->
-
-<!--    function validateEmail(email){-->
-<!--        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){-->
-<!--            return;-->
-<!--        }-->
-<!--        else{-->
-<!--            alert("Invalid Email.")-->
-<!--        }-->
-<!--    }-->
-<!--    </script>-->
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+</script>
 
 {% include 'user/footer.html' %}
 
