@@ -54,7 +54,6 @@ body {
       justify-content: center;
       align-items: center;
       text-align: center;
-      min-height: 100vh;
 }
 
 .form-holder .form-content {
@@ -187,7 +186,15 @@ body {
 
 .valid-feedback{
    color: #2acc80;
-} 
+}
+
+#footer{
+        padding-top: 30px;
+        width: 100vw;
+        position:fixed;
+        bottom:0;
+        left:0;
+}
 </style>
 
 <body>
@@ -296,10 +303,13 @@ body {
                 }, false)
             })
     })()
+
+
 </script>
 
-{% include 'user/footer.html' %}
-
+<div id="footer">
+    {% include 'user/footer.html' %}
+</div>
 </body>
 
 </html>

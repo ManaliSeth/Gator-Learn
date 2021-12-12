@@ -35,17 +35,11 @@
     }
 
     body{
-      /*width: 100vw;*/
-      /*min-height: 100vh;*/
-      /*font-family: "Robato",sans-serif;*/
-      /*font-size: 17px;*/
       background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
       background-size: cover;
       display: flex;
       align-items: center;
-      /*justify-content: center;*/
       flex-direction: column;
-      /*padding-top: 115px;*/
     }
 
     #login-form {
@@ -107,7 +101,7 @@
 
     #login-form button[type="submit"]{ margin-top:10px; }
 
-    #login-form .form-reset, #login-form .form-signup{ display: none; }
+    #login-form .form-reset, #login-form .form-login{ display: none; }
 
     .submit{
       background: green;
@@ -118,7 +112,12 @@
     #footer{
         padding-top: 30px;
         width: 100vw;
-    }
+        position:fixed;
+        bottom:0;
+        left:0;
+}
+
+
 </style>
 
 <script>
@@ -157,7 +156,8 @@
             </div>
             <div class="input-group">
               <input type="password" name="loginPassword" id="inputPassword" class="form-control" placeholder="Password" required="">
-            </div>
+                </div>
+
             </br>
             {{errorMsg}}
             <br>
@@ -169,6 +169,7 @@
             <hr>
             <button class="btn btn-primary btn-block" type="button" id="btn-signup"><a href="/userLoadRegister">Not Registered? Register Now</a>  </button>
         </form>
+        <div id="error"></div>
 
         <form action="#" class="form-reset">
                 <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
@@ -202,6 +203,7 @@
             alert("Invalid Email.")
         }
     }
+
 </script>
 
 <div id="footer">
