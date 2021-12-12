@@ -68,7 +68,7 @@
 <main>
 
     <div class="row justify-content-md-center">
-        <div class="col-sm-10">
+        <div class="col-sm-8">
             <div class="card">
                 <div class="card-header">
                     TUTOR POSTING
@@ -76,71 +76,202 @@
                 <div class="card-body">
                     <h5 class="card-title">Please fill out the form to publish your availability to tutor courses.</h5>
                     <form class="row g-3">
-                        <div class="col-md-6">
-                            <label for="inputText" class="form-label">Text</label>
-                            <input type="text" class="form-control" id="inputText">
-                        </div>
-                        <div class="col-md-2">
-                            <label for="inputMajor" class="form-label">MAJOR</label>
+                        <div class="col-md-12">
+                            <label for="inputMajor" class="form-label">Major:</label>
                             <select id="inputMajor" class="form-select">
                                 <option selected>Choose...</option>
                                 <option>...</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
-                            <label for="inputCourse" class="form-label">COURSE</label>
+                        <div class="col-md-12">
+                            <label for="inputCourse" class="form-label">Course:</label>
                             <select id="inputCourse" class="form-select">
                                 <option selected>Choose...</option>
                                 <option>...</option>
                             </select>
                         </div>
-                        <div class="col-md-2">
-                            <label for="inputUpload" class="form-label">Upload CV</label>
+                        <div class="col-md-12">
+                            <label for="inputText" class="form-label">Description:</label>
+                            <input type="text" class="form-control" id="inputText"
+                                   placeholder="Any additional info you'd like to add about your tutoring, such as available hours (optional)">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputUpload" class="form-label">CV upload:</label>
                             <input type="file" class="form-control" id="inputUpload">
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="col-md-12">
+                            <label for="pfpUpload" class="form-label">Profile picture upload (optional):</label>
+                            <input type="file" class="form-control" id="pfpUpload">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="startDate">Start date:</label>
+                            <input type="date" id="startDate" name="trip-start"
+                                   value="2021-08-01"
+                                   min="2021-08-01" max="2022-01-01">
+                            <!--Change dates here-->
+                        </div>
+                        <div class="col-md-12">
+                            <label for="endDate">End date:</label>
+                            <input type="date" id="endDate" name="trip-start"
+                                   value="2022-01-01"
+                                   min="2021-08-01" max="2022-01-01">
+                             <!--Change dates here-->
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fromTime1">Availability from:</label>
+                            <input type="time" id="fromTime1" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime1">to:</label>
+                            <input type="time" id="toTime1" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckSu">
                             <label class="form-check-label" for="flexCheckSu">
                                 Sunday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNASu">
+                            <label class="form-check-label" for="flexCheckNASu">
+                                Not available Sundays
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fromTime2">Availability from:</label>
+                            <input type="time" id="fromTime2" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime2">to:</label>
+                            <input type="time" id="toTime2" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckMon">
                             <label class="form-check-label" for="flexCheckMon">
                                 Monday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNAM">
+                            <label class="form-check-label" for="flexCheckNAM">
+                                Not available Mondays
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fromTime3">Availability from:</label>
+                            <input type="time" id="fromTime3" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime3">to:</label>
+                            <input type="time" id="toTime3" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckTu">
                             <label class="form-check-label" for="flexCheckTu">
                                 Tuesday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNATu">
+                            <label class="form-check-label" for="flexCheckNATu">
+                                Not available Tuesdays
+                            </label>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fromTime4">Availability from:</label>
+                            <input type="time" id="fromTime4" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime4">to:</label>
+                            <input type="time" id="toTime4" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckWed">
                             <label class="form-check-label" for="flexCheckWed">
                                 Wednesday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNAWed">
+                            <label class="form-check-label" for="flexCheckNAWed">
+                                Not available Wednesdays
+                            </label>
+                        </div>
+                         <div class="col-md-3">
+                            <label for="fromTime5">Availability from:</label>
+                            <input type="time" id="fromTime5" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime5">to:</label>
+                            <input type="time" id="toTime5" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckTh">
                             <label class="form-check-label" for="flexCheckTh">
                                 Thursday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNATh">
+                            <label class="form-check-label" for="flexCheckNATh">
+                                Not available Thursdays
+                            </label>
+                        </div>
+                         <div class="col-md-3">
+                            <label for="fromTime6">Availability from:</label>
+                            <input type="time" id="fromTime6" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime6">to:</label>
+                            <input type="time" id="toTime6" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckF">
                             <label class="form-check-label" for="flexCheckF">
                                 Friday
                             </label>
                         </div>
-                        <div class="form-check col-md-1">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNAF">
+                            <label class="form-check-label" for="flexCheckNAF">
+                                Not available Fridays
+                            </label>
+                        </div>
+                         <div class="col-md-3">
+                            <label for="fromTime7">Availability from:</label>
+                            <input type="time" id="fromTime7" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="toTime7">to:</label>
+                            <input type="time" id="toTime7" name="appt"
+                                   min="09:00" max="18:00" required>
+                        </div>
+                        <div class="form-check col-md-3">
                             <input class="form-check-input" type="checkbox" value="" id="flexCheckSat">
                             <label class="form-check-label" for="flexCheckSat">
                                 Saturday
                             </label>
                         </div>
-                        <div class="col-md-4">
+                        <div class="form-check col-md-3">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckNASat">
+                            <label class="form-check-label" for="flexCheckNASat">
+                                Not available Saturdays
+                            </label>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" id="gridCheck">
                                 <label class="form-check-label" for="gridCheck">
