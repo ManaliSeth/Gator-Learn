@@ -1,6 +1,7 @@
 from project import flask_app
 from flask import render_template
 from project.com.dao.MajorDAO import MajorDAO
+from project.com.dao.CourseDAO import CourseDAO
 from project.com.dao.CatalogDAO import CatalogDAO
 from flaskext.mysql import MySQL
 
@@ -13,6 +14,8 @@ cursor = conn.cursor()
 def catalog():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
     catalogDAO = CatalogDAO()
     catalogTuple, catalogTotalCountTuple = catalogDAO.viewCatalog()
     print("Catalog Tuple = ",catalogTuple)
@@ -28,4 +31,4 @@ def catalog():
         list1.append(i[0])
     print("list1=",list1)
     catalogTotalCountTuple = list1
-    return render_template('user/catalog.html',catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
+    return render_template('user/catalog.html', courseDict=courseDict, catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)

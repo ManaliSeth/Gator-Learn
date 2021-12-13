@@ -94,7 +94,7 @@ def search():
         print(list2)
         tutorTotalCountDict=list2
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
     # Listing particular course tutors
     elif selectedMajor=='All Majors' and search_input != '':
@@ -112,7 +112,7 @@ def search():
         # print("list4",list4)
         # tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
     # Listing particular Major tutors with no specific course selected
     elif selectedMajor!='All Majors' and search_input == '':
@@ -130,7 +130,7 @@ def search():
         print("list4",list4)
         tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
     # Listing particular major and course tutors
     else:
@@ -148,7 +148,7 @@ def search():
         print("list4", list4)
         tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', tutorDict=tutorDict, tutorCountDict=tutorCountDict,
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict,
                                tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict,
                                search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
 
