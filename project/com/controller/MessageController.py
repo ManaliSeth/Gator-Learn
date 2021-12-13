@@ -22,10 +22,14 @@ def sendMessage():
 
         currentDT = datetime.datetime.now()
 
+        msgTo_userId = request.form['tutorId']
+        msgFrom_userId = session['loginId']
         msgDesc = request.form['msgDesc']
         msgDate = currentDT.strftime("%Y/%m/%d")
         msgTime = currentDT.strftime("%H:%M:%S")
 
+        messageVO.msgTo_userId = msgTo_userId
+        messageVO.msgFrom_userId = msgFrom_userId
         messageVO.msgDesc = msgDesc
         messageVO.msgDate = msgDate
         messageVO.msgTime = msgTime

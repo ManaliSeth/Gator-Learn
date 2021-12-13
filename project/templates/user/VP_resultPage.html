@@ -164,6 +164,7 @@
             <td style="text-align: center">{{i[13]}}</td>
             <td style="text-align: center">
                             <form action="/sendMessage" method="post">
+                                <input type="hidden" value="{{i[0]}}" class="form-control" name="tutorId">
                                 <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!    ">
                                 <br>
                                 <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
