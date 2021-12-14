@@ -1,12 +1,10 @@
 from project import flask_app
-from flask import render_template,session, request, Response
+from flask import render_template,session, request
 from project.com.dao.MajorDAO import MajorDAO
 from project.com.dao.CourseDAO import CourseDAO
-from project.com.vo.RegisteredUserVO import RegisteredUserVO
-from project.com.dao.RegisteredUserDAO import RegisteredUserDAO
+from project.com.vo.TutorPostingVO import TutorPostingVO
+from project.com.dao.TutorPostingDAO import TutorPostingDAO
 from flaskext.mysql import MySQL
-import json
-
 mysql = MySQL()
 mysql.init_app(flask_app)
 conn = mysql.connect()
@@ -22,8 +20,8 @@ def landingPage():
     courseDict = courseDAO.viewCourseName()
     print("MajorDict=",majorDict)
     print("CourseDict=",courseDict)
-    registeredUserDAO = RegisteredUserDAO()
-    tutorDict = registeredUserDAO.viewRecentlyAddedTutors()
+    tutorPostingDAO = TutorPostingDAO()
+    tutorDict = tutorPostingDAO.viewRecentTutorPostings()
     print("Tutor Dict=",tutorDict)
     return render_template('user/landingPage.html', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict)
 
@@ -62,9 +60,12 @@ def search():
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
     courseDAO = CourseDAO()
-    registeredUserVO = RegisteredUserVO()
-    registeredUserDAO = RegisteredUserDAO()
     courseDict = courseDAO.viewCourseName()
+    tutorPostingVO = TutorPostingVO()
+    tutorPostingDAO = TutorPostingDAO()
+    # registeredUserVO = RegisteredUserVO()
+    # registeredUserDAO = RegisteredUserDAO()
+
 
     list1=[]
     for i in courseDict:
@@ -77,12 +78,19 @@ def search():
     selectedMajor = request.form['majorDropdown']
     print("selectedMajor=",selectedMajor)
 
-    registeredUserVO.search_input = search_input
-    registeredUserVO.selectedMajor = selectedMajor
+    tutorPostingVO.search_input = search_input
+    tutorPostingVO.selectedMajor = selectedMajor
+
+    # tutorNameDict = tutorPostingDAO.viewTutorName()
+    # print(tutorNameDict)
+
+    # registeredUserVO.search_input = search_input
+    # registeredUserVO.selectedMajor = selectedMajor
 
     # Listing full catalog
     if search_input=='' and selectedMajor=="All Majors":
-        tutorDict,tutorTotalCountDict = registeredUserDAO.viewTutors()
+        tutorDict, tutorTotalCountDict = tutorPostingDAO.viewTutors()
+        # tutorDict,tutorTotalCountDict = registeredUserDAO.viewTutors()
         print(tutorDict)
         list2 = []
         for i in tutorTotalCountDict:
@@ -90,11 +98,12 @@ def search():
         print(list2)
         tutorTotalCountDict=list2
 
-        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=tutorPostingVO.search_input, majorSelected=tutorPostingVO.selectedMajor)
 
     # Listing particular course tutors
     elif selectedMajor=='All Majors' and search_input != '':
-        tutorDict,tutorCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
+        tutorDict, tutorCountDict = tutorPostingDAO.viewCourseTutors(tutorPostingVO)
+        # tutorDict,tutorCountDict = registeredUserDAO.viewCourseTutors(registeredUserVO)
         print(tutorDict)
         print(tutorCountDict)
         list3, list4 = [], []
@@ -108,11 +117,12 @@ def search():
         # print("list4",list4)
         # tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, majorDict=majorDict, search_input=tutorPostingVO.search_input, majorSelected=tutorPostingVO.selectedMajor)
 
     # Listing particular Major tutors with no specific course selected
     elif selectedMajor!='All Majors' and search_input == '':
-        tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorTutors(registeredUserVO)
+        tutorDict, tutorCountDict, tutorTotalCountDict = tutorPostingDAO.viewMajorTutors(tutorPostingVO)
+        # tutorDict,tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorTutors(registeredUserVO)
         print(tutorDict)
         print(tutorCountDict)
         list3, list4 = [], []
@@ -126,11 +136,12 @@ def search():
         print("list4",list4)
         tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict, tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict, search_input=tutorPostingVO.search_input, majorSelected=tutorPostingVO.selectedMajor)
 
     # Listing particular major and course tutors
     else:
-        tutorDict, tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorCourseTutors(registeredUserVO)
+        tutorDict, tutorCountDict, tutorTotalCountDict = tutorPostingDAO.viewMajorCourseTutors(tutorPostingVO)
+        # tutorDict, tutorCountDict, tutorTotalCountDict = registeredUserDAO.viewMajorCourseTutors(registeredUserVO)
         print(tutorDict)
         print(tutorCountDict)
         list3, list4 = [], []
@@ -144,25 +155,30 @@ def search():
         print("list4", list4)
         tutorTotalCountDict = list4
 
-        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict,
+        # return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict, tutorCountDict=tutorCountDict,
+        #                        tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict,
+        #                        search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+
+        return render_template('user/VP_resultPage.html', courseDict=courseDict, tutorDict=tutorDict,
+                               tutorCountDict=tutorCountDict,
                                tutorTotalCountDict=tutorTotalCountDict, majorDict=majorDict,
-                               search_input=registeredUserVO.search_input, majorSelected=registeredUserVO.selectedMajor)
+                               search_input=tutorPostingVO.search_input, majorSelected=tutorPostingVO.selectedMajor)
 
-@flask_app.route('/viewTutors', methods=['GET'])
-def viewTutors():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    registeredUserDAO = RegisteredUserDAO()
-    tutorDict = registeredUserDAO.viewTutors()
-    return render_template('user/VP_resultPage.html',tutorDict=tutorDict, majorDict=majorDict)
-
-@flask_app.route('/_autocomplete', methods=['GET'])
-def autocomplete():
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    courseName = courseDict[1]
-    print(courseName)
-    return Response(json.dumps(courseName), mimetype='application/json')
+# @flask_app.route('/viewTutors', methods=['GET'])
+# def viewTutors():
+#     majorDAO = MajorDAO()
+#     majorDict = majorDAO.viewMajorName()
+#     registeredUserDAO = RegisteredUserDAO()
+#     tutorDict = registeredUserDAO.viewTutors()
+#     return render_template('user/VP_resultPage.html',tutorDict=tutorDict, majorDict=majorDict)
+#
+# @flask_app.route('/_autocomplete', methods=['GET'])
+# def autocomplete():
+#     courseDAO = CourseDAO()
+#     courseDict = courseDAO.viewCourseName()
+#     courseName = courseDict[1]
+#     print(courseName)
+#     return Response(json.dumps(courseName), mimetype='application/json')
 
 
 @flask_app.route('/loginLandingPage',methods=['GET','POST'])
@@ -298,3 +314,4 @@ def loadProfile_CR():
         return render_template('user/loginIntroduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
     else:
         return render_template('user/introduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
+

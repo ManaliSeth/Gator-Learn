@@ -12,7 +12,7 @@ class MessageDAO():
     def insertMessage(self,messageVO):
         conn = mysql.connect()
         cursor = conn.cursor()
-        cursor.execute("Insert into Messaging (msgTo_userId, msgFrom_userId, msgDate, msgTime, msgDesc) values('"+ str(messageVO.msgTo_userId) +"', '"+ str(messageVO.msgFrom_userId) +"','"+ str(messageVO.msgDate) +"', '"+ str(messageVO.msgTime) +"', '"+ messageVO.msgDesc +"')")
+        cursor.execute("Insert into Messaging (msgTo_loginId, msgFrom_loginId, msgDate, msgTime, msgDesc) values('"+ str(messageVO.msgTo_loginId) +"', '"+ str(messageVO.msgFrom_loginId) +"','"+ str(messageVO.msgDate) +"', '"+ str(messageVO.msgTime) +"', '"+ messageVO.msgDesc +"')")
         dict1 = cursor.fetchall()
         conn.commit()
         cursor.close()

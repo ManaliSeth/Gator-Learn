@@ -68,19 +68,27 @@
 
 <main>
 
-    <!--Cards for recently added tutors-->
+    <!--Cards for recent tutor postings-->
 
-            <h3 style="text-align: center"><b>RECENTLY ADDED TUTORS</b></h3>
+            <h3 style="text-align: center"><b>RECENT TUTOR POSTINGS</b></h3>
 
-            <div class="row" style="text-align: center; justify-content: center" >
+            <div class="row" style="justify-content: center" >
                 {% for i in tutorDict %}
                 <div class="col-md-3">
-                <div class="card" style="width: 250px;">
-                      <img class="card-img-top" src="static/dataset/{{ i[9]}}" alt="Tutor Image">
+                <div class="card" style="width: 305px;">
+                      <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[8]}}" alt="Tutor Image">
                       <div class="card-body">
-                        <h5 class="card-title">{{i[3]}} {{i[4]}}</h5>
-                        <p class="card-text">{{i[10]}}</p>
-                        <a href="#" class="btn btn-primary">Profile</a>
+                        <h4 class="card-title" style="text-align: center">{{i[13]}}</h4>
+                          <br>
+                          <h6 class="card-text"><b>Major Tutored:</b> {{i[15]}}</h6>
+                        <h6 class="card-text"><b>Course Tutored:</b> {{i[17]}}</h6>
+                        <form action="/sendMessage" method="post">
+                                <input type="hidden" value="{{i[1]}}" class="form-control" name="tutorId">
+                                <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
+                                <br>
+                                <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
+                        </form>
+
                       </div>
                 </div>
                 </div>
