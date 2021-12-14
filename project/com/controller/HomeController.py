@@ -27,10 +27,6 @@ def landingPage():
     print("Tutor Dict=",tutorDict)
     return render_template('user/landingPage.html', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict)
 
-@flask_app.route('/aboutUs')
-def loadAboutUs():
-    return render_template('user/index.html')
-
 # @flask_app.route('/')
 # def HomePage():
 #     majorDAO = MajorDAO()
@@ -179,30 +175,126 @@ def loginLandingPage():
     print("CourseDict=", courseDict)
     return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict)
 
+@flask_app.route('/aboutUs')
+def loadAboutUs():
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+    if 'loginId' in session:
+        return render_template('user/loginIndex.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/index.html', majorDict=majorDict, courseDict=courseDict)
+
 @flask_app.route('/loadProfile_AP')
 def loadProfile_AP():
-    return render_template('user/introduction_Aarshil.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Aarshil.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Aarshil.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_MS')
 def loadProfile_MS():
-    return render_template('user/introduction_Manali.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Manali.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Manali.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_HS')
 def loadProfile_HS():
-    return render_template('user/introduction_Htet.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Htet.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Htet.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_WY')
 def loadProfile_WY():
-    return render_template('user/introduction_William.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
 
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_William.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_William.html', majorDict=majorDict, courseDict=courseDict)
 @flask_app.route('/loadProfile_SP')
 def loadProfile_SP():
-    return render_template('user/introduction_Seela.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Seela.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Seela.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_AM')
 def loadProfile_AM():
-    return render_template('user/introduction_Aditya.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Aditya.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Aditya.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_CR')
 def loadProfile_CR():
-    return render_template('user/introduction_Christian.html')
+    majorDAO = MajorDAO()
+    majorDict = majorDAO.viewMajorName()
+
+    courseDAO = CourseDAO()
+    courseDict = courseDAO.viewCourseName()
+
+    print("MajorDict=", majorDict)
+    print("CourseDict=", courseDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginIntroduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
+    else:
+        return render_template('user/introduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
