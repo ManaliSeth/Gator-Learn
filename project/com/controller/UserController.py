@@ -46,3 +46,7 @@ def register():
     userDAO.insertRegData(userVO)
 
     return render_template('user/login.html', majorDict=majorDict, courseDict=courseDict)
+
+
+
+

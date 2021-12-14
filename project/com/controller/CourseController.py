@@ -19,3 +19,5 @@ def courseSearch():
         data = cursor.fetchall()
 
     return render_template('search.html', data=data)
+
+

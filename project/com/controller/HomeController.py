@@ -179,16 +179,6 @@ def loginLandingPage():
     print("CourseDict=", courseDict)
     return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict)
 
-@flask_app.route('/tutorPosting')
-def tutorPosting():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    return render_template('user/tutorPosting.html', majorDict=majorDict, courseDict=courseDict)
-
 @flask_app.route('/loadProfile_AP')
 def loadProfile_AP():
     return render_template('user/introduction_Aarshil.html')

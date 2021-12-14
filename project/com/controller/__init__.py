@@ -7,3 +7,4 @@ from project.com.controller import UnregisteredUserController
 from project.com.controller import UserController
 from project.com.controller import LoginController
 from project.com.controller import MessageController
+from project.com.controller import TutorPostingController
