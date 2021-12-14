@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Christian Robert Samatra</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Styling the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
+      }
+
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 800px;
+      }
+
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
+
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    {% include 'user/header.html'%}
+
+    {% include 'user/loginNavbar.html' %}
+
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">Christian Robert Samatra</h2>
+         <div class="card" style="width: 20rem;">
+          <img src="../../static/images/christian.PNG" class="card-img-top" alt="...">
+         </div>
+      </div>
+      <div class="main">
+        <h2>About Me</h2>
+        <p style="font-size: 15px">I am an undergraduate at SFSU. As of now, I am still figuring
+          out how I will proceed after getting a degree in computer science. I love to play video
+        games and go for walk during my free time.</p>
+
+        <br>
+        <p style="font-size: 18px"><b>Areas of Interest</b></p>
+        <ul style="font-size: 14px">
+          <li>Video Games</li>
+          <li>Sports</li>
+        </ul>
+
+
+        <p style="font-size: 18px;"><b>Contact info:</b></p>
+        <p style="font-size: 14px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <a href="mailto:csamatra@mail.sfsu.edu" class="mailto">csamatra@mail.sfsu.edu</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Github: <a href="https://github.com/cbsamatra" class="btn btn-primary">Christian Samatra</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SFSU ID: 3456789152<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number: +1 (645) 678-9012</p>
+      </div>
+    </div>
+    {% include 'user/footer.html' %}
+  </body>
+</html>
