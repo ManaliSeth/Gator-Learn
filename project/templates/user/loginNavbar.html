@@ -11,9 +11,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Navigation Bar</title>
     <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
 
-    <title>Navigation Bar</title>
     <style>
         *{
             box-sizing: border-box;
@@ -119,43 +119,165 @@
             color: #000000;
         }
 
+        .autocomplete {
+        /*the container must be positioned relative:*/
+            position: relative;
+            display: inline-block;
+            z-index: 5;
+        }
+
+        .autocomplete-items {
+            position: relative;
+            border: 1px solid #d4d4d4;
+            border-bottom: none;
+            border-top: none;
+            z-index: 6;
+            color: rgb(0, 0, 0);
+            /*position the autocomplete items to be the same width as the container:*/
+            top: 100%;
+            left: 0;
+            right: 0;
+        }
+
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+            background-color: #fff;
+            color: black;
+            border-bottom: 1px solid #d4d4d4;
+        }
     </style>
 </head>
 <body>
-<nav>
-    <div id="navLogo">
-        <img src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="logo" id="logo">
-        <h5><a href="/loginLandingPage">GATOR LEARN</a></h5>
-        <a href="/aboutUs">ABOUT US</a>
-    </div>
-    <div id="navInput">
-        <div id="inputContainer">
-            <form action="/search" method="post" id="auto_complete">
-                <select name="majorDropdown" id="majorDropdown" data-sel="{{majorSelected}}">
-                    <option>All Majors</option>
-                    {% for i in majorDict %}
-                    <option value="{{i[1]}}">{{i[1]}}</option>
-                    {% endfor %}
-                </select>
-                <input type="text" name="courseName" id="courseName" value="{{search_input}}" placeholder="Course Name">
-                <button id="searchButton" type="submit" value="Search"><i class="fa fa-search"></i></button>
+    <nav>
+        <div id="navLogo">
+            <img src="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" alt="logo" id="logo">
+            <h5><a href="/loginLandingPage">GATOR LEARN</a></h5>
+            <a href="/aboutUs">ABOUT US</a>
+        </div>
+        <div id="navInput">
+            <div id="inputContainer">
+                <form action="/search" autocomplete="off" method="post" id="auto_complete" onsubmit="return validateSearchInput(input);">
+                    <select name="majorDropdown" id="majorDropdown" data-sel="{{majorSelected}}">
+                        <option>All Majors</option>
+                        {% for i in majorDict %}
+                        <option value="{{i[1]}}">{{i[1]}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="autocomplete">
+                        <input type="text" name="courseName" id="courseName" value="{{search_input}}" placeholder="Course Name">
+                    </div>
+                    <button id="searchButton" type="submit" value="Search"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+        <div id="navLinks">
+            <a href="/catalog">SFSU COURSE CATALOG</a>
+        </div>
+        <div id="navButtons">
+            <form action="/logout">
+                <button type="submit">Logout</button>
             </form>
         </div>
-    </div>
-    <div id="navLinks">
-        <a href="/catalog">SFSU COURSE CATALOG</a>
-    </div>
-    <div id="navButtons">
+    </nav>
 
-        <form action="/logout">
-            <button type="submit">Logout</button>
-        </form>
-    </div>
-</nav>
 
 <script>
 
-      <!--  Search-->
+    var courseDictJSON = JSON.parse('{{ courseDict | tojson | safe}}');
+    var courseDict = [];
+
+    for (var i = 0; i < courseDictJSON.length; i++) {
+        courseDict.push(courseDictJSON[i][0]);
+    }
+
+    autocomplete(document.getElementById("courseName"), courseDict);
+
+    function autocomplete(inp, arr) {
+        var currentFocus;
+        inp.addEventListener("input", function(e) {
+            var a, b, i, val = this.value;
+            closeAllLists();
+            if (!val) { return false;}
+            currentFocus = -1;
+            a = document.createElement("DIV");
+            a.setAttribute("id", this.id + "autocomplete-list");
+            a.setAttribute("class", "autocomplete-items");
+            this.parentNode.appendChild(a);
+
+            // Check all entries in courseDict
+            for (i = 0; i < arr.length; i++) {
+                // If (leading substring in courseDict == input) ...
+                if (arr[i].toUpperCase().indexOf(val.toUpperCase()) != -1) {
+                    b = document.createElement("DIV");
+                    b.innerHTML = arr[i].substr(0, arr[i].toUpperCase().indexOf(val.toUpperCase()));
+                    b.innerHTML += "<strong>" + arr[i].substr(arr[i].toUpperCase().indexOf(val.toUpperCase()), val.length) + "</strong>";
+                    b.innerHTML += arr[i].substr(arr[i].toUpperCase().indexOf(val.toUpperCase()) + val.length);
+                    b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+                    b.addEventListener("click", function(e) {
+                        inp.value = this.getElementsByTagName("input")[0].value;
+                        closeAllLists();
+                    });
+                    a.appendChild(b);
+                }
+            }
+        });
+
+        function addActive(x) {
+        /*a function to classify an item as "active":*/
+            if (!x) return false;
+            /*start by removing the "active" class on all items:*/
+            removeActive(x);
+            if (currentFocus >= x.length) currentFocus = 0;
+            if (currentFocus < 0) currentFocus = (x.length - 1);
+            /*add class "autocomplete-active":*/
+            x[currentFocus].classList.add("autocomplete-active");
+        }
+
+        function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+            for (var i = 0; i < x.length; i++) {
+                x[i].classList.remove("autocomplete-active");
+            }
+        }
+
+        function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+            var x = document.getElementsByClassName("autocomplete-items");
+            for (var i = 0; i < x.length; i++) {
+                if (elmnt != x[i] && elmnt != inp) {
+                    x[i].parentNode.removeChild(x[i]);
+                }
+            }
+        }
+
+        /*execute a function when someone clicks in the document:*/
+        document.addEventListener("click", function (e) {
+            closeAllLists(e.target);
+        });
+    }
+
+    // Alphanumeric without regex
+
+    const input = document.getElementById("courseName");
+
+    function validateSearchInput(input) {
+        const validInput = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 ";
+        for (let char of input.value) {
+            if (!validInput.includes(char)) {
+                alert("Search input must be alphanumeric.");
+                return false;
+            }
+        }
+
+        if (input.value.length <= 40) {
+            return true;
+        } else {
+            alert("Search input must be less than 40 characters.");
+            return false;
+        }
+    }
 
       const dropdownBtn = document.getElementById('dropdown-btn');
       const dropdownList = document.getElementById('dropdown-list');
@@ -174,7 +296,6 @@
               option.selected = true;
           }
       });
-
 
 </script>
 
