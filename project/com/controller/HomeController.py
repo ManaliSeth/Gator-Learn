@@ -34,7 +34,7 @@ def landingPage():
     return render_template('user/landingPage.html', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict)
 
 @flask_app.route('/userLoadLogin',methods=['GET'])
-def userLoadlogin():
+def userLoadLogin():
 
     majorDAO = MajorDAO()
 

@@ -244,9 +244,9 @@ body {
                                 <div class="valid-feedback">Password Matches!</div>
                                 <div class="invalid-feedback">Password Needs To Match!</div>
                             </div>
-                            <br>
 
                             <div class="form-check col-md-12">
+                                <br>
                                 <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
                                 <label class="form-check-label">I agree to the <a href="#"
                                             title="TOS and Privacy Rules" class="tos">Terms of Service
@@ -255,9 +255,13 @@ body {
                                 <div class="invalid-feedback">Please confirm that you accept the TOS!</div>
                             </div>
 
-
                             <div class="form-button mt-3">
+                                <br><br>
                                 <button id="regFormSubmit" type="submit" class="btn btn-primary">Register</button>
+
+                                {% for message in get_flashed_messages() %}
+                                    <h4 style="text-align: center; color: red">{{ message }}</h4>
+                                {% endfor %}
                             </div>
                             <br>
                             <p class="change_link">

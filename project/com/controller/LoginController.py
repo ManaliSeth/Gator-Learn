@@ -1,14 +1,15 @@
 
 # Class: CSC-648-848 Fall 2021
-# Author: Mnaali Seth, Seela Pant
+# Author: Manali Seth, Seela Pant
 # Description: Contains flask routes to navigate between frontend and backend. Contains logic
 
 from project import flask_app
-from flask import render_template, session, request, redirect, url_for
+from flask import render_template, session, request, redirect, url_for, flash
 from project.com.vo.LoginVO import LoginVO
 from project.com.dao.LoginDAO import LoginDAO
 from project.com.dao.MajorDAO import MajorDAO
 from project.com.dao.CourseDAO import CourseDAO
+from passlib.hash import pbkdf2_sha256
 
 @flask_app.route('/login', methods=['POST'])
 def login():
@@ -32,64 +33,31 @@ def login():
     loginVO.loginEmail = loginEmail
     loginVO.loginPassword = loginPassword
 
-    # loginCredDict = loginDAO.checkLoginCredentials(loginVO)
-    # print(loginCredDict)
+    # Fetching password for email filled which is to be hashed
+    loginCred = loginDAO.checkPassword(loginVO)
 
-    loginCredDict2 = loginDAO.checkPassword(loginVO)
-    print(loginCredDict2)
-
-    # list1 =[]
-    # for i in loginCredDict2:
-    #     list1.append(i)
-    # print("list1=", list1)
-    # loginCredDict2 = list1
-    # print(loginCredDict2)
-
-    # if len(loginCredDict2) == 0:
-    #     return render_template("user/login.html", errorMsg="Username or password is incorrect")
-    #
-    #
-    # elif loginVO.loginPassword != loginCredDict2:
-    #     return render_template('user/login.html', errorMsg2='Password is Incorrect !')
-    #
-    # else:
-    #     loginVO.loginStatus = "active"
-    #     loginDAO.updateLoginStatus(loginVO)
-    #     session['loginId'] = loginCredDict2
-    #     return redirect(url_for('loginLandingPage'))
-
-    if loginCredDict2:
-        loginVO.loginStatus = "active"
-        loginDAO.updateLoginStatus(loginVO)
-        session['loginId'] = loginCredDict2
-        return redirect(url_for('loginLandingPage'))
+    if len(loginCred)==0:
+        flash("Not registered email. Register Now!")
+        return redirect(url_for('userLoadRegister'))
 
     else:
-        return render_template("user/login.html", errorMsg="Username or password is incorrect")
+        hashedPassword = loginCred[0][2]
+        print("Hashed pwd=", hashedPassword)
 
-    # Comparing login creds entered in form with creds stored in database
-    # loginCredDict = loginDAO.checkLoginCredentials(loginVO)
+        password_verify = pbkdf2_sha256.verify(str(loginVO.loginPassword),hashedPassword)
+        print("Password Verify=",password_verify)
 
-    # loginCred =[]
-    # for i in loginCredDict:
-    #     loginCred.append(i)
-    #
-    # loginCredDict = loginCred
+        if password_verify:
+            loginVO.loginStatus = "active"
+            loginDAO.updateLoginStatus(loginVO)
+            session['loginId'] = loginCred[0][0]
+            loginVO.loginId = session['loginId']
+            # loginDAO.updateLoginStatus(loginVO)
+            return redirect(url_for('loginLandingPage'))
 
-    # if len(loginCredDict) == 0:
-    #     return render_template("user/login.html", errorMsg="Username or password is incorrect", majorDict=majorDict,
-    #                            courseDict=courseDict)
-    #
-    # elif loginVO.loginPassword != loginCredDict[0][2]:
-    #     return render_template('user/login.html', errorMsg=' Username or Password is incorrect !', majorDict=majorDict,
-    #                            courseDict=courseDict)
-    #
-    # else:
-    #
-    #     loginVO.loginStatus = "active"
-    #     session['loginId'] = loginCredDict[0][0]
-    #     loginVO.loginId = session['loginId']
-    #     loginDAO.updateLoginStatus(loginVO)
+        else:
+            flash("Username or password is incorrect")
+            return redirect(url_for('userLoadLogin'))
 
 
 @flask_app.route('/logout')
