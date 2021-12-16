@@ -30,28 +30,40 @@ def login():
     loginVO.loginEmail = loginEmail
     loginVO.loginPassword = loginPassword
 
-    loginCredDict = loginDAO.checkLoginCredentials(loginVO)
-    print(loginCredDict)
+    # loginCredDict = loginDAO.checkLoginCredentials(loginVO)
+    # print(loginCredDict)
 
-    list1 =[]
-    for i in loginCredDict:
-        list1.append(i)
-    print("list1=", list1)
-    loginCredDict = list1
-    print(loginCredDict)
+    loginCredDict2 = loginDAO.checkPassword(loginVO)
+    print(loginCredDict2)
 
-    if len(loginCredDict[0]) == 0:
-        return render_template("user/login.html", errorMsg="Username or password is incorrect")
+    # list1 =[]
+    # for i in loginCredDict2:
+    #     list1.append(i)
+    # print("list1=", list1)
+    # loginCredDict2 = list1
+    # print(loginCredDict2)
 
+    # if len(loginCredDict2) == 0:
+    #     return render_template("user/login.html", errorMsg="Username or password is incorrect")
+    #
+    #
+    # elif loginVO.loginPassword != loginCredDict2:
+    #     return render_template('user/login.html', errorMsg2='Password is Incorrect !')
+    #
+    # else:
+    #     loginVO.loginStatus = "active"
+    #     loginDAO.updateLoginStatus(loginVO)
+    #     session['loginId'] = loginCredDict2
+    #     return redirect(url_for('loginLandingPage'))
 
-    elif loginVO.loginPassword != loginCredDict[0][2]:
-        return render_template('user/login.html', errorMsg2='Password is Incorrect !')
-
-    else:
+    if loginCredDict2:
         loginVO.loginStatus = "active"
         loginDAO.updateLoginStatus(loginVO)
-        session['loginId'] = loginCredDict[0][0]
+        session['loginId'] = loginCredDict2
         return redirect(url_for('loginLandingPage'))
+
+    else:
+        return render_template("user/login.html", errorMsg="Username or password is incorrect")
 
 
 @flask_app.route('/logout')
