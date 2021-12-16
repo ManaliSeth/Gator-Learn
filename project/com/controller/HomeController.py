@@ -4,6 +4,8 @@ from project.com.dao.MajorDAO import MajorDAO
 from project.com.dao.CourseDAO import CourseDAO
 from project.com.vo.TutorPostingVO import TutorPostingVO
 from project.com.dao.TutorPostingDAO import TutorPostingDAO
+from project.com.vo.MessageVO import MessageVO
+from project.com.dao.MessageDAO import MessageDAO
 from flaskext.mysql import MySQL
 mysql = MySQL()
 mysql.init_app(flask_app)
@@ -183,13 +185,22 @@ def search():
 
 @flask_app.route('/loginLandingPage',methods=['GET','POST'])
 def loginLandingPage():
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict)
+    if 'loginId' in session:
+        majorDAO = MajorDAO()
+        majorDict = majorDAO.viewMajorName()
+        courseDAO = CourseDAO()
+        courseDict = courseDAO.viewCourseName()
+        print("MajorDict=", majorDict)
+        print("CourseDict=", courseDict)
+        tutorPostingDAO = TutorPostingDAO()
+        tutorDict = tutorPostingDAO.viewRecentTutorPostings()
+        print("Tutor Dict=", tutorDict)
+        messageVO = MessageVO()
+        messageDAO = MessageDAO()
+        messageVO.msgTo_LoginId = session['loginId']
+        messageDict,messageCountDict = messageDAO.readMessage(messageVO)
+        print("messageDict=", messageDict)
+        return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict, messageDict=messageDict, messageCountDict=messageCountDict)
 
 @flask_app.route('/aboutUs')
 def loadAboutUs():

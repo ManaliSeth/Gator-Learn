@@ -167,6 +167,8 @@
             <td style="text-align: center">
                             <form action="/sendMessage" method="post">
                                 <input type="hidden" value="{{i[1]}}" class="form-control" name="msgTo_loginId">
+                                <input type="hidden" value="{{i[15]}}" class="form-control" name="msg_forMajor">
+                                <input type="hidden" value="{{i[17]}}" class="form-control" name="msg_forCourse">
                                 <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Send Message to Tutor</button>

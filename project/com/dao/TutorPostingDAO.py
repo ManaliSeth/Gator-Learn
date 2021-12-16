@@ -135,7 +135,7 @@ class TutorPostingDAO:
         conn = mysql.connect()
         cursor = conn.cursor()
 
-        cursor.execute("SELECT * FROM TutorPosting T, User U, Major M, Courses C WHERE T.adminApprovalStatus='Y' and U.user_loginId=T.tpId ORDER BY tpId DESC LIMIT 3;")
+        cursor.execute("SELECT T.*,M.majorName,C.courseName, U.userName FROM TutorPosting T, User U, Major M, Courses C WHERE T.adminApprovalStatus='Y' and U.user_loginId=T.tp_loginId and T.tp_majorId=M.majorId and T.tp_courseNo=C.courseNo ORDER BY T.tpId DESC LIMIT 3")
         dict1 = cursor.fetchall()
 
         conn.commit()

@@ -1,5 +1,5 @@
 from project import flask_app
-from flask import render_template
+from flask import render_template, session
 from project.com.dao.MajorDAO import MajorDAO
 from project.com.dao.CourseDAO import CourseDAO
 from project.com.dao.CatalogDAO import CatalogDAO
@@ -12,6 +12,7 @@ cursor = conn.cursor()
 
 @flask_app.route('/catalog',methods=['GET'])
 def catalog():
+
     majorDAO = MajorDAO()
     majorDict = majorDAO.viewMajorName()
     courseDAO = CourseDAO()
@@ -31,4 +32,9 @@ def catalog():
         list1.append(i[0])
     print("list1=",list1)
     catalogTotalCountTuple = list1
-    return render_template('user/catalog.html', courseDict=courseDict, catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
+
+    if 'loginId' in session:
+        return render_template('user/loginCatalog.html', courseDict=courseDict, catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
+    else:
+        return render_template('user/catalog.html', courseDict=courseDict, catalogDict=catalogDict,
+                               catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
