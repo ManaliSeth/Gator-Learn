@@ -1,3 +1,8 @@
+
+# Class: CSC-648-848 Fall 2021
+# Author: Manali Seth
+# Description: Navigate between frontend (catalog.html) and backend. Contains flask routes to connect catalog page. Contains logics.
+
 from project import flask_app
 from flask import render_template, session
 from project.com.dao.MajorDAO import MajorDAO
@@ -7,19 +12,25 @@ from flaskext.mysql import MySQL
 
 mysql = MySQL()
 mysql.init_app(flask_app)
-conn = mysql.connect()
-cursor = conn.cursor()
 
 @flask_app.route('/catalog',methods=['GET'])
 def catalog():
 
     majorDAO = MajorDAO()
+
+    # Listing all majors for search bar (All Major dropdown)
     majorDict = majorDAO.viewMajorName()
+
     courseDAO = CourseDAO()
+
+    # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
+
     catalogDAO = CatalogDAO()
+
+    # Fetching all majors and courses for full SFSU catalog
     catalogTuple, catalogTotalCountTuple = catalogDAO.viewCatalog()
-    print("Catalog Tuple = ",catalogTuple)
+
     catalogDict = {}
     for i in catalogTuple:
         if i[0] in catalogDict.keys():
@@ -27,14 +38,14 @@ def catalog():
         else:
             catalogDict[i[0]] = [i[1]]
 
-    list1 = []
-    for i in catalogTotalCountTuple:
-        list1.append(i[0])
-    print("list1=",list1)
-    catalogTotalCountTuple = list1
+    catalogCountTuple = []
+    for i in catalogCountTuple:
+        catalogCountTuple.append(i[0])
+    catalogTotalCountTuple = catalogCountTuple
 
     if 'loginId' in session:
-        return render_template('user/loginCatalog.html', courseDict=courseDict, catalogDict=catalogDict, catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
+        return render_template('user/loginCatalog.html', courseDict=courseDict, catalogDict=catalogDict,
+                               catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)
     else:
         return render_template('user/catalog.html', courseDict=courseDict, catalogDict=catalogDict,
                                catalogTotalCountTuple=catalogTotalCountTuple, majorDict=majorDict)

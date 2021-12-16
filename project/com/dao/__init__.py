@@ -1,3 +1,7 @@
+# Class: CSC-648-848 Fall 2021
+# Author: Manali Seth
+# Description: Contains credentials to connect to SQL Workbench database
+
 from project import *
 
 # Database connection info. Note that this is not a secure connection.

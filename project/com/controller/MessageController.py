@@ -1,5 +1,10 @@
+
+# Class: CSC-648-848 Fall 2021
+# Author: Manali Seth, Aarshil Patel
+# Description: Contains flask routes to navigate between frontend and backend. Contains logic.
+
 from project import flask_app
-from flask import render_template,session, request, Response, redirect, url_for
+from flask import render_template,session, request, redirect, url_for
 from project.com.dao.MajorDAO import MajorDAO
 from project.com.dao.CourseDAO import CourseDAO
 from project.com.dao.TutorPostingDAO import TutorPostingDAO
@@ -11,7 +16,7 @@ import datetime
 def sendMessage():
 
     if 'loginId' in session:
-        print("Session loginId = ",session['loginId'])
+
         messageVO = MessageVO()
         messageDAO = MessageDAO()
 
@@ -28,10 +33,11 @@ def sendMessage():
         messageVO.msg_forMajor = msg_forMajor
         messageVO.msg_forCourse = msg_forCourse
 
+        # Fetching majorId based on major name
         msg_majorId = messageDAO.viewMsgMajorId(messageVO)
-        print(msg_majorId)
+
+        # Fetching course no. based on course name
         msg_courseNo = messageDAO.viewMsgCourseNo(messageVO)
-        print(msg_courseNo)
 
         messageVO.msgTo_loginId = msgTo_loginId
         messageVO.msgFrom_loginId = msgFrom_loginId
@@ -41,41 +47,51 @@ def sendMessage():
         messageVO.msgDate = msgDate
         messageVO.msgTime = msgTime
 
+        # Inserting message contents in database
         messageDAO.insertMessage(messageVO)
 
         return redirect(url_for('loginLandingPage'))
 
     else:
+
         return redirect(url_for('userLoadRegister'))
 
 
 @flask_app.route('/readMessage')
 def readMessage():
 
-    loginId = session['loginId']
-    print(loginId)
+    if 'loginId' in session:
+        loginId = session['loginId']
 
-    majorDAO = MajorDAO()
-    majorDict = majorDAO.viewMajorName()
-    courseDAO = CourseDAO()
-    courseDict = courseDAO.viewCourseName()
-    print("MajorDict=", majorDict)
-    print("CourseDict=", courseDict)
-    tutorPostingDAO = TutorPostingDAO()
-    tutorDict = tutorPostingDAO.viewRecentTutorPostings()
-    print("Tutor Dict=", tutorDict)
+        majorDAO = MajorDAO()
 
-    messageVO = MessageVO()
-    messageDAO = MessageDAO()
+        # Listing all majors for search bar (All Major dropdown)
+        majorDict = majorDAO.viewMajorName()
 
-    messageVO.msgTo_LoginId = loginId
+        courseDAO = CourseDAO()
 
-    messageDict, messageCountDict = messageDAO.readMessage(messageVO)
-    print("messageDict=",messageDict)
-    print("messageCountDict=",messageCountDict)
+        # Fetching all courses names for search bar
+        courseDict = courseDAO.viewCourseName()
 
-    return render_template('user/loginLandingPage.html', messageDict=messageDict, messageCountDict=messageCountDict, isOffcanvas='is-offcanvas', majorDict=majorDict, courseDict=courseDict, tutorDict=tutorDict)
+        tutorPostingDAO = TutorPostingDAO()
 
+        # Fetching recent 3 approved tutor postings
+        tutorDict = tutorPostingDAO.viewRecentTutorPostings()
+
+        messageVO = MessageVO()
+        messageDAO = MessageDAO()
+
+        messageVO.msgTo_LoginId = loginId
+
+        # Fetching message contents from database
+        messageDict, messageCountDict = messageDAO.readMessage(messageVO)
+
+        return render_template('user/loginLandingPage.html', messageDict=messageDict, messageCountDict=messageCountDict,
+                               isOffcanvas='is-offcanvas', majorDict=majorDict, courseDict=courseDict,
+                               tutorDict=tutorDict)
+
+    else:
+        return redirect(url_for('userLoadLogin'))
 
 
 

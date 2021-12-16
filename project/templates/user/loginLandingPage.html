@@ -1,3 +1,9 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Manali Seth
+* Description: This html file has Home page, the first page when the site loads after login
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
 
     <title>Landing Page</title>
 
@@ -74,9 +81,6 @@
 
 {% include 'user/loginNavbar.html' %}
 
-<!--&lt;!&ndash; Background image (src in styles.css)&ndash;&gt;-->
-<!--<div class=p-5 text-center bg-image id="intro"> </div>-->
-
 <main>
 
     <!--Offcanvas to toggle dashboard-->
@@ -97,10 +101,6 @@
 
         <br>
 
-<!--        <form action="/tutorPosting" method="post">-->
-<!--            <button class="btn btn-primary" type="submit">Apply Tutor Posting</button>-->
-<!--        </form>-->
-
     </div>
 
     <!--Cards for recent tutor postings-->
@@ -109,25 +109,25 @@
     <div class="row" id="cardContainer" >
         {% for i in tutorDict %}
         <div class="col-md-3">
-        <div class="card" style="width: 305px;">
-              <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[8]}}" alt="Tutor Image" height="260px" width="70px">
-              <div class="card-body">
-                <h4 class="card-title" style="text-align: center">{{i[13]}}</h4>
-                  <br>
-                  <h5 class="card-text"><b>Major Tutored:</b> {{i[11]}}</h5>
-                <h5 class="card-text"><b>Course Tutored:</b> {{i[12]}}</h5>
-                <form action="/sendMessage" method="post">
-                        <input type="hidden" value="{{i[1]}}" class="form-control" name="tutorId">
-                        <input type="hidden" value="{{i[15]}}" class="form-control" name="msg_forMajor">
-                        <input type="hidden" value="{{i[17]}}" class="form-control" name="msg_forCourse">
-                        <br>
-                        <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
-                        <br>
-                        <div style="text-align: center"><button type="submit" class="btn btn-primary">Send Message to Tutor</button></div>
-                </form>
+            <div class="card" style="width: 305px;">
+                  <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[8]}}" alt="Tutor Image" height="260px" width="70px">
+                  <div class="card-body">
+                    <h4 class="card-title" style="text-align: center">{{i[13]}}</h4>
+                      <br>
+                      <h5 class="card-text"><b>Major Tutored:</b> {{i[11]}}</h5>
+                    <h5 class="card-text"><b>Course Tutored:</b> {{i[12]}}</h5>
+                    <form action="/sendMessage" method="post">
+                            <input type="hidden" value="{{i[1]}}" class="form-control" name="tutorId">
+                            <input type="hidden" value="{{i[15]}}" class="form-control" name="msg_forMajor">
+                            <input type="hidden" value="{{i[17]}}" class="form-control" name="msg_forCourse">
+                            <br>
+                            <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
+                            <br>
+                            <div style="text-align: center"><button type="submit" class="btn btn-primary">Send Message to Tutor</button></div>
+                    </form>
 
-              </div>
-        </div>
+                  </div>
+            </div>
         </div>
         {% endfor %}
     </div>
@@ -281,10 +281,6 @@
     if(offCanvas.classList.contains('is-offcanvas')){
         offCanvas.classList.add('show');
     }
-
-    /*if(window.location.hash==='#offcanvas'){
-        offCanvas.classList.add('show');
-    }*/
 </script>
 
 
