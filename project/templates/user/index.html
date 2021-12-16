@@ -1,3 +1,9 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Aarshil Patel, Aditya Mohan, Christian Robert Samatra, Htet Soe, Manali Seth, Seela Pant, Wiliam Yu
+* Description: This html file has Gator Learn creator's introductions showing up on clicking About Us from Landing page
+-->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,6 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
 
     <style>
       * {
@@ -44,60 +51,62 @@
                     height: 25%;
                 }
 
-      </style>
+    </style>
   </head>
 
   <body>
-  <div id="header">
-      {% include 'user/header.html' %}
-  </div>
 
-  {% include 'user/navbar.html' %}
+    <div id="header">
+        {% include 'user/header.html' %}
+    </div>
 
-  <div class="row">
+    {% include 'user/navbar.html' %}
 
-    <div class="main">
+    <div class="row">
 
-      <center><h2>ABOUT US</h2>
-      <h3>The Creators</h3></center>
-      <br><br>
+      <div class="main">
 
-      <div class="row" style="text-align: center">
+        <center><h2>ABOUT US</h2>
+        <h3>The Creators</h3></center>
+        <br><br>
 
-        <div class="card col-sm-3">
-          <img src="../../static/images/aarshil.PNG" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">AARSHIL PATEL</h4>
-            <h5> Back-end Lead </h5>
-            <p class="card-text">Second semester CS Graduate student at SFSU. </p>
-            <a href="/loadProfile_AP" class="btn btn-primary">Personal Profile</a>
+        <div class="row" style="text-align: center">
+
+          <div class="card col-sm-3">
+            <img src="../../static/images/aarshil.PNG" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">AARSHIL PATEL</h4>
+              <h5> Back-end Lead </h5>
+              <p class="card-text">Second semester CS Graduate student at SFSU. </p>
+              <a href="/loadProfile_AP" class="btn btn-primary">Personal Profile</a>
+            </div>
           </div>
+
+          <div class="card col-sm-3">
+            <img src="../../static/images/manali.PNG" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">MANALI SETH</h4>
+              <h5> Team Lead</h5>
+              <p class="card-text">First semester CS Graduate student at SFSU.</p>
+              <a href="/loadProfile_MS" class="btn btn-primary">Personal Profile</a>
+            </div>
+          </div>
+
+          <div class="card col-sm-3">
+            <img src="../../static/images/htet.PNG" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h4 class="card-title">HTET SOE</h4>
+              <h5> Front-end Lead</h5>
+              <p class="card-text">Last semester Undergraduate CS student at SFSU.</p>
+              <a href="/loadProfile_HS" class="btn btn-primary">Personal Profile</a>
+            </div>
+          </div>
+
         </div>
 
-        <div class="card col-sm-3">
-          <img src="../../static/images/manali.PNG" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">MANALI SETH</h4>
-            <h5> Team Lead</h5>
-            <p class="card-text">First semester CS Graduate student at SFSU.</p>
-            <a href="/loadProfile_MS" class="btn btn-primary">Personal Profile</a>
-          </div>
-        </div>
-
-        <div class="card col-sm-3">
-          <img src="../../static/images/htet.PNG" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h4 class="card-title">HTET SOE</h4>
-            <h5> Front-end Lead</h5>
-            <p class="card-text">Last semester Undergraduate CS student at SFSU.</p>
-            <a href="/loadProfile_HS" class="btn btn-primary">Personal Profile</a>
-          </div>
-        </div>
-
-      </div>
-
-  <!--    end row-->
+      <!--    end row-->
       <br><br><br>
+
       <div class="row" style="text-align: center">
 
         <div class="card col-sm-3">
@@ -141,11 +150,12 @@
         </div>
 
       </div>
-  <!--    end row-->
+      <!--    end row-->
 
     </div>
   </div>
 
   {% include 'user/footer.html' %}
+
   </body>
 </html>

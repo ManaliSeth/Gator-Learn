@@ -1,3 +1,10 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Aarshil Patel
+* Description: This html file is displayed after user login and describes all majors and courses available at SFSU showing
+    up on clicking SFSU Course Catalog from navigation bar
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +22,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
 
     <style>
 
@@ -104,9 +111,7 @@
         {% include 'user/header.html' %}
     </div>
 
-<!--    <div class="navbar">-->
-        {% include 'user/loginNavbar.html' %}
-<!--    </div>-->
+    {% include 'user/loginNavbar.html' %}
 
     <br>
     <h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{catalogTotalCountTuple[0]}} of {{catalogTotalCountTuple[0]}} entries for "Available SFSU Majors"</h5>
