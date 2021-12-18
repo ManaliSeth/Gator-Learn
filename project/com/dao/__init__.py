@@ -4,14 +4,16 @@
 
 from project import *
 
-# Database connection info. Note that this is not a secure connection.
+# Test Database
+# flask_app.config['MYSQL_DATABASE_USER'] = 'admin'
+# flask_app.config['MYSQL_DATABASE_PASSWORD'] = 'aarshilp'
+# flask_app.config['MYSQL_DATABASE_DB'] = 'sfsu-tutoring-app'
+# flask_app.config['MYSQL_DATABASE_HOST'] = 'project-1.cxt6ynefb5sw.us-east-2.rds.amazonaws.com'
+
+
+# Main Database
 flask_app.config['MYSQL_DATABASE_USER'] = 'admin'
-flask_app.config['MYSQL_DATABASE_PASSWORD'] = 'aarshilp'
-# flask_app.config['MYSQL_DATABASE_PASSWORD'] = 'admin123'
-flask_app.config['MYSQL_DATABASE_DB'] = 'sfsu-tutoring-app'
-# flask_app.config['MYSQL_DATABASE_DB'] = 'se_tutoring'
-flask_app.config['MYSQL_DATABASE_HOST'] = 'project-1.cxt6ynefb5sw.us-east-2.rds.amazonaws.com'
-# flask_app.config['MYSQL_DATABASE_HOST'] = 'se-tutoring-database.cxt6ynefb5sw.us-east-2.rds.amazonaws.com'
-
-
+flask_app.config['MYSQL_DATABASE_PASSWORD'] = 'admin123'
+flask_app.config['MYSQL_DATABASE_DB'] = 'se_tutoring'
+flask_app.config['MYSQL_DATABASE_HOST'] = 'se-tutoring-database.cxt6ynefb5sw.us-east-2.rds.amazonaws.com'
 

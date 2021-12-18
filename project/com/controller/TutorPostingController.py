@@ -31,16 +31,12 @@ def tutorPosting():
 
         majorVO = MajorVO()
 
-        # selectedMajor = request.form['majorDropdown']
-        # majorVO.selectedMajor = selectedMajor
+        # courseDAO = CourseDAO()
+        #
+        # # Fetching course name based on Major
+        # courseMajorDict = courseDAO.viewCourseMajors(majorVO)
 
-        courseDAO = CourseDAO()
-
-        # Fetching course name based on Major
-        courseMajorDict = courseDAO.viewCourseMajors(majorVO)
-
-        return render_template('user/tutorPosting.html', majorDict=majorDict, courseDict=courseDict,
-                               courseMajorDict=courseMajorDict)
+        return render_template('user/tutorPosting.html', majorDict=majorDict, courseDict=courseDict)
 
     else:
         return redirect(url_for('userLoadRegister'))

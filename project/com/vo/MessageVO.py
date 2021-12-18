@@ -9,6 +9,8 @@ class MessageVO:
     msgId = IntegerField
     msgTo_loginId = IntegerField
     msgFrom_loginId = IntegerField
+    msg_majorId = IntegerField
+    msg_courseNo = IntegerField
     msgDate = StringField
     msgTime = StringField
     msgDesc = StringField

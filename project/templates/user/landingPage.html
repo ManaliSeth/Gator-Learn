@@ -78,7 +78,12 @@
             }
 
             #space{
-                height: 70px;
+                height: 40px;
+            }
+
+            .offcanvas-bottom-button{
+            text-align: center;
+            padding-top: 60px;
             }
 
         </style>
@@ -101,12 +106,12 @@
         {% for i in tutorDict %}
         <div class="col-md-3">
         <div class="card" style="width: 305px;">
-              <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[8]}}" alt="Tutor Image" height="260px" width="70px">
+              <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[7]}}" alt="Tutor Image" height="260px" width="70px">
               <div class="card-body">
-                <h4 class="card-title" style="text-align: center">{{i[13]}}</h4>
+                <h4 class="card-title" style="text-align: center">{{i[12]}}</h4>
                   <br>
-                  <h5 class="card-text"><b>Major Tutored:</b> {{i[11]}}</h5>
-                <h5 class="card-text"><b>Course Tutored:</b> {{i[12]}}</h5>
+                  <h5 class="card-text"><b>Major Tutored:</b> {{i[10]}}</h5>
+                <h5 class="card-text"><b>Course Tutored:</b> {{i[11]}}</h5>
                 <form action="/sendMessage" method="post">
                         <input type="hidden" value="{{i[1]}}" class="form-control" name="tutorId">
                         <br>
@@ -119,6 +124,12 @@
         </div>
         </div>
         {% endfor %}
+    </div>
+
+    <div class="offcanvas-bottom-button">
+        <form action="/tutorPosting" method="post">
+            <button class="btn btn-dark" type="submit">Apply Tutor Posting</button>
+        </form>
     </div>
 
     <div id="space"></div>

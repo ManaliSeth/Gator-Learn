@@ -18,8 +18,8 @@ class LoginDAO:
 
         cursor.execute(
             #"Insert into Login(loginEmail,loginPassword,loginStatus) values ('" + str(loginVO.loginEmail) + "', '" + str(loginVO.loginPassword) + "', '" + str(loginVO.loginStatus) + "')")
-            "Insert into Login(loginEmail,loginPassword,loginStatus) values ('" + str(
-                loginVO.loginEmail) + "', '" + str(loginVO.hashedPassword) + "', '" + str(loginVO.loginStatus) + "')")
+            "Insert into Login(loginEmail,loginPassword) values ('" + str(
+                loginVO.loginEmail) + "', '" + str(loginVO.hashedPassword) + "')")
 
         insertLoginData = cursor.fetchall()
         print(insertLoginData)
@@ -53,33 +53,20 @@ class LoginDAO:
         conn.close()
         return dict1
 
-
-    def updateLoginStatus(self,loginVO):
-        pass
-        #     conn = mysql.connect()
-        #     cursor = conn.cursor()
-        #     print(loginVO.loginId)
-        #     cursor.execute("UPDATE Login SET loginStatus = '"+ str(loginVO.loginStatus) +"' where loginId = '"+str(loginVO.loginId)+"' ")
-        #     dict1 = cursor.fetchall()
-        #     print(dict1)
-        #     conn.commit()
-        #     cursor.close()
-        #     conn.close()
-        #     return dict1
-    # Comparing login creds entered in form with creds stored in database
-    def checkLoginCredentials(self, loginVO):
-
-        conn = mysql.connect()
-        cursor = conn.cursor()
-
-        cursor.execute(
-            "SELECT * FROM Login WHERE loginEmail = '" + str(loginVO.loginEmail) + "' and loginPassword = '" + str(
-                loginVO.loginPassword) + "'")
-
-        checkLoginCred = cursor.fetchall()
-
-        conn.commit()
-        cursor.close()
-        conn.close()
-        return checkLoginCred
+    # # Comparing login creds entered in form with creds stored in database
+    # def checkLoginCredentials(self, loginVO):
+    #
+    #     conn = mysql.connect()
+    #     cursor = conn.cursor()
+    #
+    #     cursor.execute(
+    #         "SELECT * FROM Login WHERE loginEmail = '" + str(loginVO.loginEmail) + "' and loginPassword = '" + str(
+    #             loginVO.loginPassword) + "'")
+    #
+    #     checkLoginCred = cursor.fetchall()
+    #
+    #     conn.commit()
+    #     cursor.close()
+    #     conn.close()
+    #     return checkLoginCred
 

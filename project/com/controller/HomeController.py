@@ -95,7 +95,8 @@ def search():
 
         # Listing full catalog
         tutorDict, tutorTotalCountDict = tutorPostingDAO.viewTutors()
-
+        print(tutorDict)
+        print(tutorTotalCountDict)
         tutorTotalCount = []
         for i in tutorTotalCountDict:
             tutorTotalCount.append(i[0])
@@ -135,6 +136,9 @@ def search():
 
         # Listing particular Major tutors with no specific course selected
         tutorDict, tutorCountDict, tutorTotalCountDict = tutorPostingDAO.viewMajorTutors(tutorPostingVO)
+        print(tutorDict)
+        print(tutorCountDict)
+        print(tutorTotalCountDict)
 
         tutorCount, tutorTotalCount = [], []
         for i in tutorCountDict:

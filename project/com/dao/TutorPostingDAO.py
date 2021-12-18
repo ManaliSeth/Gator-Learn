@@ -24,8 +24,8 @@ class TutorPostingDAO:
         cursor.execute("Select courseNo from Courses where courseName='" + str(tutorPostingVO.tutorCourse) + "' ")
         courseNo = cursor.fetchone()
         tp_courseNo = str(courseNo[0])
-
         tutorPostingVO.tp_courseNo = tp_courseNo
+
         cursor.execute(
             "Insert into TutorPosting(tp_loginId, tp_majorId,tp_courseNo,tutorDescription, tutorCV_datasetName, tutorCV_datasetPath, tutorAvatar_datasetName, tutorAvatar_datasetPath, adminApprovalStatus) values('" + str(
                 tutorPostingVO.tp_loginId) + "', '" + str(tutorPostingVO.tp_majorId) + "', '" + str(
@@ -137,7 +137,7 @@ class TutorPostingDAO:
 
         cursor.execute("SELECT T.*,M.majorName,C.courseName, U.userName FROM TutorPosting T, User U, Major M, Courses C WHERE T.adminApprovalStatus='Y' and U.user_loginId=T.tp_loginId and T.tp_majorId=M.majorId and T.tp_courseNo=C.courseNo ORDER BY T.tpId DESC LIMIT 3")
         recentTutorPosting = cursor.fetchall()
-
+        print("recent",recentTutorPosting)
         conn.commit()
         cursor.close()
         conn.close()

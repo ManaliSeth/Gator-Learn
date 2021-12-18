@@ -48,11 +48,8 @@ def login():
         print("Password Verify=",password_verify)
 
         if password_verify:
-            loginVO.loginStatus = "active"
-            loginDAO.updateLoginStatus(loginVO)
             session['loginId'] = loginCred[0][0]
             loginVO.loginId = session['loginId']
-            # loginDAO.updateLoginStatus(loginVO)
             return redirect(url_for('loginLandingPage'))
 
         else:
@@ -62,12 +59,5 @@ def login():
 
 @flask_app.route('/logout')
 def logout():
-    # loginVO = LoginVO()
-    # loginDAO = LoginDAO()
-    # loginDAO.loginStatus = "inactive"
-    # loginVO.loginId = session['loginId']
-    # print(type(loginVO.loginId))
-    # loginDAO.updateLoginStatus(loginVO)
     session.clear()
-    # session['loginId'] = None
     return redirect(url_for('landingPage'))

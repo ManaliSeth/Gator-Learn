@@ -13,6 +13,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
     <link rel="import" href="header.html">
     <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
     <link rel="stylesheet" href="../../static/css/styles.css"/>
@@ -107,16 +119,16 @@
         {% for i in tutorDict %}
         <div class="col-md-3">
             <div class="card" style="width: 305px;">
-                  <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[8]}}" alt="Tutor Image" height="260px" width="70px">
+                  <img class="card-img-top" src="static/dataset/tutorAvatar/{{i[7]}}" alt="Tutor Image" height="260px" width="70px">
                   <div class="card-body">
-                    <h4 class="card-title" style="text-align: center">{{i[13]}}</h4>
+                    <h4 class="card-title" style="text-align: center">{{i[12]}}</h4>
                       <br>
-                      <h5 class="card-text"><b>Major Tutored:</b> {{i[11]}}</h5>
-                    <h5 class="card-text"><b>Course Tutored:</b> {{i[12]}}</h5>
+                      <h5 class="card-text"><b>Major Tutored:</b> {{i[10]}}</h5>
+                    <h5 class="card-text"><b>Course Tutored:</b> {{i[11]}}</h5>
                     <form action="/insertMessage" method="post">
                             <input type="hidden" value="{{i[1]}}" class="form-control" name="msgTo_loginId">
-                            <input type="hidden" value="{{i[11]}}" class="form-control" name="msg_forMajor">
-                            <input type="hidden" value="{{i[12]}}" class="form-control" name="msg_forCourse">
+                            <input type="hidden" value="{{i[10]}}" class="form-control" name="msg_forMajor">
+                            <input type="hidden" value="{{i[11]}}" class="form-control" name="msg_forCourse">
                             <br>
                             <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
                             <br>
@@ -129,7 +141,7 @@
         {% endfor %}
     </div>
 
-    <!--Offcanvas bottom button-->
+
     <div class="offcanvas-bottom-button">
         <form action="/tutorPosting" method="post">
             <button class="btn btn-dark" type="submit">Apply Tutor Posting</button>
