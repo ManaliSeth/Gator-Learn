@@ -39,7 +39,7 @@ def catalog():
             catalogDict[i[0]] = [i[1]]
 
     catalogCountTuple = []
-    for i in catalogCountTuple:
+    for i in catalogTotalCountTuple:
         catalogCountTuple.append(i[0])
     catalogTotalCountTuple = catalogCountTuple
 

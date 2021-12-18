@@ -69,6 +69,11 @@
             width: max-content;
         }
 
+        .offcanvas-bottom-button{
+            text-align: center;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
     </style>
 
 </head>
@@ -85,14 +90,6 @@
 
     <!--Offcanvas to toggle dashboard-->
     <div class="text-center my-3 p-3">
-
-        <!--Offcanvas bottom button-->
-        <form action="#">
-            <button class="btn btn-primary" type="submit" formaction="readMessage" formmethod="get" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom"
-                    aria-controls="offcanvasBottom">Inbox
-            </button>
-            <button class="btn btn-primary" type="submit" formaction="/tutorPosting" formmethod="post">Apply Tutor Posting</button>
-        </form>
 
     <!--    &lt;!&ndash;Offcanvas rightside button&ndash;&gt;-->
     <!--    <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"-->
@@ -116,10 +113,10 @@
                       <br>
                       <h5 class="card-text"><b>Major Tutored:</b> {{i[11]}}</h5>
                     <h5 class="card-text"><b>Course Tutored:</b> {{i[12]}}</h5>
-                    <form action="/sendMessage" method="post">
-                            <input type="hidden" value="{{i[1]}}" class="form-control" name="tutorId">
-                            <input type="hidden" value="{{i[15]}}" class="form-control" name="msg_forMajor">
-                            <input type="hidden" value="{{i[17]}}" class="form-control" name="msg_forCourse">
+                    <form action="/insertMessage" method="post">
+                            <input type="hidden" value="{{i[1]}}" class="form-control" name="msgTo_loginId">
+                            <input type="hidden" value="{{i[11]}}" class="form-control" name="msg_forMajor">
+                            <input type="hidden" value="{{i[12]}}" class="form-control" name="msg_forCourse">
                             <br>
                             <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
                             <br>
@@ -132,6 +129,12 @@
         {% endfor %}
     </div>
 
+    <!--Offcanvas bottom button-->
+    <div class="offcanvas-bottom-button">
+        <form action="/tutorPosting" method="post">
+            <button class="btn btn-dark" type="submit">Apply Tutor Posting</button>
+        </form>
+    </div>
 
     <!--Offcanvas bottom contents-->
     <div class="offcanvas offcanvas-bottom {{isOffcanvas}}" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
@@ -172,100 +175,100 @@
         </div>
     </div>
 
-<!--    &lt;!&ndash;Offcanvas rightside contents&ndash;&gt;-->
-<!--    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">-->
-<!--        <div class="offcanvas-header">-->
-<!--            <h5 id="offcanvasRightLabel">USER PROFILE</h5>-->
-<!--            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>-->
-<!--        </div>-->
-<!--        <div class="offcanvas-body">-->
-<!--            User profile information displayed here.-->
-<!--            Should be able to edit and upload info as needed here.-->
-<!--        </div>-->
-<!--    </div>-->
+    <!--Offcanvas rightside contents-->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">USER PROFILE</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            User profile information displayed here.
+            Should be able to edit and upload info as needed here.
+        </div>
+    </div>
 
-<!--    <div class="container-fluid">-->
+    <div class="container-fluid">
 
-<!--        <section class="divider mt-4">-->
-<!--            <div class="row justify-content-center align-items-center text-center">-->
-<!--                <h2>Online Tutors for your class</h2>-->
-<!--            </div>-->
+        <section class="divider mt-4">
+            <div class="row justify-content-center align-items-center text-center">
+                <h2>Online Tutors for your class</h2>
+            </div>
 
-<!--            <ul class="nav justify-content-center">-->
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"-->
-<!--                       aria-expanded="false">Business courses</a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">BUS 100 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">BUS 256 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">BUS 630 Tutors</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All BUS tutors</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+            <ul class="nav justify-content-center">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">Business courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">BUS 100 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">BUS 256 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">BUS 630 Tutors</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">All BUS tutors</a></li>
+                    </ul>
+                </li>
 
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"-->
-<!--                       aria-expanded="false">Science courses</a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">PHYS 100 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">BIO 100 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">CHEM 100 Tutors</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All SCI tutors</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">Science courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">PHYS 100 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">BIO 100 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">CHEM 100 Tutors</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">All SCI tutors</a></li>
+                    </ul>
+                </li>
 
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"-->
-<!--                       aria-expanded="false">Math courses</a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">MATH 100 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Calculus Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Statistics Tutors</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All MATH tutors</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">Math courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">MATH 100 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">Calculus Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">Statistics Tutors</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">All MATH tutors</a></li>
+                    </ul>
+                </li>
 
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"-->
-<!--                       aria-expanded="false">English courses</a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">ENG 100 Tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All ENG tutors</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">English courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">ENG 100 Tutors</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">All ENG tutors</a></li>
+                    </ul>
+                </li>
 
-<!--                <li class="nav-item dropdown">-->
-<!--                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"-->
-<!--                       aria-expanded="false">Other courses</a>-->
-<!--                    <ul class="dropdown-menu">-->
-<!--                        <li><a class="dropdown-item" href="#">Music tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Accounting tutors</a></li>-->
-<!--                        <li><a class="dropdown-item" href="#">Economics tutors</a></li>-->
-<!--                        <li>-->
-<!--                            <hr class="dropdown-divider">-->
-<!--                        </li>-->
-<!--                        <li><a class="dropdown-item" href="#">All OTHER tutors</a></li>-->
-<!--                    </ul>-->
-<!--                </li>-->
-<!--            </ul>-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                       aria-expanded="false">Other courses</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Music tutors</a></li>
+                        <li><a class="dropdown-item" href="#">Accounting tutors</a></li>
+                        <li><a class="dropdown-item" href="#">Economics tutors</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">All OTHER tutors</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-<!--        </section>-->
+        </section>
 
-<!--    </div>-->
+    </div>
 
 </main>
 
@@ -280,7 +283,11 @@
 
     if(offCanvas.classList.contains('is-offcanvas')){
         offCanvas.classList.add('show');
+        offCanvas.classList.remove('is-offcanvas');
     }
+    /*else if(offCanvas.classList.contains('is-not-offcanvas')){
+        offCanvas.classList.remove('show');
+    }*/
 </script>
 
 

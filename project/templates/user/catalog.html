@@ -38,6 +38,7 @@
             /*width: 100vw;*/
             display: flex;
             flex-direction: column;
+            background-color: #ffffff;
         }
 
         #header{
@@ -88,6 +89,7 @@
             margin-left: auto;
             margin-right: auto;
         }
+
     </style>
 
     <!--Data Table-->
@@ -119,20 +121,20 @@
     <h3 style="text-align: center">  SFSU Course Catalog</h3>
     <br>
     <div class="container-fluid">
-         <table id="example" class="table table-hover" style="text-align: center">
+         <table id="example" class="table table-hover">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Major Name</th>
-                        <th style="text-align: center">Course Name</th>
+                        <th>Major Name</th>
+                        <th>Course Name</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     {% for i in catalogDict %}
-                        <tr>
+                        <tr >
                             <td>{{i}}</td>
                             <td>
-                                <table>
+                                <table class="course-names">
                                     {% for j in catalogDict[i] %}
                                         <tr><td style="text-align: left">{{j}}</td></tr>
                                     {% endfor %}
@@ -152,3 +154,4 @@
 
 </body>
 </html>
+

@@ -93,6 +93,48 @@ def readMessage():
     else:
         return redirect(url_for('userLoadLogin'))
 
+@flask_app.route('/insertMessage', methods=['POST'])
+def insertMessage():
 
+    if 'loginId' in session:
+
+        messageVO = MessageVO()
+        messageDAO = MessageDAO()
+
+        currentDT = datetime.datetime.now()
+
+        msgTo_loginId = request.form['msgTo_loginId']
+        msgFrom_loginId = session['loginId']
+        msg_forCourse = request.form['msg_forCourse']
+        msg_forMajor = request.form['msg_forMajor']
+        msgDesc = request.form['msgDesc']
+        msgDate = currentDT.strftime("%Y/%m/%d")
+        msgTime = currentDT.strftime("%H:%M:%S")
+
+        messageVO.msg_forMajor = msg_forMajor
+        messageVO.msg_forCourse = msg_forCourse
+
+        # Fetching majorId based on major name
+        msg_majorId = messageDAO.viewMsgMajorId(messageVO)
+
+        # Fetching course no. based on course name
+        msg_courseNo = messageDAO.viewMsgCourseNo(messageVO)
+
+        messageVO.msgTo_loginId = msgTo_loginId
+        messageVO.msgFrom_loginId = msgFrom_loginId
+        messageVO.msg_majorId = msg_majorId[0][0]
+        messageVO.msg_courseNo = msg_courseNo[0][0]
+        messageVO.msgDesc = msgDesc
+        messageVO.msgDate = msgDate
+        messageVO.msgTime = msgTime
+
+        # Inserting message contents in database
+        messageDAO.insertMessage(messageVO)
+
+        return redirect(url_for('loginLandingPage'))
+
+    else:
+
+        return redirect(url_for('userLoadRegister'))
 
 

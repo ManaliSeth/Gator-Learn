@@ -204,6 +204,7 @@ def loginLandingPage():
 
         # Fetching recent 3 approved tutor postings
         tutorDict = tutorPostingDAO.viewRecentTutorPostings()
+        print("tutorDict=",tutorDict)
 
         messageVO = MessageVO()
         messageDAO = MessageDAO()
@@ -213,7 +214,8 @@ def loginLandingPage():
         messageDict,messageCountDict = messageDAO.readMessage(messageVO)
 
         return render_template('user/loginLandingPage.html', majorDict=majorDict, courseDict=courseDict,
-                               tutorDict=tutorDict, messageDict=messageDict, messageCountDict=messageCountDict)
+                               tutorDict=tutorDict, messageDict=messageDict, messageCountDict=messageCountDict,
+                               isOffCanvas='is-not-offcanvas')
 
 @flask_app.route('/aboutUs')
 def loadAboutUs():
@@ -246,10 +248,7 @@ def loadProfile_AP():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Aarshil.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Aarshil.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Aarshil.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_MS')
 def loadProfile_MS():
@@ -264,10 +263,7 @@ def loadProfile_MS():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Manali.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Manali.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Manali.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_HS')
 def loadProfile_HS():
@@ -282,10 +278,7 @@ def loadProfile_HS():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Htet.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Htet.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Htet.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_WY')
 def loadProfile_WY():
@@ -300,10 +293,7 @@ def loadProfile_WY():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_William.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_William.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_William.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_SP')
 def loadProfile_SP():
@@ -318,10 +308,7 @@ def loadProfile_SP():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Seela.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Seela.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Seela.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_AM')
 def loadProfile_AM():
@@ -336,10 +323,7 @@ def loadProfile_AM():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Aditya.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Aditya.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Aditya.html', majorDict=majorDict, courseDict=courseDict)
 
 @flask_app.route('/loadProfile_CR')
 def loadProfile_CR():
@@ -354,10 +338,7 @@ def loadProfile_CR():
     # Fetching all courses names for search bar
     courseDict = courseDAO.viewCourseName()
 
-    if 'loginId' in session:
-        return render_template('user/loginIntroduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
-    else:
-        return render_template('user/introduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
+    return render_template('user/introduction_Christian.html', majorDict=majorDict, courseDict=courseDict)
 
 # VP_testHomePage for Milestone2
 

@@ -16,9 +16,11 @@ class CatalogDAO:
     # Fetching all majors and courses for full SFSU catalog
     def viewCatalog(self):
         cursor.execute(
-            "select majorName,courseName from Major M, Catalog C, Courses Co where M.majorId=C.majorId and Co.courseNo=C.courseNo;")
+            "Select majorName,courseName from Major M, Catalog C, Courses Co where M.majorId=C.majorId and Co.courseNo=C.courseNo;")
         cursor2.execute(
-            "select count(distinct(majorId)) from Catalog;")
+            "Select count(distinct(majorId)) from Catalog;")
         catalog = cursor.fetchall()
         catalogCount = cursor2.fetchall()
+        print(catalog)
+        print(catalogCount)
         return catalog, catalogCount

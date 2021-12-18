@@ -37,7 +37,7 @@ class MessageDAO():
 
         cursor.execute("Select majorId from Major where majorName='"+str(messageVO.msg_forMajor)+"'")
         msgMajorDict = cursor.fetchall()
-
+        print(msgMajorDict)
         conn.commit()
         cursor.close()
         conn.close()
@@ -52,7 +52,7 @@ class MessageDAO():
 
         cursor.execute("Select courseNo from Courses where courseName='"+str(messageVO.msg_forCourse)+"'")
         msgCourseDict = cursor.fetchall()
-
+        print(msgCourseDict)
         conn.commit()
         cursor.close()
         conn.close()
