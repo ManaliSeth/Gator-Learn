@@ -1,0 +1,157 @@
+<!--
+* Class: CSC-648 Fall 2021
+* Author: Htet, Manali
+* Description: This file shows form for tutor to add their postings
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+    <title>Home Page</title>
+
+    <style>
+
+            *{
+                    margin: 0;
+                    padding: 0;
+                    box-sizing: border-box;
+            }
+
+            body{
+                /*height: 100vh;*/
+                width: 100vw;
+                display: flex;
+                flex-direction: column;
+                background-color: #34383a;
+                background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
+                background-size: cover;
+            }
+
+            #header{
+                height: 17%;
+                /*padding-bottom: 10px;*/
+            }
+
+            .container > form{
+                display: flex;
+            }
+
+            .container > *{
+                margin: 0 10px;
+            }
+
+            #space{
+                height: 178px;
+            }
+
+            .card{
+                margin-top: 40px;
+            }
+
+    </style>
+</head>
+
+<body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+{% include 'user/loginNavbar.html' %}
+
+<main>
+
+    <div class="row justify-content-md-center">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-header">
+                    TUTOR POSTING
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Please fill out the form to publish your availability to tutor courses.</h5><br>
+                    <form class="row g-3 step-by-step" action="/insertTutorPosting" method="post" enctype="multipart/form-data">
+                        <div class="col-md-12">
+                            <label for="majorDropdown" class="form-label">Major:</label>
+                            <select name="majorDropdown" id="majorDropdown" data-sel="{{majorSelected}}" required>
+                                {% for i in majorDict %}
+                                <option selected value="{{i[1]}}">{{i[1]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="courseDropdown" class="form-label">Course:</label>
+                            <select name="courseDropdown" id="courseDropdown" data-sel="{{courseSelected}}" required>
+                                {% for i in courseDict %}
+                                <option value="{{i[0]}}">{{i[0]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputText" class="form-label">Description:</label>
+                            <input type="text" class="form-control" id="inputText" name="tutorDescription"
+                                   placeholder="Any additional info you'd like to add about your tutoring, such as available hours" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="inputUpload" class="form-label">CV upload:</label>
+                            <input type="file" class="form-control" id="inputUpload" name="tutorCV" required>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="pfpUpload" class="form-label">Profile picture upload:</label>
+                            <input type="file" class="form-control" id="pfpUpload" name="tutorAvatar" required>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="gridCheck">
+                                <label class="form-check-label" for="gridCheck">
+                                    Check if available for group tutoring
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary">Send post to admin for approval</button>
+                        </div>
+                    </form>
+                    <p class="card-text">May take up to 24-48 hours for post to be published and be live.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="space"></div>
+</main>
+
+<script src="https://unpkg.com/@popperjs/core@2.4.0/dist/umd/popper.min.js"></script>
+<script src="../../static/js/bootstrap.js"></script>
+
+<!--  Search end-->
+
+    {% include 'user/footer.html' %}
+
+</body>
+
+</html>

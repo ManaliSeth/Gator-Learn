@@ -1,0 +1,108 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Manali Seth
+* Description: This html file has individual profile of Manali showing up on clicking Personal Profile from Index page
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>Manali Seth</title>
+
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Styling the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%);
+      }
+
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 600px;
+      }
+
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
+
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    {% include 'user/header.html'%}
+
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">Manali Seth</h2>
+         <div class="card" style="width: 20rem;">
+          <img src="../../static/images/manali.PNG" class="card-img-top" alt="...">
+        </div>
+
+      </div>
+      <div class="main">
+        <h2>About Me</h2>
+        <p style="font-size: 15px ">I am a first semester Grad student at SFSU pursuing Master's in Computer Science.
+           I have undergraduated from Charotar University of Science and Technology in India.
+           My hobbies include drawing and listening music.
+           I like to interact with people and know about different cultures. </p>
+
+        <br>
+        <p style="font-size: 18px"><b>Areas of Interest</b></p>
+        <ul style="font-size: 14px">
+          <li>Data Analysis</li>
+          <li>Machine Learning</li>
+          <li>Computer Vision</li>
+        </ul>
+
+        <br>
+        <p style="font-size: 18px"><b>Contact info:</b></p>
+        <p style="font-size: 14px">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email: <a href="mailto:mseth@mail.sfsu.edu" class="mailto">mseth@mail.sfsu.edu</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Github: <a href="https://github.com/Manali-Seth" class="btn btn-primary">Manali Seth</a><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SFSU ID: 567891234<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phone Number: +1 (667) 890-1234</p>
+      </div>
+    </div>
+
+    {% include 'user/footer.html' %}
+  </body>
+</html>

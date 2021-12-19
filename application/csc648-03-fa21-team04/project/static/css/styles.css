@@ -1,0 +1,11 @@
+#intro {
+    background-image: url('../images/tutoring_HomePage3.jpg');
+    height: 400px;
+    opacity: .85;
+}
+
+@media (min-width: 548px) {
+    #intro {
+        height: 534px;
+    }
+}

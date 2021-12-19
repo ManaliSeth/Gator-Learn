@@ -1,0 +1,331 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Christian Robert Samatra
+* Description: This file is html that describes the layout of our registration page
+-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>Register</title>
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+     
+</head>
+
+<style>
+   /*@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+#header{
+    height: 17%;
+    /*padding-bottom: 10px;*/
+        /*width: 100vw;*/
+    }
+
+body {
+    /*height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;*/
+    background-color: #34383a;
+    background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
+    background-size: cover;
+}
+
+.form-holder {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+}
+
+.form-holder .form-content {
+    width: 40%;
+    position: relative;
+    text-align: center;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 60px;
+}
+
+.form-content .form-items {
+    /*border: 3px solid #fff;*/
+    background-color: #000000;
+    padding: 40px;
+    display: inline-block;
+    width: 100%;
+    min-width: 540px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    text-align: left;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    padding-top: 15px;
+    padding-bottom: 5px;
+}
+
+.form-content h3 {
+    color: #fff;
+    text-align: left;
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-content h3.form-title {
+    margin-bottom: 30px;
+}
+
+.form-content p {
+    color: #fff;
+    text-align: left;
+    font-size: 17px;
+    font-weight: 300;
+    line-height: 20px;
+    margin-bottom: 30px;
+}
+
+.form-check{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
+    color: #fff;
+}
+
+.form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
+    width: 100%;
+    padding: 9px 20px;
+    text-align: left;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    margin-top: 16px;
+}
+
+
+.btn-primary{
+    background-color: #6C757D;
+    outline: none;
+    border: 0px;
+    box-shadow: none;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+    background-color: #495056;
+    outline: none !important;
+    border: none !important;
+    box-shadow: none;
+}
+
+.form-content textarea {
+    position: static !important;
+    width: 100%;
+    padding: 8px 20px;
+    border-radius: 6px;
+    text-align: left;
+    background-color: #fff;
+    border: 0;
+    font-size: 15px;
+    font-weight: 300;
+    color: #8D8D8D;
+    outline: none;
+    resize: none;
+    height: 120px;
+    -webkit-transition: none;
+    transition: none;
+    margin-bottom: 14px;
+}
+
+.form-content textarea:hover, .form-content textarea:focus {
+    border: 0;
+    background-color: #ebeff8;
+    color: #8D8D8D;
+}
+
+.mv-up{
+    margin-top: -9px !important;
+    margin-bottom: 8px !important;
+}
+
+.invalid-feedback{
+    color: #ff606e;
+}
+
+.valid-feedback{
+   color: #2acc80;
+}
+
+#footer{
+        padding-top: 30px;
+        width: 100vw;
+        position:relative;
+        bottom:0;
+        left:0;
+}
+</style>
+
+<body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+{% include 'user/navbar.html' %}
+
+    <div class="form-body">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center; color: white"> Register</h1>
+
+                        <form id="form" role="form" action="/register" method="POST" class="requires-validation" novalidate>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="userName" placeholder="Full Name" required>
+                                <div class="valid-feedback">Username is valid!</div>
+                                <div class="invalid-feedback">Username field cannot be empty!</div>
+                               
+                            </div>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="email" name="loginEmail" id="inputEmail" placeholder="E-mail Address" pattern=".+@sfsu\.edu" required>
+                                <div class="valid-feedback">Email is valid!</div>
+                                <div class="invalid-feedback">Email field cannot be blank and can only be @sfsu.edu!</div>
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <input class="form-control" id="pw" type="password" name="loginPassword" 
+                                placeholder="Password" 
+                                required
+                            
+                                onchange="form.loginConfirmPassword.pattern = RegExp.escape(this.value);">
+                                <div class="valid-feedback">Password is valid!</div>
+                                <div class="invalid-feedback">Password cannot be blank!</div>
+                                
+                                <div id="pw-alert"></div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <input class="form-control" id="rpw" type="password" name="loginConfirmPassword"placeholder="Confirm Password" required>
+                                <div class="valid-feedback">Password Matches!</div>
+                                <div class="invalid-feedback">Password Needs To Match!</div>
+                            </div>
+
+                            <div class="form-check col-md-12">
+                                <br>
+                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                                <label class="form-check-label">I agree to the <a href="#"
+                                            title="TOS and Privacy Rules" class="tos">Terms of Service
+                                            and Privacy Rules.
+                                        </a> </label>
+                                <div class="invalid-feedback">Please confirm that you accept the TOS!</div>
+                            </div>
+
+                            <div class="form-button mt-3">
+                                <br><br>
+                                <button id="regFormSubmit" type="submit" class="btn btn-primary">Register</button>
+
+                                {% for message in get_flashed_messages() %}
+                                    <h4 style="text-align: center; color: red">{{ message }}</h4>
+                                {% endfor %}
+                            </div>
+                            <br>
+                            <p class="change_link">
+					Already a member ?
+					<a href="/userLoadLogin" class="to_register" style="color: #0a53be">Login </a>
+				</p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+            // polyfill for RegExp.escape
+            if(!RegExp.escape) {
+              RegExp.escape = function(s) {
+                return String(s).replace(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+              };
+            }
+          
+          </script>
+        
+<script>
+    (function () {
+        'use strict'
+        const forms = document.querySelectorAll('.requires-validation')
+        Array.from(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
+
+<div id="footer">
+    {% include 'user/footer.html' %}
+</div>
+</body>
+
+</html>

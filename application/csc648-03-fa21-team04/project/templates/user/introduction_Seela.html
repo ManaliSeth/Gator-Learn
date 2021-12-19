@@ -1,0 +1,107 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Seela Pant
+* Description: This html file has individual profile of Seela showing up on clicking Personal Profile from Index page
+-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>Seela Pant</title>
+
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Styling the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
+      }
+
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 800px;
+      }
+
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
+
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    {% include 'user/header.html'%}
+
+    {% include 'user/navbar.html' %}
+
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">Seela Pant</h2>
+        <div class="card" style="width: 20rem;">
+          <img src="../../static/images/seela.PNG" class="card-img-top" height="250px" alt="...">
+        </div>
+
+      </div>
+      <div class="main">
+        <h2>About me</h2>
+        <p style="font-size: 15px "> I am at second to the last semester at SF State University as a Computer Science
+            major student. As of now, I am interested in pursuing Data Science and/or Data Analysis
+            as a career. However, I am still browsing into the field I will be more interested on.</p>
+        <br>
+        <p style="font-size: 18px"><b>Areas of Interest</b></p>
+        <ul style="font-size: 14px">
+          <li>Data Analysis</li>
+          <li>Data Science</li>
+          <li>Software Development</li>
+        </ul>
+
+        <br>
+        <p style="font-size: 18px"><b>Contact info:</b></p>
+        <p style="font-size: 14px">
+          Email:</b> <a href="mailto:spant@mail.sfsu.edu" class="mailto">spant@mail.sfsu.edu</a><br>
+          SFSU ID:678912345<br>
+          Phone Number:+1 (678) 901-2345</p>
+
+      </div>
+    </div>
+    {% include 'user/footer.html' %}
+  </body>
+</html>
