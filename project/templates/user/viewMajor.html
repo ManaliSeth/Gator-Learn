@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+	<!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>Major</title>
+
+	<!-- Data table CSS -->
+	<link href="../../static/adminresources/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+</head>
+
+<body>
+        <div class="row">
+					<div class="col-sm-12">
+						<div class="panel panel-default card-view">
+							<div class="panel-heading">
+								<div class="pull-left">
+									<h6 class="panel-title txt-dark">View Major</h6>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="panel-wrapper collapse in">
+								<div class="panel-body">
+									<div class="table-wrap">
+										<div class="table-responsive">
+											<table id="datable_1" class="table table-hover display  pb-30" >
+												<thead>
+													<tr>
+														<th>Major Name</th>
+													</tr>
+												</thead>
+												<tbody>
+                                                    {% for i in majorDict %}
+													<tr>
+                                                        <td>{{ i['majorName']}} </td>
+                                                     </tr>
+                                                    {% endfor %}
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+                                </div>
+                            </div>
+                        </div>
+					</div>
+		</div>
+
+	<!-- Data table JavaScript -->
+	<script src="../../static/adminresources/js/jquery.dataTables.min.js"></script>
+	<script src="../../static/adminresources/js/dataTables-data.js"></script>
+
+</body>
+</html>

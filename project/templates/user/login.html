@@ -1,0 +1,215 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Seela Pant
+* Description: This page is a Login page that asks for the login credentials if they are a member of Gator Learn
+showing up on clicking Login from navigation bar
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login</title>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+</head>
+
+<style>
+
+    #header{
+        height: 15%;
+        width: 100vw;
+    }
+
+    #navbar{
+        padding-bottom: 20px;
+    }
+
+    body{
+      background: url("../../static/images/tutoring_HomePage4.jpg") no-repeat;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #login-form {
+        width: 512px;
+        background-color: #000000;
+        color: #ffffff;
+        box-shadow: 0 7px 7px rgba(0, 0, 0, 0.12), 0 12px 40px rgba(0, 0, 0, 0.24);
+        transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+        border-radius: 8px;
+    }
+
+    #login-form form {
+        width: 100%;
+        padding: 15px;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #login-form .input-group {
+        width: 80%;
+        margin-bottom: 4px;
+    }
+
+    #login-form .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    #login-form a{
+        display: block;
+        padding-top:10px;
+        color:#ffffff;
+    }
+
+    #login-form button[type="submit"]{ margin-top:10px; }
+
+    #login-form .form-reset, #login-form .form-login{ display: none; }
+
+    .submit{
+      background: green;
+      border-radius: 25px;
+      color: #fff;
+    }
+
+    #forgot_pswd{
+        right: 70px;
+    }
+
+    #footer{
+        padding-top: 30px;
+        width: 100vw;
+        position:fixed;
+        bottom:0;
+        left:0;
+}
+
+</style>
+
+<script>
+    function toggleResetPswd(e) {
+        e.preventDefault();
+        $('#login-form .form-signin').toggle()
+        $('#login-form .form-reset').toggle()
+    }
+    $(()=>{
+    $('#login-form #forgot_pswd').click(toggleResetPswd);
+    $('#login-form #cancel_reset').click(toggleResetPswd);
+    })
+
+</script>
+
+<body>
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+
+<div id="navbar">
+    {% include 'user/navbar.html' %}
+</div>
+
+    <div id="login-form">
+        <form class="form-signin" action="/login" method="post">
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Login</h1>
+            <div class="input-group">
+              <input type="email" name="loginEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus="">
+            </div>
+            <div class="input-group">
+              <input type="password" name="loginPassword" id="inputPassword" class="form-control" placeholder="Password" required>
+                </div>
+
+            </br>
+
+<!--            {% if errorMsg %}-->
+<!--                    <script>-->
+<!--                      alert("{{errorMsg}}");-->
+<!--                    </script>-->
+<!--            {% endif %}-->
+
+             <a href="#" id="forgot_pswd">Forgot password?</a>
+
+            <div class="input-group">
+              <button id="loginFormSubmit" class="btn btn-md btn-rounded btn-block form-control submit" type="submit"><i class="fas fa-sign-in-alt"></i>Login</button>
+            </div>
+            {% for message in get_flashed_messages() %}
+                    <h4 style="text-align: center; color: red">{{ message }}</h4>
+            {% endfor %}
+            <hr>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><a href="/userLoadRegister">Not Registered? Register Now</a>  </button>
+        </form>
+        <div id="error"></div>
+
+        <form action="/userLoadRegister" class="form-reset">
+                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+                <button id="formResetSubmit" class="btn btn-primary btn-block" type="submit">Reset Password</button>
+                <a href="#" id="cancel_reset"> Back</a>
+        </form>
+    </div>
+
+<form id="contactForm" action="#" onSubmit="return validateLogin()" method="post">
+</form>
+
+<script>
+    const email = document.getElementById("inputEmail");
+    const submitButton = document.getElementById("loginFormSubmit");
+
+    const resetEmail = document.getElementById("resetEmail");
+    const resetPassButton = document.getElementById("formResetSubmit");
+
+    submitButton.addEventListener('click', () => {
+        validateEmail(email);
+    });
+    resetPassButton.addEventListener('click', () => {
+        validateEmail(resetEmail);
+    });
+
+    function validateEmail(email){
+        if(email.value.endsWith("@sfsu.edu") || email.value.endsWith("@mail.sfsu.edu")){
+            return;
+        }
+        else{
+            alert("Invalid Email.")
+        }
+    }
+
+</script>
+
+<div id="footer">
+    {% include 'user/footer.html' %}
+</div>
+
+</body>
+</html>
+
+
+

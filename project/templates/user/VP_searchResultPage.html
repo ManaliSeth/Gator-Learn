@@ -1,0 +1,203 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: Manali Seth
+* Description: This html file lists all tutor postings by clicking on search from navigation bar
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>Tutors</title>
+
+    <link rel="import" href="header.html">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css"/>
+    <link rel="stylesheet" href="../../static/css/styles.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            min-height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #header{
+            height: 25%;
+        }
+
+        .container form{
+            display: flex;
+        }
+
+        .container > *{
+            margin: 0 10px;
+        }
+
+        .container-fluid{
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .container-fluid > *{
+            margin-top: 15px;
+        }
+
+        #example_length.dataTables_length label{
+            display: flex;
+            align-items: flex-start;
+            margin-top: 10px;
+        }
+
+        #example_length.dataTables_length label select{
+            width: fit-content;
+            margin: 0 5px;
+        }
+
+        #example_filter.dataTables_filter label{
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 10px;
+            margin-right: 30px;
+        }
+
+        #example_filter.dataTables_filter label input{
+            width: 250px;
+        }
+
+        #example_wrapper.dataTables_wrapper label{
+            display: none;
+        }
+
+        #example_info.dataTables_info{
+            color: #0a53be;
+            display: none;
+        }
+
+
+        input[type="text"]{
+            width: 290px;
+        }
+
+        .avatar-img{
+            border-radius: 50%;
+        }
+
+    </style>
+
+    <script>
+          $(document).ready(function() {
+            $('#example').DataTable();
+          } );
+
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"></script>
+    <script src="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+</head>
+
+
+<body>
+
+<div id="header">
+    {% include 'user/header.html' %}
+</div>
+
+{% include 'user/navbar.html' %}
+
+<br>
+
+<!--Listing particular course tutors-->
+{% if majorSelected == "All Majors"  and search_input != "" %}
+<h5>&nbsp;&nbsp;  &nbsp;&nbsp;Showing {{tutorCountDict[0]}} result for "{{search_input}}" course tutored</h5>
+
+<!--Listing particular Major tutors with no specific course selected-->
+{% elif majorSelected != 'All Majors' and search_input == '' %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} result for "{{majorSelected}}" major tutored</h5>
+
+<!--Listing full catalog-->
+{% elif search_input == "" and majorSelected == "All Majors" %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing 1 to {{tutorTotalCountDict[0]}} of {{tutorTotalCountDict[0]}} entries for "All Majors" tutored</h5>
+
+<!--Listing particular major and course tutors-->
+{% else %}
+<h5>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Showing {{tutorCountDict[0]}} result for "{{majorSelected}}" major tutored and "{{search_input}}" course tutored</h5>
+{% endif %}
+
+<div class="container-fluid">
+
+    <table id="example" class="table table-hover" style="width:100%">
+        <thead>
+        <tr>
+            <th style="text-align: center">Avatar</th>
+            <th style="text-align: center; width: 120px">Tutor Name</th>
+            <th style="text-align: center; width: 132px">Major Tutored</th>
+            <th style="text-align: center">Course Tutored</th>
+            <th style="text-align: center">Description</th>
+            <th style="text-align: center">Tutor CV</th>
+            <th style="text-align: center">Message</th>
+
+        </tr>
+        </thead>
+        <tbody>
+            {% for i in tutorDict %}
+                <tr>
+                    <td style="text-align: center"><img class="avatar-img" height="70px" width="70px" src="static/dataset/tutorAvatar/{{i[7]}}" alt="Tutor Image"></td>
+                    <td style="text-align: center">{{i[12]}}</td>
+                    <td style="text-align: center">{{i[14]}}</td>
+                    <td style="text-align: center">{{i[16]}}</td>
+                    <td style="text-align: center">{{i[4]}}</td>
+                    <td style="text-align: center"><a href="static/dataset/tutorCV/{{i[5]}}" target="_blank">{{i[5]}}</a></td>
+                    <td style="text-align: center">
+                                    <form action="/sendMessage" method="post">
+                                        <input type="hidden" value="{{i[1]}}" class="form-control" name="msgTo_loginId">
+                                        <input type="hidden" value="{{i[14]}}" class="form-control" name="msg_forMajor">
+                                        <input type="hidden" value="{{i[16]}}" class="form-control" name="msg_forCourse">
+                                        <input type="text" class="form-control" name="msgDesc" id="colFormLabel" placeholder="Hi, I'm interested in your tutoring services!" required>
+                                        <br>
+                                        <button type="submit" class="btn btn-primary">Send Message to Tutor</button>
+                                    </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+
+{% include 'user/footer.html' %}
+</body>
+</html>

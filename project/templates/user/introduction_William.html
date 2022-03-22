@@ -1,0 +1,96 @@
+<!--
+* Class: CSC-648-848 Fall 2021
+* Author: William Yu
+* Description: This html file has individual profile of William showing up on clicking Personal Profile from Index page
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Google Analytics -->
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-215535631-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <!-- End Google Analytics -->
+
+    <title>William Yu</title>
+
+    <link rel="shortcut icon" href="https://i.pinimg.com/originals/89/9a/59/899a5934848695c4305e1882e5753433.png" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Style the body */
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        background: linear-gradient(to bottom, #a7cfdf 0%, #23538a 100%)
+      }
+
+      /* Column container */
+      .row {
+        display: -ms-flexbox; /* IE10 */
+        display: flex;
+        -ms-flex-wrap: wrap; /* IE10 */
+        flex-wrap: wrap;
+        height: 800px;
+      }
+
+      /* Sidebar/left column */
+      .side {
+        -ms-flex: 30%; /* IE10 */
+        flex: 30%;
+        padding: 20px;
+        background-color: white;
+      }
+
+      /* Main column */
+      .main {
+        -ms-flex: 70%; /* IE10 */
+        flex: 70%;
+        padding: 20px;
+        background-color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include 'user/header.html'%}
+
+    {% include 'user/navbar.html' %}
+
+    <div class="row">
+      <div class="side">
+        <h2 style="display: block; left: 0px;">William Yu</h2>
+        <div class="card" style="width: 20rem;">
+        <img src="../../static/images/william.PNG" class="card-img-top" alt="...">
+        </div>
+      </div>
+
+      <div class="main">
+        <h2>About Me</h2>
+        <p>I am a senior undergraduate in SFSU's CS department.
+           My interests lie in software development and data science.</p>
+        <br>
+        <p><b>Contact info:</b></p>
+        <p><b>Email:</b> <a href="wyu5@mail.sfsu.edu" class="mailto">wyu5@mail.sfsu.edu</a></p>
+        <p><b>Github:</b> <a href="https://github.com/WilliamYu5" class="btn btn-primary">William Yu</a></p>
+        <p><b>SFSU ID:</b> 789123456</p>
+        <p><b>Phone Number:</b> +1 (678) 901-2345</p>
+      </div>
+    </div>
+    {% include 'user/footer.html' %}
+  </body>
+</html>
